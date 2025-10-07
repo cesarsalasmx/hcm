@@ -1,0 +1,145 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/extend" as *;
+@use "../abstracts/mixins" as *;
+
+// Start Mobile Menu
+.mobile-menu-contact-info {
+  margin-top: 30px;
+}
+
+.mobile-menu-social-media {
+  @extend %d-flex, %item-center;
+  gap: 10px;
+
+  a {
+    @extend %d-inline-block, %text-center;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    background-color: transparent;
+    color: var(--color-2);
+    border: 1px solid rgba(var(--color-2-rgb), 0.1);
+    font-size: 16px;
+
+    &:hover {
+      color: var(--color-white);
+      background-color: var(--color-2);
+      border-color: var(--color-2);
+    }
+  }
+}
+
+.orvio__mobile-menu-copyright {
+  .orvio__mobile-menu-copyright-text {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-2);
+
+    a {
+      font-weight: 700;
+      color: var(--color-2);
+    }
+
+    &:hover a {
+      color: var(--color-2);
+    }
+  }
+}
+
+.orvio__nav-item {
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.orvio__nav-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  color: var(--color-2);
+  text-decoration: none;
+  padding: 5px 0;
+  font-weight: 500;
+  transition: linear 0.4s;
+
+  &:hover {
+    color: var(--color-2);
+
+    .orvio__toggle-btn::after,
+    .orvio__toggle-btn::before {
+      background-color: var(--color-2);
+    }
+  }
+}
+
+.orvio__toggle-btn {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  &::before,
+  &::after {
+    @extend %p-absolute;
+    background: var(--color-2);
+    @include transition($transition-3-ease-in-out);
+  }
+
+  &::before {
+    width: 2px;
+    height: 12px;
+    top: 6px;
+    left: 11px;
+  }
+
+  &::after {
+    width: 12px;
+    height: 2px;
+    top: 11px;
+    left: 6px;
+  }
+
+  &.orvio__active::before {
+    @include transform(rotate(90deg));
+  }
+
+  &.orvio__active::after {
+    @include transform(rotate(180deg));
+  }
+}
+.orvio__submenu {
+  @extend %d-none;
+  padding-left: 20px;
+  margin-top: 10px;
+
+  &.orvio__active {
+    @extend %d-block;
+
+    .orvio__submenu-item {
+      opacity: 1;
+      @include transform(translateY(0));
+    }
+  }
+
+  .orvio__submenu-item {
+    margin-bottom: 10px;
+    opacity: 0;
+    @include transform(translateY(-10px));
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+
+  .orvio__submenu-link {
+    color: var(--color-2);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    transition: linear 0.4s;
+
+    &:hover {
+      color: var(--color-2);
+    }
+  }
+}
+// End Mobile Menu

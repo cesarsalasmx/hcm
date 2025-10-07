@@ -1,0 +1,737 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/extend" as *;
+@use "../abstracts/mixins" as *;
+
+header {
+  opacity: 0;
+  @include transform(translateY(-100px));
+}
+.header {
+  &.section {
+    @extend %p-relative;
+    z-index: 999;
+
+    &:not(.sticky) {
+      border-bottom: 1px solid rgba(var(--color-2-rgb), 0.1);
+    }
+
+    &.v4 {
+      border-bottom: 1px solid rgba(var(--color-white-rgb), 0.1);
+
+      .header__main-menu {
+        nav {
+          > ul {
+            > li {
+              > a {
+                color: var(--color-white);
+                border: 1px solid transparent;
+                &:hover {
+                  background-color: transparent;
+                  border-color: rgba(var(--color-white-rgb), 0.1);
+                }
+              }
+
+              &:hover {
+                > a {
+                  background-color: transparent;
+                  color: var(--color-white);
+                  border-color: rgba(var(--color-white-rgb), 0.1);
+                  &:hover {
+                    background-color: transparent;
+                    border-color: rgba(var(--color-white-rgb), 0.1);
+                  }
+                }
+              }
+
+              &.active {
+                > a {
+                  background-color: transparent;
+                  border-color: rgba(var(--color-white-rgb), 0.1);
+                }
+              }
+            }
+          }
+        }
+      }
+      .header__menu-btns {
+        .available {
+          color: var(--color-white);
+        }
+
+        .hamburger-menu {
+          .hamburger-bar {
+            background-color: var(--color-white);
+          }
+        }
+      }
+    }
+  }
+  &.sticky {
+    @extend %p-absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+  }
+  &__main {
+    @extend %d-flex, %justify-between, %item-center;
+    padding-block: 19.5px;
+    gap: 15px;
+
+    @include breakpoint(max-xl) {
+      padding-block: 20px;
+    }
+    &--wrapper {
+      @extend %d-flex, %justify-between, %item-center, %flex-1;
+      border-radius: 999px;
+      border: 1.2px solid rgba(var(--color-white-rgb), 0.14);
+      padding: 11px 30px;
+
+      @include breakpoint(max-xl) {
+        padding: 5px 10px;
+      }
+    }
+  }
+  &__main-menu {
+    @include breakpoint(max-lg) {
+      display: none;
+    }
+    nav {
+      &.circle {
+        border-radius: 999px;
+        background: rgba(var(--color-white-rgb), 0.08);
+        padding: 6px;
+      }
+      > ul {
+        gap: 10px;
+
+        @include breakpoint(max-xl) {
+          gap: 5px;
+        }
+        > li {
+          &.active {
+            > a {
+              border-color: rgba(var(--color-2-rgb), 0.1);
+            }
+          }
+          > a {
+            border: 1px solid transparent;
+
+            &:hover {
+              border-color: rgba(var(--color-2-rgb), 0.1);
+            }
+          }
+        }
+      }
+      ul {
+        line-height: 1;
+        &:not(.sub-menu) {
+          @extend %d-flex, %justify-between, %item-center;
+          // gap: 30px;
+        }
+
+        li {
+          @extend %p-relative;
+          &.active,
+          &:hover {
+            > a {
+              background: var(--color-1);
+              color: var(--color-2);
+            }
+          }
+          &:not(.active) {
+            > a {
+              &:hover {
+                color: var(--color-2);
+              }
+            }
+          }
+          a {
+            border-radius: 999px;
+            white-space: nowrap;
+            color: var(--color-2);
+            font-size: $fs-16;
+            font-weight: 500;
+            line-height: 162.5%;
+            padding: 8.5px 25.5px;
+            gap: 10px;
+            text-transform: uppercase;
+
+            @include breakpoint(max-xl) {
+              gap: 5px;
+              line-height: 2.188;
+              padding: 5px 15px;
+            }
+
+            @extend %d-flex, %justify-between, %item-center;
+            // &:has(i) {
+            // }
+
+            i {
+              @include transition(inherit);
+              transform-origin: center center;
+              -ms-transform-origin: center center;
+              -webkit-transform-origin: center center;
+            }
+          }
+
+          .sub-menu {
+            @extend %p-absolute;
+            @include transform(scaleY(0));
+            @include transition($transition-3-ease-in-out);
+            left: 0;
+            top: calc(100%);
+            border: 1px solid rgba(var(--color-2-rgb), 0.1);
+            border-radius: 2px;
+            min-width: 215px;
+            transform-origin: top left;
+            -ms-transform-origin: top left;
+            -webkit-transform-origin: top left;
+            background-color: var(--color-white);
+
+            li {
+              @extend %p-relative;
+              @include transition($transition);
+              line-height: 1;
+              background-color: var(--color-1);
+              z-index: 1;
+
+              &:first-of-type {
+                border-top-left-radius: 2px;
+                border-top-right-radius: 2px;
+              }
+              &:last-of-type {
+                border-bottom-left-radius: 2px;
+                border-bottom-right-radius: 2px;
+              }
+              &:not(:last-of-type) {
+                border-bottom: 1px solid rgba(var(--color-2-rgb), 0.1);
+              }
+              &::before {
+                @extend %p-absolute;
+                @include transition($transition);
+                width: 0%;
+                height: 1px;
+                left: 0;
+                bottom: -1px;
+                background-color: rgba(var(--color-2-rgb), 0.3);
+                z-index: -1;
+              }
+
+              a {
+                @extend %d-block;
+                padding: 12px 10px;
+                line-height: 1;
+
+                &:has(i) {
+                  @extend %d-flex, %justify-between, %item-center;
+                }
+              }
+
+              &:hover {
+                &::before {
+                  width: 100%;
+                }
+                > a {
+                  margin-left: 10px;
+                }
+              }
+            }
+
+            .sub-menu {
+              left: calc(100% + 5px);
+              top: 0%;
+            }
+
+            &:hover {
+              // border-color: rgba(var(--color-primary-rgb), 0.3);
+              > li {
+                // border-color: rgba(var(--color-primary-rgb), 0.3);
+              }
+            }
+          }
+
+          &:hover {
+            > a {
+              i {
+                @include transform(rotate(180deg));
+              }
+            }
+            > .sub-menu {
+              @include transform(scaleY(1));
+            }
+          }
+          // &:last-of-type {
+          //   > .sub-menu:not(.sub-menu .sub-menu) {
+          //     left: unset;
+          //     right: 0;
+
+          //     li {
+          //       .sub-menu {
+          //         left: unset;
+          //         right: calc(100% + 5px);
+          //       }
+          //     }
+          //   }
+          // }
+          &:last-of-type,
+          &:nth-last-of-type(2),
+          &:nth-last-of-type(3) {
+            > .sub-menu:not(.sub-menu .sub-menu) {
+              left: unset;
+              right: 0;
+              transform-origin: top right;
+
+              li {
+                .sub-menu {
+                  left: unset;
+                  right: calc(100% + 5px);
+                  transform-origin: top right;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.v2 {
+      @extend %d-flex, %item-center;
+      gap: 90px;
+      @include breakpoint(max-xl) {
+        gap: 50px;
+      }
+
+      nav {
+        @include breakpoint(max-lg) {
+          display: none;
+        }
+        &.circle {
+          border: 1px solid rgba(var(--color-2-rgb), 0.08);
+          padding: 8px;
+          @include breakpoint(max-xl) {
+            padding: 6px;
+          }
+        }
+        > ul {
+          > li {
+            &.active {
+              > a {
+                background-color: var(--color-primary2);
+                color: var(--color-white);
+                overflow: hidden;
+              }
+            }
+            > a {
+              border: none;
+              text-transform: capitalize;
+              &:hover {
+                border: none;
+                background-color: var(--color-primary2);
+                color: var(--color-white);
+              }
+            }
+          }
+        }
+        ul {
+          li {
+            a {
+              padding: 8px 20px;
+              @include breakpoint(max-xl) {
+                padding: 0px 15px;
+              }
+            }
+          }
+        }
+      }
+
+      .menu-btns {
+        @extend %d-grid, %place-center;
+
+        .hamburger-menu {
+          @extend %d-flex, %flex-col, %justify-center, %item-end, %shrink-0;
+          gap: 7.5px;
+          min-width: 30px;
+          height: 45px;
+          font-size: 40px;
+          border: none;
+          border-radius: 5px;
+          background-color: transparent;
+
+          .hamburger-bar {
+            @extend %shrink-0;
+            display: inline-block;
+            background-color: var(--color-2);
+            font-size: inherit;
+            width: 30px;
+            height: 1.4px;
+            @include transition($transition);
+
+            &:first-of-type {
+              width: 17px;
+            }
+          }
+
+          @include breakpoint(max-lg) {
+            font-size: 30px;
+          }
+
+          &:hover {
+            .hamburger-bar {
+              &:first-of-type {
+                width: 30px;
+              }
+            }
+          }
+        }
+      }
+    }
+    &.v3 {
+      @extend %d-flex, %item-center;
+      gap: 90px;
+      @include breakpoint(max-xl) {
+        gap: 50px;
+      }
+
+      .menu-btns {
+        @extend %d-grid, %place-center;
+
+        .hamburger-menu {
+          @extend %d-flex, %flex-col, %justify-center, %item-end, %shrink-0;
+          gap: 7.5px;
+          min-width: 30px;
+          height: 45px;
+          font-size: 40px;
+          border: none;
+          border-radius: 5px;
+          background-color: transparent;
+
+          .hamburger-bar {
+            @extend %shrink-0;
+            display: inline-block;
+            background-color: var(--color-2);
+            font-size: inherit;
+            width: 30px;
+            height: 1.4px;
+            @include transition($transition);
+          }
+
+          @include breakpoint(max-lg) {
+            font-size: 30px;
+          }
+        }
+      }
+    }
+    &.vertical-showcase {
+      @extend %d-flex, %item-center;
+      gap: 90px;
+      @include breakpoint(max-xl) {
+        gap: 50px;
+      }
+
+      nav {
+        @include breakpoint(max-lg) {
+          display: none;
+        }
+        &.circle {
+          border: 1px solid rgba(var(--color-2-rgb), 0.08);
+          padding: 8px;
+          @include breakpoint(max-xl) {
+            padding: 6px;
+          }
+        }
+        > ul {
+          > li {
+            &.active {
+              > a {
+                background-color: transparent;
+                color: var(--color-white);
+                overflow: hidden;
+                opacity: 1;
+              }
+            }
+            > a {
+              border: none;
+              text-transform: capitalize;
+              color: var(--color-white);
+              opacity: 0.5;
+              &:hover {
+                border: none;
+                background-color: transparent;
+                color: var(--color-white);
+                opacity: 1;
+              }
+            }
+
+            &:hover {
+              > a {
+                background-color: transparent;
+                opacity: 1;
+              }
+            }
+          }
+        }
+        ul {
+          li {
+            a {
+              padding: 8px 20px;
+              @include breakpoint(max-xl) {
+                padding: 0px 15px;
+              }
+            }
+          }
+        }
+      }
+
+      .menu-btns {
+        @extend %d-grid, %place-center;
+
+        @include breakpoint(lg) {
+          display: none;
+        }
+
+        .hamburger-menu {
+          @extend %d-flex, %flex-col, %justify-center, %item-end, %shrink-0;
+          gap: 7.5px;
+          min-width: 30px;
+          height: 45px;
+          font-size: 40px;
+          border: none;
+          border-radius: 5px;
+          background-color: transparent;
+
+          .hamburger-bar {
+            @extend %shrink-0;
+            display: inline-block;
+            background-color: var(--color-white);
+            font-size: inherit;
+            width: 30px;
+            height: 1.4px;
+            @include transition($transition);
+
+            &:first-of-type {
+              width: 17px;
+            }
+          }
+
+          @include breakpoint(max-lg) {
+            font-size: 30px;
+          }
+
+          &:hover {
+            .hamburger-bar {
+              &:first-of-type {
+                width: 30px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &__menu-btns {
+    @extend %d-flex, %item-center;
+    gap: 80px;
+
+    @include breakpoint(max-xl) {
+      gap: 50px;
+    }
+    @include breakpoint(max-md) {
+      gap: 20px;
+    }
+    @include breakpoint(max-sm) {
+      gap: 10px;
+    }
+
+    .available {
+      @extend %p-relative, %d-flex, %item-center;
+      gap: 10px;
+      color: var(--color-2);
+      font-size: $fs-18;
+      font-weight: 500;
+      line-height: 177.778%;
+      letter-spacing: 0.18px;
+
+      @include breakpoint(max-sm) {
+        font-size: $fs-15;
+      }
+      @include breakpoint(max-xsm) {
+        font-size: $fs-12;
+      }
+
+      &::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        flex-shrink: 0;
+        border-radius: 100%;
+        background-color: var(--color-primary);
+      }
+    }
+    .hamburger-menu {
+      @extend %d-flex, %flex-col, %justify-center, %shrink-0;
+      gap: 10px;
+      min-width: 30px;
+      height: 45px;
+      font-size: 40px;
+      border: none;
+      border-radius: 5px;
+      background-color: transparent;
+
+      .hamburger-bar {
+        @extend %shrink-0;
+        display: inline-block;
+        background-color: var(--color-2);
+        font-size: inherit;
+        width: 30px;
+        height: 2px;
+      }
+
+      @include breakpoint(max-lg) {
+        font-size: 30px;
+      }
+    }
+  }
+
+  &-2 {
+    &.section {
+      @extend %p-relative;
+      z-index: 9;
+    }
+    &__left-content {
+      @extend %d-flex, %item-center;
+      gap: 220px;
+
+      @include breakpoint(max-xl) {
+        gap: 100px;
+      }
+      @include breakpoint(max-md) {
+        gap: 50px;
+      }
+      @include breakpoint(max-sm) {
+        gap: 15px;
+      }
+      .contact-mail {
+        color: var(--color-2);
+        font-family: $ff-creato-display;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 155.556%;
+
+        @include breakpoint(max-sm) {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  &-3 {
+    &.section {
+      @extend %p-relative;
+      z-index: 9;
+      border-bottom: 1px solid rgba(var(--color-2-rgb), 0.1);
+      .header__main {
+        padding-block: 5px;
+        gap: 122px;
+        @extend %item-start;
+
+        @include breakpoint(max-xxxl) {
+          gap: 80px;
+        }
+        @include breakpoint(max-xl) {
+          gap: 50px;
+        }
+      }
+    }
+    &__left-content {
+      @extend %d-flex, %justify-between, %item-center, %flex-1;
+      gap: 15px;
+      @include breakpoint(max-sm) {
+        flex-wrap: wrap;
+      }
+      a {
+        @extend %p-relative;
+        color: var(--color-2);
+        font-family: $ff-creato-display;
+        font-weight: 700;
+        line-height: 1;
+        text-transform: uppercase;
+        font-size: $fs-h1;
+
+        @include breakpoint(max-xxl) {
+          font-size: calc($fs-h1 - 30px);
+        }
+        @include breakpoint(max-xl) {
+          font-size: calc($fs-h1 - 60px);
+        }
+        @include breakpoint(max-lg) {
+          font-size: calc($fs-h1 - 90px);
+        }
+        @include breakpoint(max-sm) {
+          font-size: calc($fs-h1 - 105px);
+        }
+
+        &::after {
+          @extend %p-absolute;
+          font: var(--fa-font-sharp);
+          content: "\2b";
+          font-size: 24px;
+          top: 0;
+          right: -15px;
+          font-weight: 400;
+        }
+      }
+
+      .line {
+        @extend %d-inline-block;
+        width: 15%;
+        height: 15px;
+        background-color: var(--color-2);
+
+        @include breakpoint(max-xxxl) {
+          width: 10%;
+        }
+        @include breakpoint(max-xl) {
+          height: 10px;
+        }
+        @include breakpoint(max-lg) {
+          height: 5px;
+        }
+
+        @include breakpoint(max-sm) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &.letter-showcase,
+  &.creative-thumb-slider {
+    @extend %p-absolute;
+    top: 015px;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    border-bottom: 1px solid rgba(var(--color-white-rgb), 0.1);
+  }
+  &.vertical-showcase {
+    @extend %p-absolute;
+    top: 015px;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+
+    .header__main {
+      @include breakpoint(max-sm) {
+        padding: 20px;
+      }
+
+      .header__logo {
+        img {
+          @include breakpoint(max-sm) {
+            max-width: 80px;
+          }
+        }
+      }
+    }
+  }
+}

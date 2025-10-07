@@ -1,0 +1,90 @@
+/*! 
+Template Name: Orvio
+Template Url: https://orvio-html.netlify.app/
+Developer: Sakebul islam
+Description: Orvio – Creative Agency and Portfolio HTML Template
+Version: 1.0.0
+Text Domain: Orvio
+Tags: Orvio, creative agency, portfolio template, digital agency, startup, business, corporate, agency website, modern design, HTML5, CSS3, Bootstrap, responsive design, multipurpose, Sakebul Islam
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Fonts
+# Configuration
+# Normalize
+# Typography
+# Global CSS
+# Layout CSS
+# Components CSS
+# Helper CSS
+--------------------------------------------------------------*/
+
+@charset "UTF-8";
+
+// 1.Fonts
+@use "base/fonts" as *;
+
+// 2.Configuration and helpers
+@use "abstracts/variables" as *;
+@use "abstracts/mixins" as *;
+@use "abstracts/container" as *;
+@use "abstracts/extend" as *;
+
+//3.Normalize
+@use "vendors/normalize" as *;
+
+//4.Typography
+@use "base/typography" as *;
+@use "base/common" as *;
+@use "base/animation" as *;
+@use "base/section-gap" as *;
+
+// 5.layout-related section
+@use "layout/mobile-menu" as *;
+@use "layout/header" as *;
+@use "layout/offcanvas" as *;
+@use "layout/breadcrumb" as *;
+@use "layout/hero" as *;
+@use "layout/footer" as *;
+@use "layout/vertical-showcase" as *;
+@use "layout/letter-showcase" as *;
+@use "layout/creative-thumb-slider" as *;
+
+// 6.components
+@use "components/button" as *;
+@use "components/backToTop" as *;
+@use "components/widget" as *;
+@use "components/preloader" as *;
+@use "components/about" as *;
+@use "components/what-do" as *;
+@use "components/introduction" as *;
+@use "components/brands" as *;
+@use "components/work-process" as *;
+@use "components/services" as *;
+@use "components/service-details" as *;
+@use "components/work" as *;
+@use "components/work-details" as *;
+@use "components/team" as *;
+@use "components/team-details" as *;
+@use "components/choose-us" as *;
+@use "components/blog" as *;
+@use "components/blog-single" as *;
+@use "components/testimonial" as *;
+@use "components/newsletter" as *;
+@use "components/faq" as *;
+@use "components/pagination" as *;
+@use "components/service-overview" as *;
+@use "components/connect" as *;
+@use "components/error-404" as *;
+@use "components/contact" as *;
+
+//7.Helpers CSS
+@use "base/helpers" as *;
+
+//8.Pages CSS
+@use "pages/shop-page" as *;
+@use "pages/design-studio-page" as *;
+@use "pages/corporate-agency-page" as *;
+@use "pages/modern-agency-page" as *;

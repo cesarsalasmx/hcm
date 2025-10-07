@@ -1,0 +1,199 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/extend" as *;
+@use "../abstracts/mixins" as *;
+
+.work-details {
+  &.section {
+  }
+  &__intro {
+    .sub-title {
+      @extend %d-flex, %item-center;
+      gap: 10px;
+      color: rgba(var(--color-2-rgb), 0.74);
+      font-family: $ff-creato-display;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 155.556%;
+      letter-spacing: 0.18px;
+
+      &::before {
+        @extend %shrink-0;
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 100%;
+        background-color: var(--color-2);
+      }
+    }
+
+    p {
+      font-family: $ff-creato-display;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 155.556%;
+      letter-spacing: 0.18px;
+    }
+
+    .highlight-list {
+      margin-top: 50px;
+
+      @include breakpoint(max-lg) {
+        margin-top: 40px;
+      }
+      @include breakpoint(max-md) {
+        margin-top: 30px;
+      }
+      li {
+        @extend %d-flex, %justify-between, %item-center;
+        color: rgba(var(--color-2-rgb), 0.74);
+        font-family: $ff-creato-display;
+        font-size: 18px;
+        line-height: 155.556%;
+        letter-spacing: 0.18px;
+        padding-top: 12px;
+        border-top: 1px solid rgba(var(--color-2-rgb), 0.14);
+
+        &:not(:last-of-type) {
+          padding-bottom: 12px;
+        }
+
+        span {
+          font-weight: 500;
+        }
+      }
+    }
+  }
+  &__thumbs {
+    border-radius: 18px;
+    overflow: hidden;
+
+    @include breakpoint(max-lg) {
+      border-radius: 8px;
+    }
+    img {
+      @include transform(scale(1.2));
+    }
+  }
+  &__thumb {
+    border-radius: 18px;
+    overflow: hidden;
+
+    @include breakpoint(max-lg) {
+      border-radius: 8px;
+    }
+    img {
+      @include transform(scale(1.2));
+    }
+  }
+
+  &__details {
+    .research-section,
+    .sketches-section,
+    .results-section {
+      .section-title {
+        font-family: $ff-nohemi;
+        font-weight: 400;
+        line-height: 121.739%;
+        margin-bottom: 8px;
+      }
+
+      p {
+        font-family: $ff-creato-display;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 155.556%;
+        letter-spacing: 0.18px;
+        opacity: 0.74;
+        &:not(:last-of-type) {
+          margin-bottom: 14px;
+        }
+      }
+    }
+
+    .research-section {
+      margin-top: 60px;
+
+      @include breakpoint(max-lg) {
+        margin-top: 40px;
+      }
+
+      .research-list {
+        margin-top: 45px;
+
+        @include breakpoint(max-lg) {
+          margin-top: 25px;
+        }
+        li {
+          @extend %d-flex;
+          gap: 8px;
+          font-family: $ff-creato-display;
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 155.556%;
+          letter-spacing: 0.18px;
+          &::before {
+            @extend %shrink-0, %p-relative;
+            content: "";
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            border-radius: 100%;
+            background-color: var(--color-2);
+          }
+        }
+      }
+    }
+    .sketches-section {
+      margin-top: 45px;
+
+      @include breakpoint(max-lg) {
+        margin-top: 25px;
+      }
+      .sketches-thumb {
+        border-radius: 18px;
+        overflow: hidden;
+        margin-top: 50px;
+
+        @include breakpoint(max-lg) {
+          border-radius: 8px;
+          margin-top: 30px;
+        }
+        img {
+          @include transform(scale(1.2));
+        }
+      }
+    }
+
+    .results-section {
+      margin-top: 60px;
+
+      @include breakpoint(max-lg) {
+        margin-top: 40px;
+      }
+      .results-thumbs {
+        @extend %d-flex;
+        gap: 30px;
+        margin-top: 50px;
+        @include breakpoint(max-lg) {
+          margin-top: 30px;
+        }
+
+        @include breakpoint(max-sm) {
+          flex-direction: column;
+        }
+
+        .thumb {
+          overflow: hidden;
+          border-radius: 18px;
+
+          @include breakpoint(max-lg) {
+            border-radius: 8px;
+          }
+          img {
+            @include transform(scale(1.2));
+          }
+        }
+      }
+    }
+  }
+}

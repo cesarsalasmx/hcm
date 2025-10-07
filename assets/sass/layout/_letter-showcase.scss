@@ -1,0 +1,300 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/extend" as *;
+@use "../abstracts/mixins" as *;
+
+.letter-showcase {
+  &.section {
+    @extend %p-relative;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  &__slider {
+    width: 100%;
+    height: 100%;
+
+    .swiper-slide {
+      @extend %p-relative,
+        %d-flex,
+        %justify-center,
+        %item-center,
+        %text-center,
+        %shrink-0;
+      font-size: 18px;
+      color: var(--color-white);
+      width: 100%;
+      height: 100%;
+      -webkit-transition-property: -webkit-transform;
+      transition-property: -webkit-transform;
+      -o-transition-property: transform;
+      transition-property: transform;
+      transition-property: transform, -webkit-transform;
+
+      .slide-content {
+        @extend %p-relative;
+        text-align: left;
+        margin-left: 12%;
+        padding: 0;
+        transition: filter 0.5s;
+        width: 35%;
+        margin-right: 10%;
+        @media only screen and (max-width: 580px) {
+          margin-left: 21%;
+          margin-right: 0%;
+          width: 60%;
+        }
+
+        span {
+          &.category {
+            font-size: 15px;
+            margin-bottom: 0px;
+            opacity: 0.6;
+            display: block;
+            clear: both;
+            text-align: left;
+            color: var(--color-white);
+          }
+        }
+        .title {
+          font-weight: 600;
+          font-size: 44px;
+          display: block;
+          clear: both;
+          text-align: left;
+          color: var(--color-white);
+          @media only screen and (max-width: 768px) {
+            font-size: 35px;
+          }
+          @media only screen and (max-width: 580px) {
+            font-size: 32px;
+          }
+          @media only screen and (max-width: 375px) {
+            font-size: 24px;
+          }
+        }
+
+        p {
+          margin-top: 15px;
+          font-size: 18px;
+          line-height: 35px;
+          font-weight: 400;
+          opacity: 0.7;
+          line-height: 30px !important;
+          color: var(--color-white);
+          max-width: 550px;
+        }
+      }
+    }
+    .slide-arrow {
+      @extend %p-absolute;
+      color: var(--color-white);
+      width: 100px;
+      @include transition($transition-3-ease);
+      right: 15vw;
+
+      @media only screen and (max-width: 1024px) {
+        top: 74%;
+        left: auto;
+        right: 70px;
+        z-index: 100;
+      }
+      @media screen and (max-device-width: 812px) and (min-device-height: 375px) and (orientation: landscape) {
+        color: var(--color-white);
+        top: 179%;
+      }
+      @media only screen and (max-width: 768px) {
+        top: 85%;
+      }
+
+      .circle {
+        @extend %d-block, %p-absolute;
+        width: 75px;
+        height: 75px;
+        right: -26px;
+        top: -27px;
+        border-radius: 50%;
+        box-sizing: border-box;
+        border: solid 3px var(--color-white);
+        opacity: 0.3;
+      }
+      i {
+        float: right;
+        color: var(--color-white);
+        font-size: 23px;
+      }
+      .spine {
+        @extend %p-absolute;
+        background: var(--color-white);
+        height: 3px;
+        top: 10px;
+        left: 0;
+        right: 4px;
+      }
+      &:hover {
+        width: 65px;
+      }
+    }
+
+    .bullets {
+      width: 400px;
+      font-size: 14px;
+      line-height: 16px;
+      text-align: center;
+      position: fixed;
+      left: calc(18.772563% - 200px);
+      z-index: 1;
+      top: calc(50vh + 65px);
+      -webkit-font-smoothing: antialiased;
+      font-weight: 600;
+      padding-top: 200px;
+      margin-top: -200px;
+      overflow: hidden;
+      @include transform(translateY(-200px));
+      
+      @include breakpoint(max-md){
+        padding-top: 100px;
+        margin-top: -100px;
+        @include transform(translateY(-100px));
+      }
+
+      @media only screen and (max-width: 580px) {
+        width: 380px;
+      }
+
+      ul {
+        transition: all ease 1s;
+
+        li {
+          list-style: none;
+          font-weight: 600;
+          font-size: 16px;
+          padding: 20px 0;
+          color: var(--color-white);
+          transition: margin 0.6s cubic-bezier(0.475, -0.02, 0.01, 1.005),
+            font-size 0.6s cubic-bezier(0.475, -0.02, 0.01, 1.005),
+            line-height 0.6s cubic-bezier(0.475, -0.02, 0.01, 2.005),
+            font-weight 0.4s ease-in-out;
+          -webkit-transition: margin 0.6s
+              cubic-bezier(0.475, -0.02, 0.01, 1.005),
+            font-size 0.6s cubic-bezier(0.475, -0.02, 0.01, 1.005),
+            line-height 0.6s cubic-bezier(0.475, -0.02, 0.01, 2.005),
+            font-weight 0.4s ease-in-out;
+          -moz-transition: margin 0.6s cubic-bezier(0.475, -0.02, 0.01, 1.005),
+            font-size 0.6s cubic-bezier(0.475, -0.02, 0.01, 1.005),
+            line-height 0.6s cubic-bezier(0.475, -0.02, 0.01, 2.005),
+            font-weight 0.4s ease-in-out;
+          -ms-transition: margin 0.6s cubic-bezier(0.475, -0.02, 0.01, 1.005),
+            font-size 0.6s cubic-bezier(0.475, -0.02, 0.01, 1.005),
+            line-height 0.6s cubic-bezier(0.475, -0.02, 0.01, 2.005),
+            font-weight 0.4s ease-in-out;
+          -o-transition: margin 0.6s cubic-bezier(0.475, -0.02, 0.01, 1.005),
+            font-size 0.6s cubic-bezier(0.475, -0.02, 0.01, 1.005),
+            line-height 0.6s cubic-bezier(0.475, -0.02, 0.01, 2.005),
+            font-weight 0.4s ease-in-out;
+
+          &.focus {
+            @extend %p-relative;
+            font-size: 240px;
+            margin: 65px 0 100px;
+            z-index: -1;
+            line-height: 40px;
+
+            @media only screen and (max-width: 768px) {
+              font-size: 200px;
+            }
+            @media only screen and (max-width: 580px) {
+              font-size: 150px;
+              margin: 30px 0 60px;
+            }
+            @media only screen and (max-width: 375px) {
+              font-size: 100px;
+              margin: 40px 0 60px;
+            }
+          }
+          span {
+            padding: 10px 15px;
+          }
+        }
+      }
+    }
+    .slider-images {
+      @extend %p-absolute;
+      width: 100%;
+      height: 100vh;
+      z-index: -1;
+      left: 0;
+      top: 0;
+
+      &.overlays {
+        &::before {
+          @extend %p-absolute;
+          width: 100%;
+          height: 100%;
+          background: rgba(var(--color-black-rgb), 0.5);
+          z-index: 12;
+          left: 0;
+          top: 0;
+        }
+      }
+
+      ul {
+        margin-left: 0;
+
+        li {
+          @extend %p-absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100vh;
+          list-style: none;
+          opacity: 0;
+          list-style: none;
+          background-size: cover;
+          background-position: center center;
+          @include transition(opacity ease 1.8s);
+
+          &.focus {
+            z-index: 10;
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    .video-wrapper {
+      @extend %p-absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+  }
+}
+
+/* 1. No object-fit support: */
+@media (min-aspect-ratio: 16/9) {
+  .video-wrapper > video {
+    height: 300%;
+    top: -100%;
+  }
+}
+@media (max-aspect-ratio: 16/9) {
+  .video-wrapper > video {
+    width: 300%;
+    left: -100%;
+  }
+}
+/* 2. If supporting object-fit, overriding (1): */
+@supports (object-fit: cover) {
+  .video-wrapper > video {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

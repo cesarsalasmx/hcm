@@ -1,0 +1,210 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/extend" as *;
+@use "../abstracts/mixins" as *;
+
+.service-overview {
+  &.section {
+  }
+  &__wrapper {
+    @extend %d-grid;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 24px;
+
+    @include breakpoint(max-xxl) {
+      gap: 10px;
+    }
+    @include breakpoint(max-lg) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .service-info-grid {
+      @extend %d-grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
+      grid-column: span 4 / span 4;
+
+      @include breakpoint(max-xxl) {
+        gap: 10px;
+      }
+      @include breakpoint(max-sm) {
+      }
+
+      .info-grid {
+        grid-column: span 2 / span 2;
+        overflow: hidden;
+
+        @include breakpoint(max-xl) {
+          min-height: 280px;
+        }
+        @include breakpoint(max-lg) {
+          min-height: 350px;
+        }
+        &:not(:first-of-type):not(:last-of-type) {
+          img {
+            @include transform(scale(1.1));
+          }
+        }
+        img {
+          height: 100%;
+          object-fit: cover;
+        }
+        @include breakpoint(max-sm) {
+          grid-column: span 4 / span 4;
+        }
+
+        &.project-success {
+          @extend %d-flex, %flex-col, %justify-between;
+          background-color: var(--color-5);
+          padding: 50px 80px;
+          gap: 20px;
+
+          @include breakpoint(max-xxxl) {
+            padding: 60px;
+          }
+          @include breakpoint(max-xxl) {
+            padding: 40px;
+          }
+          @include breakpoint(max-lg) {
+            padding: 50px;
+          }
+
+          .header {
+            border-bottom: 1px solid rgba(var(--color-white-rgb), 0.1);
+            h6 {
+              @extend %d-block;
+              color: var(--color-2);
+              font-family: $ff-creato-display;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 127.273%;
+              letter-spacing: 0.22px;
+
+              @include breakpoint(lg) {
+                font-size: 22px;
+              }
+
+              &:first-of-type {
+                @extend %d-flex, %item-center;
+                gap: 15px;
+              }
+            }
+          }
+
+          .footer {
+            .title {
+              color: var(--color-2);
+              font-family: $ff-nohemi;
+              font-weight: 500;
+              line-height: 100%;
+
+              @include breakpoint(xl) {
+                font-size: 60px;
+              }
+            }
+            p {
+              color: var(--color-2);
+              font-family: $ff-creato-display;
+              font-size: 18px;
+              font-weight: 400;
+              line-height: 155.556%;
+              letter-spacing: 0.18px;
+              opacity: 0.74;
+
+              @include breakpoint(max-md) {
+                font-size: 16px;
+              }
+              @include breakpoint(max-sm) {
+                font-size: 14px;
+              }
+            }
+          }
+        }
+        &.project-rate {
+          @extend %d-flex, %flex-col, %justify-between;
+          background-color: var(--color-2);
+          padding: 50px 80px;
+
+          @include breakpoint(max-xxxl) {
+            padding: 60px;
+          }
+          @include breakpoint(max-xxl) {
+            padding: 40px;
+          }
+          @include breakpoint(max-lg) {
+            padding: 50px;
+          }
+          .header {
+            border-bottom: 1px solid rgba(var(--color-white-rgb), 0.1);
+            padding-bottom: 40px;
+
+            @include breakpoint(max-xl) {
+              padding-bottom: 25px;
+            }
+            @include breakpoint(max-sm) {
+              padding-bottom: 20px;
+            }
+            h6 {
+              @extend %d-block;
+              color: var(--color-white);
+              font-family: $ff-creato-display;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 127.273%;
+              letter-spacing: 0.22px;
+
+              @include breakpoint(lg) {
+                font-size: 22px;
+              }
+            }
+          }
+          .footer {
+            .title {
+              color: var(--color-white);
+              font-family: $ff-nohemi;
+              font-weight: 500;
+              line-height: 100%;
+
+              @include breakpoint(xl) {
+                font-size: 60px;
+              }
+            }
+            p {
+              color: var(--color-white);
+              font-family: $ff-creato-display;
+              font-size: 18px;
+              font-weight: 400;
+              line-height: 155.556%;
+              letter-spacing: 0.18px;
+              opacity: 0.74;
+
+              @include breakpoint(max-md) {
+                font-size: 16px;
+              }
+              @include breakpoint(max-sm) {
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .service-thumb-grid {
+      grid-column: span 4 / span 4;
+
+      @include breakpoint(max-md) {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      &.service-overview-thumb {
+        overflow: hidden;
+        img {
+          @extend %d-block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          @include transform(scale(1.1));
+        }
+      }
+    }
+  }
+}

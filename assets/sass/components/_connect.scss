@@ -1,0 +1,98 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/extend" as *;
+@use "../abstracts/mixins" as *;
+
+.connect {
+  &.section {
+    background-color: var(--color-1);
+  }
+  &__thumb {
+    border-radius: 18px;
+    overflow: hidden;
+
+    img {
+      @include transform(scale(1.2));
+    }
+
+    @include breakpoint(xl) {
+      margin-left: 30px;
+    }
+    @include breakpoint(xxl) {
+      margin-left: 45px;
+    }
+  }
+  &__content {
+    .title {
+      font-family: $ff-creato-display;
+      font-weight: 500;
+      line-height: 115.385%;
+      letter-spacing: 0.26px;
+      margin-bottom: 8px;
+    }
+    p {
+      font-family: $ff-creato-display;
+      font-size: 16px;
+      line-height: 175%;
+      opacity: 1;
+    }
+  }
+
+  &__form {
+    .form-group {
+      &:not(:last-of-type) {
+        padding-bottom: 8px;
+        padding-top: 33px;
+      }
+      input,
+      textarea {
+        background-color: transparent;
+        color: var(--color-2);
+        font-family: $ff-creato-display;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 155.556%;
+        border: none;
+        resize: none;
+        padding: 0;
+        @extend %d-block;
+
+        &::placeholder {
+          opacity: 0.7;
+        }
+
+        &:focus,
+        &:focus-visible {
+          outline: none;
+        }
+      }
+
+      &:has(input:not([type="checkbox"])),
+      &:has(textarea) {
+        border-bottom: 1px solid rgba(var(--color-2-rgb), 0.7);
+      }
+
+      &:has(button) {
+        margin-top: 33px;
+      }
+    }
+
+    .checkbox-group {
+      @extend %d-flex, %item-start;
+      input {
+        width: max-content;
+        cursor: pointer;
+        accent-color: var(--color-2);
+      }
+      label {
+        padding-left: 10px;
+        color: #141414;
+        font-family: $ff-creato-display;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1;
+        cursor: pointer;
+        user-select: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/extend" as *;
+@use "../abstracts/mixins" as *;
+
+.pagination-nav {
+  .pagination {
+    gap: 24px;
+    .page-item {
+      .page-link {
+        color: var(--color-2);
+        font-family: $ff-nohemi;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1;
+        letter-spacing: 0.28px;
+        padding: 0;
+        opacity: 0.5;
+        border: none;
+        text-transform: uppercase;
+        @include transition($transition);
+
+        &:focus,
+        &:focus-visible {
+          box-shadow: none;
+          background-color: transparent;
+          outline: none;
+        }
+        &:hover,&.active {
+          opacity: 1;
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}

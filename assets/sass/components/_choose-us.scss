@@ -1,0 +1,176 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/extend" as *;
+@use "../abstracts/mixins" as *;
+
+.choose-us {
+  &.section {
+    @extend %p-relative;
+    z-index: 2;
+    background-color: var(--color-2);
+
+    .orvio_screenfix_left {
+      @include breakpoint(max-lg) {
+        margin-left: calc(-0.5 * var(--bs-gutter-x));
+      }
+    }
+  }
+  &__sgape {
+    @extend %p-absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    z-index: -1;
+
+    img {
+      object-fit: cover;
+      height: 100%;
+      -webkit-user-drag: none;
+    }
+
+    @include breakpoint(max-md) {
+      display: none;
+    }
+  }
+  &__thumb {
+    border-radius: 25px;
+    overflow: hidden;
+
+    @include breakpoint(max-md) {
+      border-radius: 15px;
+    }
+    @include breakpoint(lg) {
+      margin-left: 18px;
+    }
+  }
+  &__header {
+    max-width: 550px;
+    margin-bottom: 20px;
+  }
+  &__content {
+    max-width: 550px;
+    p {
+      color: var(--color-white);
+      font-family: $ff-creato-display;
+      font-size: 18px;
+      line-height: 155.556%;
+      letter-spacing: 0.18px;
+    }
+
+    @include breakpoint(xl) {
+      margin-left: 50px;
+    }
+    @include breakpoint(xxl) {
+      margin-left: 180px;
+    }
+    @include breakpoint(xxxl) {
+      margin-left: 110px;
+    }
+
+    .highlight {
+      @extend %d-grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 30px;
+      gap: 10px;
+
+      @include breakpoint(max-md) {
+        margin-top: 20px;
+      }
+      @include breakpoint(max-sm) {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+      }
+
+      ul {
+        li {
+          @extend %p-relative, %d-flex, %item-center;
+          gap: 10px;
+          color: var(--color-white);
+          font-family: $ff-creato-display;
+          font-size: 20px;
+          font-weight: 500;
+          line-height: 160%;
+          letter-spacing: 0.2px;
+
+          @include breakpoint(max-md) {
+            font-size: 18px;
+          }
+
+          &::before {
+            @extend %p-relative, %shrink-0;
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 100%;
+            background-color: var(--color-white);
+          }
+
+          &:not(:last-of-type) {
+            margin-bottom: 5px;
+          }
+        }
+      }
+    }
+
+    [class*="orvio-btn"] {
+      margin-top: 60px;
+
+      @include breakpoint(max-xl) {
+        margin-top: 40px;
+      }
+      @include breakpoint(max-md) {
+        margin-top: 25px;
+      }
+    }
+  }
+
+  &.v2{
+    background-color: transparent;
+  }
+}
+
+.text__slider {
+  padding: 50px 0 70px;
+
+  @include breakpoint(max-xl) {
+    padding-block: 40px 60px;
+  }
+
+  @include breakpoint(max-lg) {
+    padding-block: 35px 45px;
+  }
+  @include breakpoint(max-md) {
+    padding-block: 30px;
+  }
+
+  .swiper-slide {
+    width: auto;
+
+    .text {
+      color: var(--color-white);
+      font-family: $ff-creato-display;
+      font-size: 80px;
+      font-weight: 700;
+      line-height: 1.2;
+      text-transform: lowercase;
+
+      @include breakpoint(max-xl) {
+        font-size: calc(80px - 10px);
+      }
+
+      @include breakpoint(max-lg) {
+        font-size: calc(80px - 15px);
+      }
+      @include breakpoint(max-md) {
+        font-size: calc(80px - 20px);
+      }
+      @include breakpoint(max-sm) {
+        font-size: calc(80px - 30px);
+      }
+    }
+  }
+  &.v2 {
+    padding: 0;
+    .text{
+      color: var(--color-2);
+    }
+  }
+}

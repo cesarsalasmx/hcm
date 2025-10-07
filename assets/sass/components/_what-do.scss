@@ -1,0 +1,151 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/extend" as *;
+@use "../abstracts/mixins" as *;
+
+.what-do {
+  &.section {
+    border-top: 1px solid rgba(var(--color-2-rgb), 0.1);
+  }
+  &__left-content {
+    @extend %d-flex, %justify-between;
+    row-gap: 5px;
+    column-gap: 10px;
+
+    @include breakpoint(max-lg) {
+      align-items: end;
+    }
+    @include breakpoint(max-sm) {
+      flex-wrap: wrap;
+    }
+    .section-header {
+      max-width: 380px;
+
+      @include breakpoint(max-lg) {
+        max-width: 380px;
+      }
+    }
+    .download-cv {
+      @extend %d-inline-flex, %item-center, %shrink-0;
+      gap: 5px;
+      background-color: var(--color-2);
+      color: var(--color-white);
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 155.556%;
+      letter-spacing: 0.18px;
+      border-radius: 50px;
+      padding: 7.5px 20px;
+      height: max-content;
+      @include transition($transition);
+
+      i {
+        transition: color 0.3s ease;
+      }
+
+      &:hover {
+        i {
+          animation: upDown 1.5s linear infinite;
+        }
+      }
+    }
+    .tp_text_invert {
+      > div {
+        background-image: linear-gradient(
+          to right,
+          var(--color-2) 50%,
+          #e4e4e4 50%
+        );
+        background-size: 200% 100%;
+        background-position: 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+    }
+  }
+  &__right-content {
+    ul {
+      li {
+        @extend %d-flex, %item-center, %p-relative;
+        gap: 10px;
+        overflow: hidden;
+        padding-bottom: 15px;
+        .expertise-number {
+          @extend %d-inline-block;
+          font-family: $ff-nohemi;
+          font-size: 24px;
+          font-weight: 400;
+          line-height: 141.667%;
+          opacity: 0.3;
+          margin-right: 10px;
+
+          @include breakpoint(max-sm) {
+            margin-right: 0px;
+          }
+        }
+
+        .title {
+          font-family: $ff-nohemi;
+          font-size: 24px;
+          font-size: 24px;
+          font-weight: 400;
+          line-height: 141.667%;
+
+          @include breakpoint(max-md) {
+            font-size: 20px;
+          }
+
+          a {
+            color: inherit;
+            font: inherit;
+            line-height: inherit;
+          }
+        }
+
+        .icon {
+          margin-left: auto;
+          @include transition($transition);
+          color: var(--color-2);
+
+          @include breakpoint(lg) {
+            opacity: 0;
+            @include transform(translateY(100px));
+          }
+        }
+
+        &:not(:first-of-type) {
+          padding-top: 20px;
+        }
+
+        &::before {
+          @extend %p-absolute;
+          width: 100%;
+          height: 1px;
+          left: 0;
+          bottom: 0px;
+          background-color: rgba(var(--color-2-rgb), 0.1);
+          @include transition($transition);
+        }
+        &::after {
+          @extend %p-absolute;
+          width: 0;
+          height: 1px;
+          right: 0;
+          bottom: 0px;
+          background-color: var(--color-2);
+          @include transition($transition);
+        }
+
+        &:hover {
+          &::after {
+            width: 100%;
+          }
+          .icon {
+            opacity: 1;
+            @include transform(translateY(0px));
+          }
+        }
+      }
+    }
+  }
+}

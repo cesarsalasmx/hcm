@@ -1,0 +1,73 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/extend" as *;
+@use "../abstracts/mixins" as *;
+
+.container-preloader {
+  @extend %d-flex, %justify-center, %item-center, %p-fixed;
+  // cursor: none;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+
+  .animation-preloader {
+    @extend %p-absolute;
+    z-index: 100;
+
+    .spinner {
+      animation: t-spinner 1s infinite linear;
+      border-radius: 50%;
+      height: 9em;
+      width: 9em;
+      border: 10px solid var(--color-2);
+      border-top-color: var(--color-white);
+      margin: 0 auto 3.5em auto;
+
+      @include breakpoint(max-lg) {
+        height: 5em;
+        width: 5em;
+        border-width: 5px;
+      }
+
+      @include breakpoint(max-md) {
+        margin: 0 auto 0.2em auto;
+      }
+    }
+  }
+
+  .loader-section {
+    @extend %p-fixed;
+    background-color: var(--color-white);
+    height: 100%;
+    top: 0;
+    width: calc(50% + 1px);
+
+    &.section-left {
+      left: 0;
+    }
+
+    &.section-right {
+      right: 0;
+    }
+  }
+}
+
+.loaded {
+  .animation-preloader {
+    opacity: 0;
+    transition: 0.3s ease-out;
+  }
+
+  .loader-section {
+    &.section-left {
+      @include transform(translateX(-101%));
+      @include transition(0.7s 0.3s all cubic-bezier(0.1, 0.1, 0.1, 1));
+    }
+
+    &.section-right {
+      @include transform(translateX(101%));
+      @include transition(0.7s 0.3s all cubic-bezier(0.1, 0.1, 0.1, 1));
+    }
+  }
+}

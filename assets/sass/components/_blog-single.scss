@@ -1,0 +1,207 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/extend" as *;
+@use "../abstracts/mixins" as *;
+
+.blog-single {
+  &.section {
+  }
+
+  &__wrapper {
+    .blog-thumb {
+      border-radius: 18px;
+      overflow: hidden;
+      img {
+        @include transform(scale(1.15));
+      }
+    }
+    .blog-meta {
+      @extend %d-flex, %item-center;
+      gap: 6px;
+      margin-top: 10px;
+      .author {
+        color: var(--color-2);
+        font-family: $ff-creato-display;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 155.556%;
+        text-decoration-line: underline;
+        text-decoration-style: solid;
+        text-decoration-skip-ink: auto;
+        text-decoration-thickness: auto;
+        text-underline-offset: auto;
+        text-underline-position: from-font;
+      }
+      .post-date {
+        font-family: $ff-creato-display;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 155.556%;
+        opacity: 0.74;
+      }
+    }
+    .blog-title {
+      font-family: $ff-nohemi;
+      font-weight: 400;
+      line-height: 121.739%;
+      margin-top: 12px;
+      margin-bottom: 15px;
+
+      @include breakpoint(max-lg) {
+        margin-top: 8px;
+        margin-bottom: 12px;
+      }
+    }
+
+    p {
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 155.556%;
+      letter-spacing: 0.18px;
+
+      &.text {
+        margin-bottom: 28px;
+
+        @include breakpoint(max-lg) {
+          margin-bottom: 22px;
+        }
+      }
+    }
+    .block-quote {
+      @extend %d-block;
+      background-color: #eee;
+      border-left: 1px solid var(--color-2);
+      padding-inline: 40px;
+      padding-block: 16px 12px;
+      margin-block: 35px 40px;
+
+      @include breakpoint(max-lg) {
+        padding-inline: 30px;
+        margin-block: 25px 30px;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: $ff-creato-display;
+        font-weight: 500;
+        line-height: 130.769%;
+        letter-spacing: 0.26px;
+      }
+
+      cite {
+        @extend %d-inline-flex, %item-center;
+        gap: 8px;
+        font-family: $ff-creato-display;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 155.556%;
+        letter-spacing: 0.36px;
+        font-style: normal;
+        margin-top: 25px;
+
+        @include breakpoint(max-lg) {
+          margin-top: 20px;
+        }
+
+        &::before {
+          @extend %shrink-0, %d-inline-block;
+          content: "";
+          width: 6px;
+          height: 6px;
+          border-radius: 100%;
+          background-color: var(--color-2);
+        }
+      }
+    }
+
+    .blog-figure {
+      border-radius: 18px;
+      overflow: hidden;
+      margin-block: 50px 55px;
+
+      @include breakpoint(max-lg) {
+        margin-block: 25px 30px;
+      }
+
+      img {
+        @include transform(scale(1.15));
+      }
+    }
+    .sub-title {
+      font-weight: 500;
+      line-height: 115.385%;
+      letter-spacing: 0.26px;
+      margin-bottom: 12px;
+    }
+
+    .tags-and-share {
+      @extend %d-flex, %justify-between;
+      border: 1px solid var(--color-2);
+      border-left: transparent;
+      border-right: transparent;
+      padding-block: 20px;
+      margin-top: 50px;
+
+      @include breakpoint(max-lg) {
+        margin-top: 25px;
+      }
+
+      .tags-wrapper {
+        @extend %d-flex, %item-center;
+        gap: 5px;
+        .title {
+          font-family: $ff-creato-display;
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 155.556%;
+        }
+        .tags {
+          a {
+            color: var(--color-2);
+            font-family: $ff-creato-display;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 155.556%;
+          }
+        }
+      }
+
+      .social-wrapper {
+        @extend %d-flex, %item-center;
+        gap: 14px;
+
+        .title {
+          font-family: $ff-creato-display;
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 155.556%;
+        }
+
+        .social-links {
+          @extend %d-flex, %item-center;
+          gap: 14px;
+          a {
+            @extend %shrink-0, %d-grid, %place-center;
+            width: 34px;
+            height: 34px;
+            border-radius: 100%;
+            border: 1px solid rgba(var(--color-2-rgb), 0.1);
+            color: var(--color-2);
+            font-size: 16px;
+
+            &:hover {
+              color: var(--color-white);
+              background-color: var(--color-2);
+              border-color: var(--color-2);
+            }
+          }
+        }
+      }
+    }
+  }
+}

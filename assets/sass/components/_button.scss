@@ -1,0 +1,303 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/extend" as *;
+@use "../abstracts/mixins" as *;
+
+.orvio-btn {
+  @extend %d-inline-flex, %item-center;
+  @include transition($transition);
+  gap: 14px;
+  border-radius: 50px;
+  border: 1px solid var(--color-2);
+  color: var(--color-2);
+  padding-block: 6px;
+  padding-inline: 24px 6px;
+  transition: $transition;
+
+  @include breakpoint(max-md) {
+    padding-block: 4px;
+  }
+
+  .text {
+    color: inherit;
+    font-family: $ff-creato-display;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 162.5%;
+    letter-spacing: 0.16px;
+    text-transform: uppercase;
+    transition: $transition;
+
+    @include breakpoint(max-md) {
+      font-size: 14px;
+    }
+  }
+
+  .icon {
+    @extend %shrink-0, %d-grid, %place-center;
+    width: 36px;
+    height: 36px;
+    border-radius: 100%;
+    background-color: var(--color-primary);
+    color: inherit;
+    font-size: 14px;
+    transition: $transition;
+
+    @include breakpoint(max-md) {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &:hover {
+    background-color: var(--color-primary);
+
+    .icon {
+      background-color: var(--color-2);
+      color: var(--color-1);
+    }
+  }
+
+  &.v2 {
+    border: 1px solid rgba(var(--color-white-rgb), 0.1);
+    .text {
+      color: var(--color-white);
+    }
+    &:hover {
+      background-color: var(--color-primary);
+      border-color: var(--color-primary);
+      .text {
+        color: var(--color-2);
+      }
+
+      .icon {
+        background-color: var(--color-2);
+        color: var(--color-white);
+      }
+    }
+  }
+  &.v3 {
+    border: 1px solid rgba(var(--color-2-rgb), 0.14);
+
+    .icon {
+      background-color: var(--color-primary2);
+      color: var(--color-white);
+    }
+    &:hover {
+      background-color: var(--color-primary2);
+      border-color: var(--color-primary2);
+      color: var(--color-white);
+
+      .icon {
+        background-color: var(--color-white);
+        color: var(--color-2);
+      }
+    }
+  }
+  &.v4 {
+    border: 1px solid rgba(var(--color-2-rgb), 0.14);
+
+    .icon {
+      background-color: var(--color-2);
+      color: var(--color-white);
+    }
+    &:hover {
+      background-color: var(--color-2);
+      border-color: var(--color-2);
+      color: var(--color-white);
+
+      .icon {
+        background-color: var(--color-white);
+        color: var(--color-2);
+      }
+    }
+  }
+}
+
+.orvio-btn5 {
+  @extend %d-inline-flex, %item-center, %p-relative;
+  gap: 10px;
+
+  &::before {
+    @extend %p-relative, %shrink-0;
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 100%;
+    background-color: var(--color-2);
+  }
+
+  .text {
+    color: var(--color-2);
+    font-family: $ff-creato-display;
+    font-size: $fs-16;
+    font-weight: 500;
+    line-height: 162.5%;
+    letter-spacing: 0.16px;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: auto;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+    text-transform: uppercase;
+
+    @include breakpoint(max-md) {
+      font-size: 14px;
+    }
+  }
+
+  .icon {
+    color: var(--color-2);
+  }
+
+  &:hover {
+    .icon {
+      animation: swayForward 0.8s ease-in-out infinite alternate;
+    }
+  }
+
+  &.v2 {
+    &::before {
+      content: unset;
+    }
+    .text {
+      text-underline-offset: 3px;
+    }
+    &:hover {
+      .icon {
+        animation: swayForwardUp 0.8s ease-in-out infinite alternate;
+      }
+    }
+  }
+}
+
+.orvio-btn6 {
+  @extend %d-grid, %place-center, %shrink-0;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  background-color: var(--color-white);
+  color: var(--color-2);
+  font-size: 27px;
+
+  @include breakpoint(max-lg) {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+  }
+}
+
+.orvio-btn7 {
+  @extend %d-inline-flex, %item-center;
+  gap: 15px;
+  border: none;
+  border-radius: 50px;
+  background: var(--color-2);
+  color: var(--color-white);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 155.556%;
+  letter-spacing: 0.18px;
+  padding: 18px 36px;
+
+  @include breakpoint(max-md) {
+    padding: 10px 25px;
+  }
+
+  .icon {
+    @extend %p-relative, %d-inline-block, %item-center;
+    color: var(--color-white);
+    overflow: hidden;
+    line-height: 1;
+
+    i,
+    svg {
+      @include transition(all 0.35s ease-in-out);
+      &:nth-of-type(2) {
+        opacity: 0;
+        visibility: hidden;
+      }
+      &:first-of-type,
+      &:last-of-type {
+        @extend %p-absolute;
+      }
+      &:first-of-type {
+        top: 0;
+        left: 0;
+      }
+      &:last-of-type {
+        top: 50px;
+        left: -50px;
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+  }
+  &:hover {
+    .icon {
+      i,
+      svg {
+        &:first-of-type {
+          top: -50px;
+          left: 50px;
+          opacity: 0;
+          visibility: hidden;
+        }
+        &:last-of-type {
+          top: 0;
+          left: 0;
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+  }
+
+  &.v2 {
+    background-color: var(--color-white);
+    color: var(--color-2);
+
+    .icon {
+      color: var(--color-2);
+    }
+  }
+}
+
+
+.orvio-btn-close {
+  @extend %d-inline-flex, %item-center;
+  @include transition($transition);
+  gap: 14px;
+  border-radius: 50px;
+  border: 1px solid var(--color-2);
+  color: var(--color-2);
+  padding: 12px 24px;
+  transition: $transition;
+  background-color: var(--color-primary);
+
+  .text {
+    color: inherit;
+    font-family: $ff-creato-display;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 162.5%;
+    letter-spacing: 0.16px;
+    text-transform: uppercase;
+    transition: $transition;
+
+    @include breakpoint(max-md) {
+      font-size: 14px;
+    }
+  }
+
+  &:hover {
+    background-color: var(--color-primary);
+
+    .icon {
+      background-color: var(--color-2);
+      color: var(--color-1);
+    }
+  }
+}

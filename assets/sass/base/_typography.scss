@@ -1,0 +1,162 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/extend" as *;
+@use "../abstracts/mixins" as *;
+
+/**
+ * Basic typography style for copy text
+ */
+body {
+  @extend %text-regular;
+  color: var(--color-2);
+  font-size: $fs-base;
+  line-height: 160%;
+  font-family: $ff-creato-display;
+  background: var(--color-1);
+
+  &.home-two {
+    background-color: var(--color-3);
+  }
+  &.inner-page {
+    background-color: var(--color-3);
+
+    &-404{
+      background-color: var(--color-2)
+    }
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @extend %text-medium;
+  @include transition($transition);
+  margin: 0;
+  font-family: $ff-nohemi;
+  color: var(--color-2);
+}
+
+h1 {
+  font-size: $fs-h1;
+  // $fs-h1: 140px;
+
+  @include breakpoint(max-xxl) {
+    font-size: calc($fs-h1 - 20px);
+  }
+  @include breakpoint(max-xl) {
+    font-size: calc($fs-h1 - 50px);
+  }
+  @include breakpoint(max-lg) {
+    font-size: calc($fs-h1 - 70px);
+  }
+  @include breakpoint(max-sm) {
+    font-size: calc($fs-h1 - 80px);
+  }
+}
+
+h2 {
+  font-size: $fs-h2;
+  // $fs-h2: 60px;
+
+  @include breakpoint(max-xl) {
+    font-size: calc($fs-h2 - 10px); // 50px
+  }
+
+  @include breakpoint(max-lg) {
+    font-size: calc($fs-h2 - 15px); // 45px
+  }
+  @include breakpoint(max-md) {
+    font-size: calc($fs-h2 - 20px); // 40px
+  }
+}
+
+h3 {
+  font-size: $fs-h3;
+  // $fs-h3: 40px;
+
+  @include breakpoint(max-xl) {
+    font-size: calc($fs-h3 - 10px); // 30px
+  }
+  @include breakpoint(max-lg) {
+    font-size: calc($fs-h3 - 12px); // 28px
+  }
+  @include breakpoint(max-md) {
+    font-size: calc($fs-h3 - 15px); // 25px
+  }
+  @include breakpoint(max-sm) {
+    font-size: calc($fs-h3 - 18px); // 22px
+  }
+}
+
+h4 {
+  font-size: $fs-h4;
+  // $fs-h4: 30px;
+  @include breakpoint(max-lg) {
+    font-size: calc($fs-h4 - 3px); // 27px
+  }
+  @include breakpoint(max-md) {
+    font-size: calc($fs-h4 - 8px); // 22px
+  }
+  @include breakpoint(max-sm) {
+    font-size: calc($fs-h4 - 10px); // 20px
+  }
+}
+
+h5 {
+  font-size: $fs-h5;
+  // $fs-h5: 24px;
+  @include breakpoint(max-lg) {
+    font-size: calc($fs-h5 - 1px); // 23px
+  }
+  @include breakpoint(max-md) {
+    font-size: calc($fs-h5 - 4px); // 20px
+  }
+  @include breakpoint(max-sm) {
+    font-size: calc($fs-h5 - 6px); // 18px
+  }
+}
+
+h6 {
+  font-size: $fs-h6;
+  // $fs-h6: 22px;
+
+  @include breakpoint(max-md) {
+    font-size: calc($fs-h6 - 5px); // 17px
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+}
+
+a {
+  color: var(--color-white);
+  text-decoration: none;
+  transition: $transition-3;
+}
+p {
+  line-height: 1.625;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 0.2px;
+  opacity: 0.74;
+}
+ul {
+  @extend %p-0;
+  @extend %m-0;
+}
+li {
+  @extend %list-none;
+}
+
+input,
+textarea,
+select {
+  @extend %w-100;
+}

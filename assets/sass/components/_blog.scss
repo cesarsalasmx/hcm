@@ -1,0 +1,531 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/extend" as *;
+@use "../abstracts/mixins" as *;
+
+.blog {
+  &.section {
+  }
+  &__item {
+    .blog-thumb {
+      @extend %p-relative, %d-block;
+      border-radius: 18px;
+      overflow: hidden;
+
+      .blog-date {
+        @extend %p-absolute, %d-inline-flex, %justify-center;
+        width: 100px;
+        height: 74px;
+        top: 0;
+        right: 25px;
+        border-bottom-left-radius: 60px;
+        border-bottom-right-radius: 60px;
+        backdrop-filter: blur(7px);
+        color: var(--color-2);
+        background-color: var(--color-white);
+        font-family: $ff-nohemi;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 162.5%;
+        padding-top: 15px;
+        overflow: hidden;
+        @include transition($transition);
+
+        @include breakpoint(max-xl) {
+          width: 85px;
+          height: 50px;
+          padding-top: 10px;
+          font-size: 12px;
+          border-bottom-left-radius: 45px;
+          border-bottom-right-radius: 45px;
+        }
+
+        &::before {
+          @extend %p-absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: var(--color-primary);
+          z-index: -1;
+          @include transition($transition);
+          @include transform(translateY(100%));
+        }
+      }
+    }
+
+    .blog-content {
+      margin-top: 20px;
+
+      @include breakpoint(max-md) {
+        margin-top: 15px;
+      }
+      .blog-author {
+        color: var(--color-2);
+        font-size: 16px;
+        line-height: 162.5%;
+        letter-spacing: 0.32px;
+        opacity: 0.7;
+      }
+      .blog-title {
+        font-family: $ff-nohemi;
+        font-weight: 500;
+        line-height: 138.462%;
+        margin-top: 5px;
+
+        a {
+          color: inherit;
+          font-weight: inherit;
+          line-height: inherit;
+          font-size: inherit;
+        }
+      }
+    }
+
+    &:hover {
+      .blog-thumb {
+        .blog-date {
+          &::before {
+            @include transform(translateY(0));
+          }
+        }
+      }
+    }
+  }
+
+  &-2 {
+    &.section {
+    }
+    &__item {
+      .blog-thumb {
+        @extend %p-relative;
+        border-radius: 18px;
+        overflow: hidden;
+        @include transition($transition);
+
+        img {
+          @include transition($transition);
+        }
+
+        .blog-date {
+          @extend %p-absolute, %d-inline-flex, %flex-col, %item-center;
+          gap: 10px;
+          top: 20px;
+          right: 20px;
+          z-index: 2;
+          border-radius: 14px;
+          overflow: hidden;
+          margin: 1px;
+          background: linear-gradient(
+            150deg,
+            var(--color-primary2),
+            rgba(var(--color-white-rgb), 0.8)
+          );
+          backdrop-filter: blur(5px);
+          font-family: $ff-creato-display;
+          font-size: 38px;
+          font-weight: 500;
+          line-height: 94.737%;
+          padding: 20px 14.84px;
+          opacity: 0;
+          visibility: hidden;
+          @include transition($transition);
+          user-select: none;
+
+          @include breakpoint(max-xxl) {
+            font-size: 30px;
+            gap: 5px;
+            padding: 15px 12px;
+          }
+          @include breakpoint(max-xl) {
+            font-size: 25px;
+          }
+          @include breakpoint(max-md) {
+            opacity: 1;
+            visibility: visible;
+          }
+
+          &::after {
+            @extend %p-absolute;
+            z-index: -1;
+            inset: 1px;
+            background: rgba(var(--color-white-rgb), 0.8);
+            border-radius: 14px;
+          }
+
+          .month {
+            font-family: $ff-nohemi;
+            font-size: 18px;
+            line-height: 1;
+            letter-spacing: 2.7px;
+            @include breakpoint(max-xxl) {
+              font-size: 16px;
+            }
+            @include breakpoint(max-xl) {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+
+      .blog-content {
+        margin-top: 10px;
+
+        @include breakpoint(max-md) {
+          margin-top: 5px;
+        }
+        .blog-sub-title {
+          @extend %d-flex, %item-center;
+          gap: 7px;
+          color: rgba(var(--color-2-rgb), 0.7);
+          font-family: $ff-creato-display;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 171.429%;
+          letter-spacing: 0.14px;
+
+          &::before {
+            @extend %shrink-0;
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 100%;
+            background-color: var(--color-2);
+            @include transition($transition);
+          }
+        }
+        .blog-title {
+          font-family: $ff-nohemi;
+          font-weight: 400;
+          line-height: 138.462%;
+          margin-top: 8px;
+
+          @include breakpoint(max-md) {
+            margin-top: 5px;
+          }
+          a {
+            color: inherit;
+            font: inherit;
+            line-height: inherit;
+          }
+        }
+      }
+
+      &:hover {
+        .blog-thumb {
+          img {
+            filter: brightness(80%);
+          }
+          .blog-date {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+        .blog-content {
+          .blog-sub-title {
+            &::before {
+              background-color: var(--color-primary2);
+            }
+          }
+        }
+      }
+    }
+  }
+  &-3 {
+    &.section {
+      .pagination-nav {
+        margin-top: -25px;
+        @include breakpoint(max-md) {
+          margin-top: -20px;
+        }
+      }
+    }
+
+    &__masonry {
+      @extend %d-flex;
+    }
+    &__item {
+      @extend %p-relative;
+      width: calc((100% / 3) - 20px);
+      margin-bottom: 25px;
+      border-radius: 18px;
+      overflow: hidden;
+
+      @include breakpoint(max-xl) {
+        width: calc((100% / 3) - 15px);
+      }
+      @include breakpoint(max-lg) {
+        width: calc((100% / 2) - 10px);
+        margin-bottom: 20px;
+      }
+      @include breakpoint(max-md) {
+        width: calc(100%);
+      }
+      .blog-thumb {
+        border-radius: 18px;
+        @include breakpoint(max-lg) {
+          border-radius: 8px;
+        }
+
+        img {
+          min-height: 300px;
+          object-fit: cover;
+          @include breakpoint(max-xl) {
+            min-height: 250px;
+          }
+          @include breakpoint(max-sm) {
+            min-height: 250px;
+          }
+        }
+      }
+      .blog-content {
+        @extend %p-absolute, %d-flex, %flex-col, %justify-end;
+        inset: 0;
+        padding: 30px;
+        background: linear-gradient(
+          180deg,
+          rgba(var(--color-2-rgb), 0) 0%,
+          var(--color-2) 100%
+        );
+        opacity: 0;
+        visibility: hidden;
+        @include transition($transition);
+        @include transform(scaleY(0.8));
+
+        @include breakpoint(max-lg) {
+          padding: 20px;
+        }
+        @include breakpoint(max-md) {
+          opacity: 1;
+          visibility: visible;
+          @include transform(scaleY(1));
+        }
+
+        .blog-author {
+          @extend %d-block;
+          color: var(--color-white);
+          font-family: $ff-nohemi;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 162.5%;
+          letter-spacing: 0.32px;
+          opacity: 0.7;
+          margin-bottom: 5px;
+
+          @include breakpoint(max-md) {
+            font-size: 14px;
+          }
+        }
+        .blog-title {
+          color: var(--color-white);
+          font-family: $ff-nohemi;
+          font-size: 26px;
+          font-weight: 500;
+          line-height: 138.462%;
+          a {
+            color: inherit;
+            font: inherit;
+            line-height: inherit;
+          }
+        }
+      }
+
+      &:hover {
+        .blog-content {
+          opacity: 1;
+          visibility: visible;
+          @include transform(scaleY(1));
+        }
+      }
+    }
+  }
+
+  &-4 {
+    &__item {
+      &:not(:last-of-type) {
+        margin-bottom: 50px;
+
+        @include breakpoint(max-lg) {
+          margin-bottom: 40px;
+        }
+        @include breakpoint(max-md) {
+          margin-bottom: 30px;
+        }
+      }
+      .blog-thumb {
+        border-radius: 24px;
+        overflow: hidden;
+
+        @include breakpoint(max-lg) {
+          border-radius: 10px;
+        }
+
+        img {
+          @include transform(scale(1.1));
+        }
+      }
+      .blog-content {
+        padding-left: 130px;
+        margin-top: 20px;
+
+        @include breakpoint(max-xxl) {
+          padding-left: 50px;
+        }
+        @include breakpoint(max-lg) {
+          padding-left: 30px;
+        }
+        @include breakpoint(max-md) {
+          padding-left: 20px;
+        }
+        @include breakpoint(max-sm) {
+          padding-left: 0px;
+        }
+
+        .blog-meta {
+          @extend %d-flex, %item-center;
+          gap: 6px;
+          .author {
+            color: var(--color-2);
+            font-family: $ff-creato-display;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 155.556%;
+            text-decoration-line: underline;
+            text-decoration-style: solid;
+            text-decoration-skip-ink: auto;
+            text-decoration-thickness: auto;
+            text-underline-offset: auto;
+            text-underline-position: from-font;
+          }
+          .post-date {
+            font-family: $ff-creato-display;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 155.556%;
+            opacity: 0.74;
+          }
+        }
+        .blog-title {
+          font-family: $ff-nohemi;
+          font-weight: 400;
+          line-height: 121.739%;
+          margin-top: 12px;
+
+          @include breakpoint(max-lg) {
+            margin-top: 8px;
+          }
+
+          a {
+            color: inherit;
+            font: inherit;
+            line-height: inherit;
+          }
+        }
+
+        p {
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 155.556%;
+          letter-spacing: 0.18px;
+          margin-top: 15px;
+
+          @include breakpoint(max-lg) {
+            margin-top: 10px;
+          }
+        }
+        .blog-link {
+          @extend %d-inline-flex, %item-center;
+          gap: 8px;
+          color: var(--color-2);
+          margin-top: 20px;
+
+          @include breakpoint(max-lg) {
+            margin-top: 12px;
+          }
+
+          .text {
+            @extend %d-inline-block;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 188.889%;
+          }
+          .icon {
+            @extend %p-relative, %d-grid, %place-center;
+            color: var(--color-2);
+            overflow: hidden;
+
+            i,
+            svg {
+              @include transition(all 0.35s ease-in-out);
+              &:nth-of-type(2) {
+                opacity: 0;
+                visibility: hidden;
+              }
+              &:first-of-type,
+              &:last-of-type {
+                @extend %p-absolute;
+              }
+              &:first-of-type {
+                top: 0;
+                left: 0;
+              }
+              &:last-of-type {
+                top: 100%;
+                left: -50px;
+                opacity: 0;
+                visibility: hidden;
+              }
+            }
+          }
+
+          &:hover {
+            .icon {
+              i,
+              svg {
+                &:first-of-type {
+                  top: -50px;
+                  left: 50px;
+                  opacity: 0;
+                  visibility: hidden;
+                }
+                &:last-of-type {
+                  top: 0;
+                  left: 0;
+                  opacity: 1;
+                  visibility: visible;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.filter-menu {
+  @extend %d-flex, %item-center, %flex-wrap;
+  row-gap: 5px;
+
+  @include breakpoint(max-sm) {
+    row-gap: 0px;
+  }
+  .filter-btn {
+    color: $color-2;
+    font-family: $ff-nohemi;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0.28px;
+    opacity: 0.7;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    background-color: transparent;
+    padding: 8px 14px 5px;
+    @include transition($transition);
+    &.active {
+      opacity: 1;
+      border-color: var(--color-black);
+    }
+  }
+}

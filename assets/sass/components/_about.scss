@@ -1,0 +1,342 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/extend" as *;
+@use "../abstracts/mixins" as *;
+
+.about {
+  &-2 {
+    &.section {
+      background-color: var(--color-3);
+    }
+
+    &__content {
+      &.left-content {
+        @extend %d-flex, %flex-col, %justify-between;
+        gap: 50px;
+        height: 100%;
+        .bottom-content {
+          .smile-icon {
+            @extend %d-inline-flex, %flex-col;
+            gap: 12px;
+            // @include transition($transition);
+            // animation: rotate-smile 3s infinite ease-in-out;
+            animation: rotate-smile 2.5s infinite ease-in-out;
+
+            .eie {
+              width: 16px;
+              height: 16px;
+              border: 1.3px solid var(--color-primary2);
+              border-radius: 100%;
+              @include transition($transition);
+              // animation: slide-face 3s infinite ease-in-out;
+              animation: eie-move 2.5s infinite ease-in-out;
+            }
+            .face {
+              width: 100px;
+              height: 50px;
+              border: 1.3px solid var(--color-primary2);
+              border-bottom-left-radius: 50px;
+              border-bottom-right-radius: 50px;
+              // @include transition($transition);
+            }
+          }
+          p {
+            max-width: 459px;
+            font-size: 18px;
+            font-weight: 400;
+            letter-spacing: 0.18px;
+            opacity: 0.7;
+            margin-top: 30px;
+
+            @include breakpoint(max-xl) {
+              margin-top: 20px;
+            }
+            @include breakpoint(max-md) {
+              margin-top: 15px;
+            }
+          }
+
+          a {
+            margin-top: 35px;
+
+            @include breakpoint(max-xl) {
+              margin-top: 25px;
+            }
+            @include breakpoint(max-md) {
+              margin-top: 15px;
+            }
+          }
+        }
+      }
+      &.right-content {
+        max-width: 758px;
+        margin-left: auto;
+        .tp_text_invert {
+          > div {
+            background-image: linear-gradient(
+              to right,
+              var(--color-2) 50%,
+              #e4e4e4 50%
+            );
+            background-size: 200% 100%;
+            background-position: 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+          }
+        }
+
+        .since-year {
+          @extend %p-relative;
+          height: 200px;
+          // overflow: hidden;
+          margin-top: 65px;
+
+          @include breakpoint(max-xxl) {
+            margin-top: 20px;
+          }
+          @include breakpoint(max-lg) {
+            margin-top: -5px;
+            height: 180px;
+          }
+          video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+          }
+
+          &::before,
+          &::after {
+            @extend %p-absolute;
+            width: 100%;
+            height: 15px;
+            left: 0;
+            background-color: var(--color-3);
+          }
+
+          &::before {
+            top: -5px;
+          }
+          &::after {
+            bottom: -5px;
+          }
+          .year {
+            @extend %p-absolute, %d-flex, %item-center;
+            inset: 0;
+            color: var(--color-2);
+            background: var(--color-3);
+            // font-family: $ff-pp-valve;
+            font-family: "PP Valve", sans-serif;
+            font-size: 240px;
+            font-weight: 800;
+            line-height: 1;
+            // mix-blend-mode: screen;
+            // mix-blend-mode: plus-lighter;
+            mix-blend-mode: lighten;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+            @include breakpoint(max-xxl) {
+              font-size: 180px;
+            }
+            @include breakpoint(max-md) {
+              font-size: 150px;
+            }
+            @include breakpoint(max-sm) {
+              font-size: 100px;
+            }
+          }
+        }
+      }
+    }
+
+    &__item {
+      @extend %d-flex, %item-center, %p-relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(var(--color-2-rgb), 0.1);
+
+      @include breakpoint(max-xxl) {
+        flex-direction: column;
+        align-items: start;
+        padding-left: 30px;
+        margin-bottom: 20px;
+      }
+      @include breakpoint(max-md) {
+        padding-left: 15px;
+      }
+
+      &::before {
+        @extend %p-absolute;
+        left: 0;
+        top: 0;
+        width: 14px;
+        height: 100%;
+        background-color: var(--color-primary2);
+        @include transform(translateX(-100px));
+        @include transition($transition);
+
+        @include breakpoint(max-xxl) {
+          @include transform(translateX(0px));
+        }
+        @include breakpoint(max-md) {
+          width: 8px;
+        }
+      }
+
+      .service-number {
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 144.444%;
+        letter-spacing: 0.18px;
+        opacity: 0.7;
+        margin-top: -55px;
+        @include transition($transition);
+
+        @include breakpoint(max-xxl) {
+          margin-top: 0px;
+          margin-bottom: 10px;
+        }
+      }
+
+      .service-title {
+        @extend %p-relative;
+        color: var(--color-6);
+        font-family: $ff-nohemi;
+        font-size: 80px;
+        font-weight: 400;
+        line-height: 130%;
+        margin-left: 88px;
+        max-width: 844px;
+        width: 100%;
+        @include transition($transition);
+        @include breakpoint(max-xxxl) {
+          margin-left: 30px;
+          font-size: calc(80px - 30px);
+        }
+        @include breakpoint(max-xxl) {
+          margin-left: 0;
+        }
+        @include breakpoint(max-xl) {
+          font-size: calc(80px - 40px);
+        }
+
+        @include breakpoint(max-lg) {
+          // font-size: calc(80px - 50px);
+        }
+        @include breakpoint(max-md) {
+          font-size: calc(80px - 50px);
+        }
+
+        a {
+          @extend %d-inline-block;
+          font-size: inherit;
+          font: inherit;
+          color: inherit;
+          line-height: inherit;
+          font-weight: inherit;
+          background-color: inherit;
+          @include transition($transition);
+          width: max-content;
+          overflow: hidden;
+          &::before {
+            position: absolute;
+            content: attr(data-text);
+            color: var(--color-2);
+            height: 100%;
+            top: 0;
+            left: 0;
+            width: 0;
+            transition: all 2s cubic-bezier(0.19, 1, 0.22, 1);
+            overflow: hidden;
+            z-index: 10;
+
+            @include breakpoint(max-xxl) {
+              width: 100%;
+            }
+          }
+        }
+      }
+
+      p {
+        max-width: 283px;
+        width: 100%;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 155.556%;
+        letter-spacing: 0.18px;
+        opacity: 0.7;
+        margin-left: 50px;
+        @include transition($transition);
+
+        @include breakpoint(max-xxxl) {
+          margin-left: 0;
+        }
+        @include breakpoint(max-xl) {
+          max-width: 350px;
+        }
+      }
+
+      .service-thumb {
+        border-radius: 12px;
+        max-width: 244px;
+        width: 100%;
+        overflow: hidden;
+        margin-left: auto;
+        @include transition($transition);
+        @include transform(translateX(100%));
+
+        @include breakpoint(max-xxl) {
+          @include transform(translateX(0%));
+          max-width: 350px;
+          margin-block: 20px;
+        }
+        @include breakpoint(max-lg) {
+          border-radius: 8px;
+          max-width: 100%;
+        }
+      }
+
+      &:hover {
+        &::before {
+          @include transform(translateX(0px));
+        }
+
+        .service-number {
+          @include transform(translateX(-100px));
+          @include breakpoint(max-xxl) {
+            @include transform(translateX(0));
+          }
+        }
+        .service-title {
+          @include transform(translateX(40px));
+
+          @include breakpoint(max-xxxl) {
+            @include transform(translateX(25px));
+          }
+          @include breakpoint(max-xxl) {
+            @include transform(translateX(0px));
+          }
+
+          a {
+            &::before {
+              width: 100%;
+            }
+          }
+        }
+        p {
+          @include transform(translateX(-30%));
+
+          @include breakpoint(max-xxl) {
+            @include transform(translateX(0px));
+          }
+        }
+        .service-thumb {
+          @include transform(translateX(0%));
+        }
+      }
+    }
+  }
+}

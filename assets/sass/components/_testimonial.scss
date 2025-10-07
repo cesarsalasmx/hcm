@@ -1,0 +1,324 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/extend" as *;
+@use "../abstracts/mixins" as *;
+
+.testimonial {
+  &.section {
+    border-top: 1px solid rgba(var(--color-2-rgb), 0.1);
+  }
+
+  &__pagination {
+    @extend %p-relative;
+    width: 100px !important;
+    height: 2px !important;
+    background-color: rgba(var(--color-2-rgb), 0.1);
+
+    .swiper-pagination-progressbar-fill {
+      background-color: var(--color-2) !important;
+    }
+  }
+  &__slider {
+    .swiper-slide {
+      &-active {
+        .testimonial__item {
+          .testimonial-content {
+            .icon {
+              background-color: var(--color-primary);
+              color: var(--color-1);
+              @include transition($transition);
+              transition-delay: 0.5s;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__item {
+    @extend %d-flex, %item-center;
+    gap: 33px;
+    border-radius: 24px;
+    background: var(--color-3);
+    padding: 16px;
+
+    @include breakpoint(max-xl) {
+      flex-direction: column;
+    }
+    @include breakpoint(max-md) {
+      flex-direction: row;
+      border-radius: 15px;
+    }
+    @include breakpoint(max-sm) {
+      flex-direction: column;
+    }
+    .testimonial-thumb {
+      @extend %shrink-0;
+      max-width: 306px;
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+
+      @include breakpoint(max-xxxl) {
+        max-width: 250px;
+      }
+      @include breakpoint(max-md) {
+        border-radius: 10px;
+      }
+      @include breakpoint(max-sm) {
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+    .testimonial-content {
+      .icon {
+        @extend %d-grid, %place-center;
+        width: 60px;
+        height: 60px;
+        background-color: var(--color-1);
+        mask-image: url(../images/testimonial/icon-mask.png);
+        mask-position: center;
+        mask-size: 100%;
+        mask-repeat: no-repeat;
+
+        @include breakpoint(max-xxl) {
+          width: 45px;
+          height: 45px;
+          svg {
+            width: 14px;
+            height: 15px;
+          }
+        }
+        @include breakpoint(max-xl) {
+          display: none;
+        }
+        @include breakpoint(max-md) {
+          display: grid;
+        }
+        @include breakpoint(max-sm) {
+          display: none;
+        }
+      }
+      .main-content {
+        margin-top: 40px;
+        @include breakpoint(max-xxl) {
+          margin-top: 20px;
+        }
+        @include breakpoint(max-xl) {
+          margin-top: 0px;
+        }
+        @include breakpoint(max-md) {
+          margin-top: 20px;
+        }
+        @include breakpoint(max-sm) {
+          margin-top: 0px;
+        }
+        p {
+          color: var(--color-black);
+          font-family: $ff-creato-display;
+          font-size: 18px;
+          font-weight: 500;
+          line-height: 155.556%;
+          letter-spacing: 0.18px;
+
+          @include breakpoint(max-md) {
+            font-size: 16px;
+          }
+        }
+        .name {
+          @extend %p-relative, %d-flex, %item-center;
+          gap: 5px;
+          margin-top: 20px;
+          color: var(--color-black);
+          font-family: $ff-creato-display;
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 155.556%;
+          letter-spacing: 0.18px;
+
+          @include breakpoint(max-md) {
+            margin-top: 10px;
+          }
+
+          &::before {
+            content: "";
+            width: 7.5px;
+            height: 2px;
+            background-color: var(--color-black);
+          }
+        }
+      }
+    }
+  }
+
+  &-2 {
+    &.section {
+    }
+
+    &__inner {
+      background-color: var(--color-2);
+      border-radius: 18px;
+
+      .container {
+        @include breakpoint(xxl) {
+          max-width: 1662px;
+          margin-right: 0;
+        }
+      }
+    }
+    &__slider {
+      padding-block-start: 35px;
+      @include breakpoint(xxl) {
+        max-width: 735px;
+        margin-left: 0;
+      }
+    }
+    &__slider-pagination {
+      line-height: 1;
+      left: unset;
+      top: unset;
+      bottom: unset;
+      margin-top: 40px;
+      padding-block-end: 35px;
+
+      @include breakpoint(max-lg) {
+        margin-top: 20px;
+      }
+
+      .swiper-pagination-bullet {
+        background-color: var(--color-white);
+        opacity: 0.14;
+
+        &-active {
+          opacity: 1;
+        }
+      }
+    }
+    &__item {
+      .quote-icon {
+        color: var(--color-white);
+        margin-bottom: 45px;
+
+        @include breakpoint(max-xxxl) {
+          margin-bottom: 40px;
+        }
+        @include breakpoint(max-xxl) {
+          margin-bottom: 35px;
+        }
+        @include breakpoint(max-xl) {
+          margin-bottom: 30px;
+        }
+        @include breakpoint(max-lg) {
+          margin-bottom: 25px;
+        }
+      }
+      .quote {
+        color: var(--color-white);
+        font-family: $ff-creato-display;
+        font-weight: 500;
+        line-height: 118.75%;
+        font-size: 64px;
+
+        @include breakpoint(max-xxxxl) {
+          font-size: 60px;
+        }
+        @include breakpoint(max-xxxl) {
+          font-size: 50px;
+        }
+
+        @include breakpoint(max-xxxl) {
+          font-size: 46px;
+        }
+        @include breakpoint(max-xl) {
+          font-size: 36px;
+        }
+
+        @include breakpoint(max-lg) {
+          font-size: 31px;
+        }
+        @include breakpoint(max-md) {
+          font-size: 26px;
+        }
+      }
+
+      .author-name {
+        color: var(--color-white);
+        font-family: $ff-nohemi;
+        font-weight: 500;
+        line-height: 138.462%;
+        margin-top: 35px;
+
+        @include breakpoint(max-lg) {
+          margin-top: 20px;
+        }
+      }
+
+      .author-designation {
+        @extend %d-inline-flex, %item-center;
+        gap: 10px;
+        color: rgba(var(--color-white-rgb), 0.7);
+        font-family: $ff-nohemi;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 162.5%;
+        letter-spacing: 0.32px;
+
+        &::before {
+          @extend %shrink-0;
+          content: "";
+          width: 20px;
+          height: 1px;
+          background-color: var(--color-white);
+        }
+      }
+    }
+
+    &__thumb-slider-wrapper {
+      @extend %d-flex, %p-relative;
+      gap: 25px;
+      height: 800px;
+
+      @include breakpoint(max-xxl) {
+        gap: 15px;
+        height: 600px;
+      }
+
+      &::after {
+        @extend %p-absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          var(--color-2) 0%,
+          rgba(var(--color-2-rgb), 0.3) 24.71%,
+          rgba(var(--color-2-rgb), 0) 50%,
+          rgba(var(--color-2-rgb), 0.4) 75.12%,
+          var(--color-2) 100%
+        );
+        z-index: 9;
+      }
+    }
+    &__thumb-slider {
+      height: 100%;
+      width: 100%;
+
+      .swiper-wrapper {
+        height: 100%;
+
+        .swiper-slide {
+          height: auto !important;
+          overflow: hidden;
+          img {
+            object-fit: cover;
+          }
+        }
+      }
+    }
+    &__thumb-item {
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

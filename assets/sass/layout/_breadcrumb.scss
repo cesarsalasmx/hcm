@@ -1,0 +1,322 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/extend" as *;
+@use "../abstracts/mixins" as *;
+
+.breadcrumb {
+  &.section {
+    @extend %p-relative;
+    border-top: 1px solid rgba(var(--color-2-rgb), 0.1);
+    border-bottom: 1px solid rgba(var(--color-2-rgb), 0.1);
+    margin-bottom: 15px;
+    &::after {
+      @extend %p-absolute;
+      width: 100%;
+      height: 1px;
+      left: 0;
+      bottom: -15px;
+      background-color: rgba(var(--color-2-rgb), 0.1);
+    }
+  }
+  &__wrapper {
+    @extend %d-flex;
+    @media only screen and (max-width: 449.98px) {
+      flex-direction: column;
+    }
+  }
+  &__left {
+    @extend %shrink-0;
+    border-left: 1px solid rgba(var(--color-2-rgb), 0.1);
+    border-right: 1px solid rgba(var(--color-2-rgb), 0.1);
+    width: 150px;
+    height: auto;
+
+    @include breakpoint(max-xxl) {
+      width: 80px;
+    }
+    @include breakpoint(max-lg) {
+      display: none;
+    }
+  }
+  &__nav {
+    @extend %shrink-0, %d-flex, %flex-col, %justify-center;
+    padding: 45px;
+    max-width: 354px;
+    opacity: 0;
+    @include transform(translateX(-50px));
+
+    @include breakpoint(max-lg) {
+      padding: 20px;
+      border-left: 1px solid rgba(var(--color-2-rgb), 0.1);
+    }
+
+    nav {
+      margin-bottom: 70px;
+
+      @include breakpoint(max-lg) {
+        margin-bottom: 30px;
+      }
+      .breadcrumb {
+        @extend %p-relative, %item-center;
+        margin: 0;
+
+        &::before,
+        &::after {
+          color: var(--color-2);
+          font-family: $ff-creato-display;
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 1;
+          letter-spacing: 0.16px;
+          @include breakpoint(max-lg) {
+            font-size: 10px;
+          }
+        }
+        &::before {
+          content: "{";
+          padding-right: 5px;
+        }
+        &::after {
+          content: "}";
+          padding-left: 5px;
+        }
+
+        .breadcrumb-item {
+          color: var(--color-2);
+          font-family: $ff-creato-display;
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 1;
+          letter-spacing: 0.16px;
+          text-transform: uppercase;
+
+          @include breakpoint(max-lg) {
+            font-size: 10px;
+          }
+          a {
+            color: inherit;
+            font: inherit;
+            line-height: inherit;
+          }
+
+          &:not(.active) {
+            opacity: 0.5;
+          }
+          &.active {
+            @extend %d-inline-flex, %item-center;
+            padding-left: 10px;
+            gap: 10px;
+            &::before {
+              content: "";
+              width: 24px;
+              height: 1.4px;
+              background-color: var(--color-2);
+
+              @include breakpoint(max-lg) {
+                width: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .circle-shape {
+      color: var(--color-2);
+      svg,
+      i {
+        -webkit-animation: rotate 10s linear infinite;
+        animation: rotate 10s linear infinite;
+
+        @include breakpoint(max-lg) {
+          width: 80px;
+          height: 80px;
+        }
+      }
+    }
+  }
+  &__right {
+    @extend %p-relative, %d-flex, %item-center;
+    z-index: 2;
+    padding-block: 120px;
+
+    @include breakpoint(max-lg) {
+      padding-block: 60px;
+      padding-inline-start: 20px;
+    }
+    @include breakpoint(max-md) {
+      padding-block: 40px;
+    }
+
+    @media only screen and (max-width: 449.98px) {
+      border-left: 1px solid rgba(var(--color-2-rgb), 0.1);
+      padding-block: 0 20px;
+    }
+    .content-box {
+      padding-left: 200px;
+      margin-right: 130px;
+
+      @include breakpoint(max-xxxl) {
+        padding-left: 80px;
+        margin-right: 50px;
+      }
+      @include breakpoint(max-lg) {
+        padding-left: 0px;
+        margin-right: 0px;
+      }
+      .breadcrumb-title {
+        font-family: $ff-creato-display;
+        font-size: 124px;
+        font-weight: 400;
+        line-height: 114.516%;
+        text-transform: uppercase;
+
+        @include breakpoint(max-xxxl) {
+          font-size: 100px;
+        }
+        @include breakpoint(max-xxl) {
+          font-size: 80px;
+        }
+        @include breakpoint(max-xl) {
+          font-size: 70px;
+        }
+        @include breakpoint(max-lg) {
+          font-size: 60px;
+        }
+        @include breakpoint(max-md) {
+          font-size: 50px;
+        }
+        @include breakpoint(max-sm) {
+          font-size: 40px;
+        }
+      }
+    }
+    .lines {
+      @extend %p-absolute, %d-flex;
+      gap: 8px;
+      z-index: -1;
+      inset: 0;
+
+      @media only screen and (max-width: 449.98px) {
+        display: none;
+      }
+
+      span {
+        @extend %d-inline-block;
+        background-color: var(--color-2);
+        opacity: 0.1;
+        width: 1px;
+      }
+    }
+  }
+}
+
+.breadcrumb-2 {
+  &.section {
+    @extend %p-relative;
+    z-index: 5;
+
+    &::before {
+      @extend %p-absolute;
+      inset: 0;
+      z-index: -2;
+      background-color: rgba(var(--color-2-rgb), 0.14);
+    }
+  }
+
+  &__content {
+    text-align: center;
+    max-width: 800px;
+    margin-inline: auto;
+
+    &.v2 {
+      max-width: 1178px;
+    }
+
+    .breadcrumb-sub-title {
+      @extend %d-inline-flex;
+      color: var(--color-white);
+      font-family: $ff-creato-display;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .breadcrumb-title {
+      color: var(--color-white);
+      font-family: $ff-nohemi;
+      font-weight: 400;
+      line-height: 130%;
+      font-size: 80px;
+
+      @include breakpoint(max-xxl) {
+        font-size: calc(80px - 20px);
+      }
+      @include breakpoint(max-xl) {
+        font-size: calc(80px - 30px);
+      }
+      @include breakpoint(max-lg) {
+        font-size: calc(80px - 40px);
+      }
+      @include breakpoint(max-sm) {
+        font-size: calc(80px - 50px);
+      }
+    }
+
+    .breadcrumb-tags {
+      @extend %d-flex, %justify-center, %item-center, %flex-wrap;
+      gap: 10px;
+
+      a {
+        border-radius: 19px;
+        border: 1px solid var(--color-white);
+        color: rgba(var(--color-white-rgb), 0.7);
+        font-family: $ff-creato-display;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1;
+        text-transform: uppercase;
+        padding: 7px 13px;
+
+        &:hover {
+          color: var(--color-white);
+        }
+      }
+    }
+  }
+  &__nav {
+    margin-block: 22px 60px;
+
+    @include breakpoint(max-xl) {
+      margin-block: 15px 40px;
+    }
+    .breadcrumb {
+      @extend %justify-center;
+      gap: 8px;
+      .breadcrumb-item {
+        @extend %d-inline-flex, %item-center;
+        color: var(--color-white);
+        font-family: $ff-creato-display;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 162.5%;
+        padding: 0;
+        a {
+          color: inherit;
+          font: inherit;
+          line-height: inherit;
+        }
+        &.active {
+          color: var(--color-white);
+        }
+
+        &:not(:first-of-type) {
+          &::before {
+            font: var(--fa-font-regular);
+            font-size: 12px;
+            content: "\f054";
+            color: var(--color-white);
+          }
+        }
+      }
+    }
+  }
+}

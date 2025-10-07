@@ -1,0 +1,187 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/extend" as *;
+@use "../abstracts/mixins" as *;
+
+.contact {
+  &.section {
+  }
+  &__wrapper {
+    background-color: var(--color-1);
+    border-radius: 18px;
+    padding-inline: 130px 55px;
+
+    @include breakpoint(max-xxl) {
+      padding-inline: 80px 50px;
+    }
+    @include breakpoint(max-md) {
+      padding-inline: 15px;
+    }
+  }
+  &__user-info {
+    @extend %d-inline-flex, %item-center;
+    gap: 20px;
+    .user-thumb {
+      @extend %shrink-0;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      overflow: hidden;
+
+      img {
+        object-fit: cover;
+        height: 100%;
+      }
+    }
+    .user-info {
+      @extend %shrink-0;
+      line-height: 1;
+      .user-name {
+        font-family: $ff-nohemi;
+        font-weight: 500;
+      }
+      .designation {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1;
+        letter-spacing: 0.32px;
+        opacity: 0.7;
+      }
+    }
+  }
+  &__info {
+    .contact-wrapper {
+      @extend %d-flex, %flex-col;
+      .phone {
+        color: var(--color-2);
+        font-family: $ff-creato-display;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 150%;
+        letter-spacing: 0.32px;
+      }
+      .mail {
+        color: var(--color-2);
+        font-family: $ff-creato-display;
+        font-weight: 400;
+        line-height: 121.739%;
+        font-size: 46px;
+        @include breakpoint(max-xl) {
+          font-size: calc(46px - 10px);
+        }
+        @include breakpoint(max-lg) {
+          font-size: calc(46px - 15px);
+        }
+        @include breakpoint(max-md) {
+          font-size: calc(46px - 20px);
+        }
+      }
+    }
+    .info-wrapper {
+      margin-top: 35px;
+
+      @include breakpoint(max-lg) {
+        margin-top: 25px;
+      }
+      .info {
+        span {
+          @extend %d-inline-block;
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 150%;
+          letter-spacing: 0.32px;
+        }
+        p {
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 162.5%;
+          letter-spacing: 0.32px;
+          opacity: 0.7;
+
+          @include breakpoint(lg) {
+            max-width: 296px;
+          }
+        }
+        &:not(.social-media-info) {
+          margin-bottom: 12px;
+        }
+        &.social-media-info {
+          margin-top: 54px;
+
+          @include breakpoint(max-md) {
+            margin-top: 35px;
+          }
+
+          .social-media {
+            margin-top: 8px;
+          }
+        }
+      }
+    }
+  }
+  &__form-area {
+    .contact-form {
+      .form-group {
+        &:not(:last-of-type) {
+          padding-bottom: 10px;
+        }
+        &:not(:first-of-type) {
+          padding-top: 33px;
+        }
+        input,
+        textarea {
+          background-color: transparent;
+          color: var(--color-2);
+          font-family: $ff-creato-display;
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 155.556%;
+          border: none;
+          resize: none;
+          padding: 0;
+          @extend %d-block;
+
+          &::placeholder {
+            opacity: 0.7;
+          }
+
+          &:focus,
+          &:focus-visible {
+            outline: none;
+          }
+        }
+
+        &:has(input:not([type="checkbox"])),
+        &:has(textarea) {
+          border-bottom: 1px solid rgba(var(--color-2-rgb), 0.7);
+        }
+
+        &:has(button) {
+          margin-top: 55px;
+
+          @include breakpoint(max-xxl) {
+            margin-top: 40px;
+          }
+        }
+      }
+
+      .checkbox-group {
+        @extend %d-flex, %item-start;
+        input {
+          width: max-content;
+          cursor: pointer;
+          accent-color: var(--color-2);
+        }
+        label {
+          padding-left: 10px;
+          color: #141414;
+          font-family: $ff-creato-display;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 1;
+          cursor: pointer;
+          user-select: none;
+        }
+      }
+    }
+  }
+}

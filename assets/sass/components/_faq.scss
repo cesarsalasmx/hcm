@@ -1,0 +1,125 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/extend" as *;
+@use "../abstracts/mixins" as *;
+
+.faq {
+  &.section {
+    .tp_text_invert {
+      > div {
+        background-image: linear-gradient(
+          to right,
+          var(--color-2) 50%,
+          #e4e4e4 50%
+        );
+        background-size: 200% 100%;
+        background-position: 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+    }
+  }
+  &__accordion {
+    .accordion-item {
+      font-family: $ff-nohemi;
+      background-color: transparent;
+      border-left: none;
+      border-right: none;
+      line-height: 1;
+
+      &:first-of-type {
+        border-top: none;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        > .accordion-header {
+          .accordion-button {
+            padding-top: 0;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+          }
+        }
+      }
+      &:last-of-type {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        > .accordion-header {
+          .accordion-button {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+          }
+        }
+      }
+    }
+    .accordion-header {
+      font-family: $ff-nohemi;
+      font-weight: 400;
+      line-height: 1;
+    }
+    .accordion-button {
+      @extend %item-start;
+      background-color: initial;
+      font: inherit;
+      line-height: inherit;
+      gap: 10px;
+      padding-inline: 0;
+      padding-block: 27px;
+      @include transition($transition);
+
+      @include breakpoint(max-lg) {
+        padding-block: 25px;
+      }
+
+      &:not(.collapsed) {
+        background-color: initial;
+        color: initial;
+        box-shadow: none;
+        padding-block: 27px 15px;
+
+        @include breakpoint(max-xl) {
+          padding-block: 25px;
+        }
+
+        &::after {
+          font: var(--fa-font-regular);
+          content: "\f068";
+          margin-right: 0;
+          transform-origin: center center;
+          flex-basis: content;
+          font-weight: 400;
+          font-size: 17px;
+        }
+      }
+
+      &:focus {
+        box-shadow: none;
+      }
+
+      &::after {
+        background-image: none;
+        font: var(--fa-font-regular);
+        content: "\2b";
+        transform-origin: center center;
+        flex-basis: content;
+        color: #999999;
+        font-weight: 400;
+        font-size: 17px;
+      }
+    }
+
+    .accordion-body {
+      font-family: $ff-creato-display;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 155.556%;
+      letter-spacing: 0.18px;
+      opacity: 0.7;
+      @include transition($transition);
+      padding-inline: 0;
+      padding-block: 0 40px;
+
+      @include breakpoint(max-xl) {
+        padding-block: 0 25px;
+      }
+    }
+  }
+}

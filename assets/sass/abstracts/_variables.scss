@@ -1,0 +1,212 @@
+@use "sass:color";
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+// --------------------------------------------------
+// Colors
+// --------------------------------------------------
+
+$color-primary: #8cff00;
+$color-primary2: #e85a2f;
+$color-primary3: #ff6b45;
+$color-1: #f4f4f4;
+$color-2: #141414;
+$color-3: #fcfcfc;
+$color-4: #5b5b5b;
+$color-5: #e7e7e7;
+$color-6: #d2d2d2;
+$color-7: #f5f5f5;
+$color-8: #1d1d1d;
+$color-9: #626262;
+$color-white: #ffffff;
+$color-black: #000000;
+$color-dark: #0e0f11;
+$color-dark2: #1d1d1d;
+$color-dark3: #1e1e1e;
+$color-light: #f8f7f3;
+
+// Use color.channel() instead of red(), green(), blue()
+$color-primary-rgb: color.channel($color-primary, "red") + ", " +
+  color.channel($color-primary, "green") + ", " +
+  color.channel($color-primary, "blue");
+$color-primary2-rgb: color.channel($color-primary2, "red") + ", " +
+  color.channel($color-primary2, "green") + ", " +
+  color.channel($color-primary2, "blue");
+$color-primary3-rgb: color.channel($color-primary3, "red") + ", " +
+  color.channel($color-primary3, "green") + ", " +
+  color.channel($color-primary3, "blue");
+$color-1-rgb: color.channel($color-1, "red") + ", " +
+  color.channel($color-1, "green") + ", " + color.channel($color-1, "blue");
+$color-2-rgb: color.channel($color-2, "red") + ", " +
+  color.channel($color-2, "green") + ", " + color.channel($color-2, "blue");
+$color-3-rgb: color.channel($color-3, "red") + ", " +
+  color.channel($color-3, "green") + ", " + color.channel($color-3, "blue");
+$color-4-rgb: color.channel($color-4, "red") + ", " +
+  color.channel($color-4, "green") + ", " + color.channel($color-4, "blue");
+$color-5-rgb: color.channel($color-5, "red") + ", " +
+  color.channel($color-5, "green") + ", " + color.channel($color-5, "blue");
+$color-6-rgb: color.channel($color-6, "red") + ", " +
+  color.channel($color-6, "green") + ", " + color.channel($color-6, "blue");
+$color-7-rgb: color.channel($color-7, "red") + ", " +
+  color.channel($color-7, "green") + ", " + color.channel($color-7, "blue");
+$color-8-rgb: color.channel($color-8, "red") + ", " +
+  color.channel($color-8, "green") + ", " + color.channel($color-8, "blue");
+$color-9-rgb: color.channel($color-9, "red") + ", " +
+  color.channel($color-9, "green") + ", " + color.channel($color-9, "blue");
+$color-white-rgb: color.channel($color-white, "red") + ", " +
+  color.channel($color-white, "green") + ", " +
+  color.channel($color-white, "blue");
+$color-black-rgb: color.channel($color-black, "red") + ", " +
+  color.channel($color-black, "green") + ", " +
+  color.channel($color-black, "blue");
+$color-dark-rgb: color.channel($color-dark, "red") + ", " +
+  color.channel($color-dark, "green") + ", " +
+  color.channel($color-dark, "blue");
+$color-dark2-rgb: color.channel($color-dark2, "red") + ", " +
+  color.channel($color-dark2, "green") + ", " +
+  color.channel($color-dark2, "blue");
+$color-dark3-rgb: color.channel($color-dark3, "red") + ", " +
+  color.channel($color-dark3, "green") + ", " +
+  color.channel($color-dark3, "blue");
+$color-light-rgb: color.channel($color-light, "red") + ", " +
+  color.channel($color-light, "green") + ", " +
+  color.channel($color-light, "blue");
+
+// Output CSS variables
+:root {
+  --color-primary: #{$color-primary};
+  --color-primary-rgb: #{$color-primary-rgb};
+
+  --color-primary2: #{$color-primary2};
+  --color-primary2-rgb: #{$color-primary2-rgb};
+
+  --color-primary3: #{$color-primary3};
+  --color-primary3-rgb: #{$color-primary3-rgb};
+
+  --color-1: #{$color-1};
+  --color-1-rgb: #{$color-1-rgb};
+
+  --color-2: #{$color-2};
+  --color-2-rgb: #{$color-2-rgb};
+
+  --color-3: #{$color-3};
+  --color-3-rgb: #{$color-3-rgb};
+
+  --color-4: #{$color-4};
+  --color-4-rgb: #{$color-4-rgb};
+
+  --color-5: #{$color-5};
+  --color-5-rgb: #{$color-5-rgb};
+
+  --color-6: #{$color-6};
+  --color-6-rgb: #{$color-6-rgb};
+
+  --color-7: #{$color-7};
+  --color-7-rgb: #{$color-7-rgb};
+
+  --color-8: #{$color-8};
+  --color-8-rgb: #{$color-8-rgb};
+
+  --color-9: #{$color-9};
+  --color-9-rgb: #{$color-9-rgb};
+
+  --color-white: #{$color-white};
+  --color-white-rgb: #{$color-white-rgb};
+
+  --color-black: #{$color-black};
+  --color-black-rgb: #{$color-black-rgb};
+
+  --color-dark: #{$color-dark};
+  --color-dark-rgb: #{$color-dark-rgb};
+
+  --color-dark2: #{$color-dark2};
+  --color-dark2-rgb: #{$color-dark2-rgb};
+
+  --color-dark3: #{$color-dark3};
+  --color-dark3-rgb: #{$color-dark3-rgb};
+
+  --color-light: #{$color-light};
+  --color-light-rgb: #{$color-light-rgb};
+}
+// --------------------------------------------------
+// Container
+// --------------------------------------------------
+
+// Container width and gutter variables
+$main-container: 1500px;
+$medium-container: 1630px;
+$large-container: 1760px;
+$container-gutters: 24px;
+
+// Padding for containers (left and right)
+$container-padding-left: calc($container-gutters / 2);
+$container-padding-right: calc($container-gutters / 2);
+
+// --------------------------------------------------
+// Typography
+// --------------------------------------------------
+
+// Font families
+$ff-funnel-display: "Funnel Display", sans-serif;
+$ff-creato-display: "Creato Display", sans-serif;
+$ff-climate-crisis: "Climate Crisis", sans-serif;
+$ff-space-mono: "Space Mono", monospace;
+$ff-nohemi: "Nohemi", sans-serif;
+$ff-pp-valve: "PP Valve", sans-serif;
+$ff-instrument-sans: "Instrument Sans", sans-serif;
+
+// Font sizes (Base and Headings)
+$fs-base: 20px !default;
+
+$fs-h1: 140px;
+$fs-h2: 46px; // Updated
+$fs-h3: 40px;
+$fs-h4: 34px; // Updated
+$fs-h5: 26px; // Updated
+$fs-h6: 20px;
+
+$fs-22: 22px;
+$fs-21: 21px;
+$fs-20: 20px;
+$fs-19: 19px;
+$fs-18: 18px;
+$fs-17: 17px;
+$fs-16: 16px;
+$fs-15: 15px;
+$fs-14: 14px;
+$fs-13: 13px;
+$fs-12: 12px;
+
+// --------------------------------------------------
+// Transitions
+// --------------------------------------------------
+$transition: all 0.5s ease;
+
+// transition 0.2 seconds
+$transition-2: all 0.2s;
+$transition-2-ease: all 0.2s ease;
+$transition-2-ease-in: all 0.2s ease-in;
+$transition-2-ease-out: all 0.2s ease-out;
+$transition-2-ease-in-out: all 0.2s ease-in-out;
+
+// transition 0.3 seconds
+$transition-3: all 0.3s;
+$transition-3-ease: all 0.3s ease;
+$transition-3-ease-in: all 0.3s ease-in;
+$transition-3-ease-out: all 0.3s ease-out;
+$transition-3-ease-in-out: all 0.3s ease-in-out;
+
+// transition 0.3 seconds
+$transition-4: all 0.4s;
+$transition-4-ease: all 0.4s ease;
+$transition-4-ease-in: all 0.4s ease-in;
+$transition-4-ease-out: all 0.4s ease-out;
+$transition-4-ease-in-out: all 0.4s ease-in-out;
+
+// transition 0.5 seconds
+$transition-5: all 0.5s;
+$transition-5-ease: all 0.5s ease;
+$transition-5-ease-in: all 0.5s ease-in;
+$transition-5-ease-out: all 0.5s ease-out;
+$transition-5-ease-in-out: all 0.5s ease-in-out;

@@ -1,0 +1,125 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/extend" as *;
+@use "../abstracts/mixins" as *;
+
+.service-details {
+  &.section {
+    .tp_text_invert {
+      > div {
+        background-image: linear-gradient(
+          to right,
+          var(--color-2) 50%,
+          #e4e4e4 50%
+        );
+        background-size: 200% 100%;
+        background-position: 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+    }
+  }
+  &__banner {
+    margin-inline: 14px;
+    border-radius: 24px;
+    overflow: hidden;
+
+    @include breakpoint(max-lg) {
+      border-radius: 10px;
+    }
+
+    img {
+      @include transform(scale(1.2));
+    }
+  }
+  &__content {
+    .section-title {
+      max-width: 567px;
+      @include breakpoint(max-xl) {
+        max-width: 450px;
+      }
+      @include breakpoint(max-lg) {
+        max-width: 100%;
+      }
+    }
+
+    .info {
+      max-width: 571px;
+      margin-left: auto;
+
+      @include breakpoint(max-lg) {
+        max-width: 100%;
+      }
+      p {
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 155.556%;
+        letter-spacing: 0.18px;
+      }
+      .service-list {
+        margin-top: 55px;
+
+        @include breakpoint(max-lg) {
+          margin-top: 40px;
+        }
+        ul {
+          li {
+            &:not(:first-of-type) {
+              padding-top: 20px;
+              @include breakpoint(max-lg) {
+                padding-bottom: 15px;
+              }
+            }
+            &:not(:last-of-type) {
+              border-bottom: 1px solid rgba(var(--color-2-rgb), 0.1);
+              padding-bottom: 18px;
+
+              @include breakpoint(max-lg) {
+                padding-bottom: 12px;
+              }
+            }
+            h5 {
+            }
+          }
+        }
+      }
+    }
+  }
+  &__thumb {
+    .thumb {
+      border-radius: 18px;
+      overflow: hidden;
+      height: 487px;
+
+      @include breakpoint(max-xl) {
+        height: 350px;
+      }
+      @include breakpoint(max-md) {
+        height: 300px;
+      }
+
+      img {
+        object-fit: cover;
+        height: 100%;
+        @include transform(scale(1.2));
+      }
+    }
+    p {
+      max-width: 570px;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 155.556%;
+      letter-spacing: 0.18px;
+      margin-top: 32px;
+
+      @include breakpoint(max-xl) {
+        max-width: 450px;
+        margin-top: 20px;
+      }
+      @include breakpoint(max-lg) {
+        max-width: 100%;
+        margin-top: 15px;
+      }
+    }
+  }
+}
