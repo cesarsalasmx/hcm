@@ -27,6 +27,52 @@
     <link rel="stylesheet" href="assets/css/plugins.css" />
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      body {
+    /* Oculta el scrollbar. El 'popup' al 100% de la ventana impide 
+    ver el contenido, y al ocultar el overflow se evita el scroll.
+    */
+      overflow-y: hidden; 
+    }
+    /* Fondo oscuro para el popup */
+    #popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255);
+      z-index: 9999;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      font-size: 1.2rem;
+      text-align: center;
+      padding: 30px 20px; /* espacio arriba */
+      box-sizing: border-box;
+	  opacity: 1;
+      transition: opacity 1s ease; /* transición para el fade */
+    }
+
+    #popup.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+  #video-fondo {
+  /* 1. Cobertura del Viewport */
+  position: fixed; /* Mantiene el video fijo respecto a la ventana, no a la página */
+  top: 0;
+  left: 0;
+  width: 100vw; /* 100% del Ancho del Viewport (Ventana) */
+  height: 100vh; /* 100% del Alto del Viewport (Ventana) */
+  
+  /* 2. Centrado y Escalado */
+  object-fit: cover; /* **CRUCIAL:** Escala el video para que cubra todo el espacio, manteniendo su relación de aspecto. Recorta los bordes si es necesario y lo centra automáticamente. */
+  
+  /* 3. Profundidad (para que quede detrás del contenido) */
+  z-index: -100; 
+}
+
+  </style>
   </head>
 
   <body class="home-two">
@@ -147,6 +193,14 @@
 
     <div id="smooth-wrapper">
       <div id="smooth-content">
+
+<!-- ================= Popup area end here ================= -->
+
+        <div id="popup">
+                    <video autoplay loop muted id="video-fondo">
+                    <source src="./assets/videos/hcm-intro.mp4" type="video/mp4">
+                    </video>
+			  </div>
         <!-- ================= Header Section Start ================= -->
         <header class="header-2 section position-absolute top-0 w-100">
           <div class="container large-container">
@@ -1409,5 +1463,23 @@ impulsan el desarrollo continuo del negocio </span>
             }
         );
     </script>
+
+    <script>
+    // Espera 8 segundos (7s + 1s de fade out) y luego aplica fade out
+    setTimeout(() => {
+      const popup = document.getElementById('popup');
+      popup.classList.add('fade-out');
+      
+      // Quita el popup del DOM después de la animación (1000ms = 1s)
+      setTimeout(() => {
+        popup.remove();
+        
+        // ¡CÓDIGO A AJUSTAR/AGREGAR!
+        // Habilita el scroll al quitar la restricción del body
+        document.body.style.overflowY = 'auto'; 
+
+      }, 1000);
+    }, 11000);
+  </script>
   </body>
 </html>
