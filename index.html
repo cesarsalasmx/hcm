@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Basic Meta Tags -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
+<head>
+  <!-- Basic Meta Tags -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <!-- Open Graph Meta Tags for Social Media -->
-    <meta property="og:title" content="HUMAN CONNECTIONS MEDIA" />
-    <meta property="og:description" content="" />
-    <meta property="og:type" content="website" />
-    <!-- Replace with actual image -->
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
 
-    <!-- Title -->
-    <title>HUMAN CONNECTIONS MEDIA</title>
+  <!-- Open Graph Meta Tags for Social Media -->
+  <meta property="og:title" content="HUMAN CONNECTIONS MEDIA" />
+  <meta property="og:description" content="" />
+  <meta property="og:type" content="website" />
+  <!-- Replace with actual image -->
 
-    <!-- Favicon -->
-    <link rel="icon" href="assets/images/favicon.png" type="image/x-icon" />
+  <!-- Title -->
+  <title>HUMAN CONNECTIONS MEDIA</title>
 
-    <!-- CSS Files -->
-    <!-- Plugin Stylesheet -->
-    <link rel="stylesheet" href="assets/css/plugins.css" />
-    <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <style>
-      body {
-    /* Oculta el scrollbar. El 'popup' al 100% de la ventana impide 
+  <!-- Favicon -->
+  <link rel="icon" href="assets/images/favicon.png" type="image/x-icon" />
+
+  <!-- CSS Files -->
+  <!-- Plugin Stylesheet -->
+  <link rel="stylesheet" href="assets/css/plugins.css" />
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    body {
+      /* Oculta el scrollbar. El 'popup' al 100% de la ventana impide 
     ver el contenido, y al ocultar el overflow se evita el scroll.
     */
-      overflow-y: hidden; 
+      overflow-y: hidden;
     }
+
     /* Fondo oscuro para el popup */
     #popup {
       position: fixed;
@@ -41,959 +43,1383 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,1);
+      background: rgba(0, 0, 0, 1);
       z-index: 9999;
       color: #fff;
       font-family: Arial, sans-serif;
       font-size: 1.2rem;
       text-align: center;
-      padding: 30px 20px; /* espacio arriba */
+      padding: 30px 20px;
+      /* espacio arriba */
       box-sizing: border-box;
-	  opacity: 1;
-      transition: opacity 1s ease; /* transición para el fade */
+      opacity: 1;
+      transition: opacity 1s ease;
+      /* transición para el fade */
     }
 
     #popup.fade-out {
       opacity: 0;
       pointer-events: none;
     }
-  #video-fondo {
-  /* 1. Cobertura del Viewport */
-  position: fixed; /* Mantiene el video fijo respecto a la ventana, no a la página */
-  top: 0;
-  left: 0;
-  width: 100vw; /* 100% del Ancho del Viewport (Ventana) */
-  height: 100vh; /* 100% del Alto del Viewport (Ventana) */
-  
-  /* 2. Centrado y Escalado */
-  object-fit: cover; /* **CRUCIAL:** Escala el video para que cubra todo el espacio, manteniendo su relación de aspecto. Recorta los bordes si es necesario y lo centra automáticamente. */
-  
-  /* 3. Profundidad (para que quede detrás del contenido) */
-  z-index: -100; 
-}
 
-/* ============================================
+    #video-fondo {
+      /* 1. Cobertura del Viewport */
+      position: fixed;
+      /* Mantiene el video fijo respecto a la ventana, no a la página */
+      top: 0;
+      left: 0;
+      width: 100vw;
+      /* 100% del Ancho del Viewport (Ventana) */
+      height: 100vh;
+      /* 100% del Alto del Viewport (Ventana) */
+
+      /* 2. Centrado y Escalado */
+      object-fit: cover;
+      /* **CRUCIAL:** Escala el video para que cubra todo el espacio, manteniendo su relación de aspecto. Recorta los bordes si es necesario y lo centra automáticamente. */
+
+      /* 3. Profundidad (para que quede detrás del contenido) */
+      z-index: -100;
+    }
+
+    /* ============================================
    TEMA DARK MODE - Sobrescribir estilos Light
    ============================================ */
 
-/* Fondo general del body y secciones */
-body {
-  background-color: #000000 !important;
-  color: #ffffff !important;
-}
-
-/* Secciones con fondo claro -> negro */
-.section, 
-.hero-two, 
-.about-2,
-.service-2,
-.team-2,
-.work-7,
-.blog-2,
-.footer-two {
-  background-color: #000000 !important;
-}
-
-/* Textos negros -> blancos */
-h1, h2, h3, h4, h5, h6, p, span, a, li, 
-.section-title,
-.section-sub-title,
-.section-highlight,
-.orvio_title_anim,
-.hero-two__content .title,
-.service-title a,
-.blog-title a,
-.team-content .title a,
-.footer-info,
-.footer-link,
-.info-sub-title,
-.link-title {
-  color: #ffffff !important;
-}
-
-/* Links y botones - mantener buen contraste */
-a:hover {
-  color: #8cff00 !important;
-}
-
-/* Headers y navegación */
-.header-2,
-.offcanvas {
-  background-color: #000000 !important;
-}
-
-.header__logo img,
-.offcanvas-header img {
-  filter: brightness(0) invert(1);
-}
-
-/* Sidebar/Offcanvas */
-.offcanvas-menu,
-.offcanvas-body {
-  background-color: #000000 !important;
-}
-
-.orvio__nav-link,
-.orvio__nav-item,
-.mobile-menu-social-media a,
-.info {
-  color: #ffffff !important;
-}
-
-/* Hero section */
-.hero-two__area {
-  background-color: #000000 !important;
-}
-
-.hero-two__gallery .thumbnail .title {
-  color: #ffffff !important;
-}
-
-/* Sección About */
-.about-2__content {
-  background-color: transparent !important;
-}
-
-/* Sección de servicios */
-.service-2__item {
-  background-color: #0a0a0a !important;
-  border-color: #333333 !important;
-}
-
-.service-number {
-  color: #ffffff !important;
-}
-
-/* Sección de clientes */
-.marq-brand,
-.brands-2__header {
-  background-color: #000000 !important;
-}
-
-.brands-2__header .title {
-  color: #ffffff !important;
-}
-
-/* Cards de trabajo/proyectos */
-.fit-img .info h6,
-.fit-img .info span {
-  color: #ffffff !important;
-}
-
-/* Team section */
-.team-2__item {
-  background-color: #0a0a0a !important;
-}
-
-.team-content .designation {
-  color: #cccccc !important;
-}
-
-/* Work/Connections section */
-.work-7 {
-  background-color: #000000 !important;
-}
-
-.work-7__item {
-  background-color: #0a0a0a !important;
-}
-
-.item-content .tags a {
-  color: #ffffff !important;
-  border-color: #333333 !important;
-}
-
-/* Blog section */
-.blog-2__item {
-  background-color: #0a0a0a !important;
-}
-
-.blog-date {
-  background-color: #000000 !important;
-  color: #ffffff !important;
-}
-
-.blog-sub-title {
-  color: #cccccc !important;
-}
-
-/* Newsletter/Banner section */
-.newsletter-2 {
-  background-color: #0a0a0a !important;
-}
-
-/* Footer */
-.footer-two {
-  background-color: #000000 !important;
-  border-top: 1px solid #333333;
-}
-
-.footer-info .info-sub-title,
-.footer-info .mail,
-.footer-info .phone,
-.footer-link a,
-.copyright,
-.terms-and-conditions {
-  color: #ffffff !important;
-}
-
-.footer-two__center .marquee {
-  color: #ffffff !important;
-  -webkit-text-stroke: 1px #ffffff !important;
-}
-
-/* Preloader */
-#preloader {
-  background-color: #000000 !important;
-}
-
-.spinner {
-  border-color: #333333 !important;
-  border-top-color: #8cff00 !important;
-}
-
-/* Scroll to top button */
-.progress-wrap {
-  background-color: #0a0a0a !important;
-  border-color: #333333 !important;
-}
-
-.progress-wrap svg path {
-  stroke: #8cff00 !important;
-}
-
-/* Ajustes adicionales para elementos específicos */
-.hero-style1 .lg-text h1 {
-  color: #ffffff !important;
-  -webkit-text-stroke: 2px #ffffff !important;
-}
-
-/* Inputs y forms si existen */
-input, textarea, select {
-  background-color: #0a0a0a !important;
-  color: #ffffff !important;
-  border-color: #333333 !important;
-}
-
-/* Botones */
-.orvio-btn, 
-.orvio-btn13 {
-  background-color: #0a0a0a !important;
-  color: #ffffff !important;
-  border-color: #8cff00 !important;
-}
-
-.orvio-btn:hover,
-.orvio-btn13:hover {
-  background-color: #8cff00 !important;
-  color: #000000 !important;
-}
-
-/* Hamburger menu */
-.hamburger-bar {
-  background-color: #ffffff !important;
-}
-
-.hamburger-menu-close {
-  color: #ffffff !important;
-}
-
-/* Iconos sociales */
-.social ul li a,
-.mobile-menu-social-media a {
-  color: #ffffff !important;
-}
-
-.social ul li a:hover,
-.mobile-menu-social-media a:hover {
-  color: #8cff00 !important;
-}
-
-/* Swiper y sliders */
-.swiper-slide {
-  background-color: transparent !important;
-}
-
-/* Hero gallery thumbnails */
-.hero-two__gallery .thumbnail {
-  background-color: #0a0a0a !important;
-}
-
-/* Elementos específicos de animación y texto */
-.tp_text_invert {
-  color: #ffffff !important;
-}
-
-/* Ajustes para imágenes de fondo */
-.bg-shape {
-  opacity: 0.05 !important;
-}
-
-/* Sub-menús */
-.orvio__submenu,
-.sub-menu {
-  background-color: #0a0a0a !important;
-}
-
-.orvio__submenu-item a,
-.sub-menu li a {
-  color: #ffffff !important;
-}
-
-/* Loader sections */
-.loader-section {
-  background-color: #000000 !important;
-}
-
-/* Contact button en newsletter */
-.contact-button .text {
-  color: #ffffff !important;
-}
-
-/* Elementos de overlay y overlays de imágenes */
-.item-thumb::before,
-.blog-thumb::before,
-.team-thumb::before {
-  background-color: rgba(0, 0, 0, 0.5) !important;
-}
-
-/* Ajustes para mantener legibilidad en elementos con pseudo-elementos */
-.orvio__nav-item.active > .orvio__nav-link {
-  color: #8cff00 !important;
-}
-
-/* Fecha del blog - ajuste de contraste */
-.blog-date .month {
-  color: #ffffff !important;
-}
-
-/* Hero style custom section */
-.hero-style1 {
-  background-color: #000000 !important;
-}
-
-.hero-style1 .fit-img {
-  background-color: #0a0a0a !important;
-}
-
-/* Ajustes para textos con opacidad */
-.opacity-7 {
-  opacity: 0.7 !important;
-  color: #ffffff !important;
-}
-
-/* Copyright y footer bottom */
-.footer-two__bottom {
-  background-color: #000000 !important;
-  border-top: 1px solid #333333 !important;
-}
-
-/* Mobile menu copyright */
-.orvio__mobile-menu-copyright-text {
-  color: #cccccc !important;
-}
-
-.orvio__mobile-menu-copyright-text a {
-  color: #8cff00 !important;
-}
-
-/* Asegurar que las imágenes SVG de clientes se vean bien */
-.item-marq img {
-  filter: brightness(0) invert(1);
-  opacity: 0.8;
-}
-
-.item-marq:hover img {
-  opacity: 1;
-}
-
-/* Ajustes adicionales para elementos específicos del hero */
-.background-img img {
-  opacity: 0.9;
-}
-
-/* Newsletter shape images */
-.newsletter-2__shape-1 {
-  opacity: 0.1 !important;
-}
-
-.shape-1 {
-  opacity: 0.3 !important;
-}
-
-/* Ajuste del wrapper de smooth scroll */
-#smooth-wrapper,
-#smooth-content {
-  background-color: #000000 !important;
-}
-
-/* Card wrappers y contenedores adicionales */
-.cards-wrapper {
-  background-color: transparent !important;
-}
-
-/* Sticky items en work section */
-.sticky-item {
-  background-color: #0a0a0a !important;
-}
-
-/* Fade animations - mantener visibilidad */
-.fade-anim,
-.fade-right-item {
-  color: inherit !important;
-}
-
-/* Section padding areas */
-.section-padding-top-bottom,
-.section-padding-top,
-.section-padding-bottom {
-  background-color: #000000 !important;
-}
-
-/* Large container backgrounds */
-.large-container {
-  background-color: transparent !important;
-}
-
-/* Newsletter background image - añadir overlay oscuro */
-.newsletter-2::before {
-  content: '' !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  background-color: rgba(0, 0, 0, 0.85) !important;
-  z-index: 1 !important;
-}
-
-.newsletter-2 .container {
-  position: relative !important;
-  z-index: 2 !important;
-}
-
-.newsletter-2 .newsletter-2__content {
-  position: relative !important;
-  z-index: 2 !important;
-}
-
-/* Ondark variant - asegurar que los textos sean visibles */
-.section-header.ondark .section-title,
-.section-header.ondark .section-sub-title {
-  color: #ffffff !important;
-}
-
-/* Ajustes para elementos de texto en secciones con imágenes de fondo */
-[data-bg-src] {
-  position: relative !important;
-}
-
-/* Ajuste de contraste para el año en about section */
-.since-year .year {
-  color: #ffffff !important;
-  -webkit-text-stroke: 2px #8cff00 !important;
-}
-
-/* Ajustes para asegurar que todos los párrafos sean blancos */
-.section-header p,
-.about-2__content p,
-.service-2__header p {
-  color: #ffffff !important;
-}
-
-/* Tags en la sección de work */
-.tags a {
-  background-color: #0a0a0a !important;
-  color: #ffffff !important;
-}
-
-/* Designation en cards */
-.designation {
-  color: #cccccc !important;
-}
-
-/* Row backgrounds */
-.row {
-  background-color: transparent !important;
-}
-
-/* Asegurar visibilidad en elementos con clases v2, v3 */
-.orvio-btn.v3,
-.orvio-btn.v2 {
-  background-color: #0a0a0a !important;
-  border: 2px solid #8cff00 !important;
-}
-
-.orvio-btn.v3 .text,
-.orvio-btn.v2 .text {
-  color: #ffffff !important;
-}
-
-/* Header variants */
-.header-2.v2 {
-  background-color: #000000 !important;
-}
-
-/* Offcanvas v2 */
-.offcanvas.v2 {
-  background-color: #000000 !important;
-}
-
-/* ============================================
+    /* Fondo general del body y secciones */
+    body {
+      background-color: #000000 !important;
+      color: #ffffff !important;
+    }
+
+    /* Secciones con fondo claro -> negro */
+    .section,
+    .hero-two,
+    .about-2,
+    .service-2,
+    .team-2,
+    .work-7,
+    .blog-2,
+    .footer-two {
+      background-color: #000000 !important;
+    }
+
+    /* Textos negros -> blancos */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    span,
+    a,
+    li,
+    .section-title,
+    .section-sub-title,
+    .section-highlight,
+    .orvio_title_anim,
+    .hero-two__content .title,
+    .service-title a,
+    .blog-title a,
+    .team-content .title a,
+    .footer-info,
+    .footer-link,
+    .info-sub-title,
+    .link-title {
+      color: #ffffff !important;
+    }
+
+    /* Links y botones - mantener buen contraste */
+    a:hover {
+      color: #8cff00 !important;
+    }
+
+    /* Headers y navegación */
+    .header-2,
+    .offcanvas {
+      background-color: #000000 !important;
+    }
+
+    .header__logo img,
+    .offcanvas-header img {
+      filter: brightness(0) invert(1);
+    }
+
+    /* Sidebar/Offcanvas */
+    .offcanvas-menu,
+    .offcanvas-body {
+      background-color: #000000 !important;
+    }
+
+    .orvio__nav-link,
+    .orvio__nav-item,
+    .mobile-menu-social-media a,
+    .info {
+      color: #ffffff !important;
+    }
+
+    /* Hero section */
+    .hero-two__area {
+      background-color: #000000 !important;
+    }
+
+    .hero-two__gallery .thumbnail .title {
+      color: #ffffff !important;
+    }
+
+    /* Sección About */
+    .about-2__content {
+      background-color: transparent !important;
+    }
+
+    /* Sección de servicios */
+    .service-2__item {
+      background-color: #0a0a0a !important;
+      border-color: #333333 !important;
+    }
+
+    .service-number {
+      color: #ffffff !important;
+    }
+
+    /* Sección de clientes */
+    .marq-brand,
+    .brands-2__header {
+      background-color: #000000 !important;
+    }
+
+    .brands-2__header .title {
+      color: #ffffff !important;
+    }
+
+    /* Cards de trabajo/proyectos */
+    .fit-img .info h6,
+    .fit-img .info span {
+      color: #ffffff !important;
+    }
+
+    /* Team section */
+    .team-2__item {
+      background-color: #0a0a0a !important;
+    }
+
+    .team-content .designation {
+      color: #cccccc !important;
+    }
+
+    /* Work/Connections section */
+    .work-7 {
+      background-color: #000000 !important;
+    }
+
+    .work-7__item {
+      background-color: #0a0a0a !important;
+    }
+
+    .item-content .tags a {
+      color: #ffffff !important;
+      border-color: #333333 !important;
+    }
+
+    /* Blog section */
+    .blog-2__item {
+      background-color: #0a0a0a !important;
+    }
+
+    .blog-2__item .blog-thumb {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      display: block;
+    }
+
+    .blog-2__item .blog-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .blog-date {
+      background-color: #000000 !important;
+      color: #ffffff !important;
+    }
+
+    .blog-sub-title {
+      color: #cccccc !important;
+    }
+
+    /* Newsletter/Banner section */
+    .newsletter-2 {
+      background-color: #0a0a0a !important;
+    }
+
+    /* Footer */
+    .footer-two {
+      background-color: #000000 !important;
+      border-top: 1px solid #333333;
+    }
+
+    .footer-info .info-sub-title,
+    .footer-info .mail,
+    .footer-info .phone,
+    .footer-link a,
+    .copyright,
+    .terms-and-conditions {
+      color: #ffffff !important;
+    }
+
+    .footer-two__center .marquee {
+      color: #ffffff !important;
+      -webkit-text-stroke: 1px #ffffff !important;
+    }
+
+    /* Preloader */
+    #preloader {
+      background-color: #000000 !important;
+    }
+
+    .spinner {
+      border-color: #333333 !important;
+      border-top-color: #8cff00 !important;
+    }
+
+    /* Scroll to top button */
+    .progress-wrap {
+      background-color: #0a0a0a !important;
+      border-color: #333333 !important;
+    }
+
+    .progress-wrap svg path {
+      stroke: #8cff00 !important;
+    }
+
+    /* Ajustes adicionales para elementos específicos */
+    .hero-style1 .lg-text h1 {
+      color: #ffffff !important;
+      -webkit-text-stroke: 2px #ffffff !important;
+    }
+
+    /* Inputs y forms si existen */
+    input,
+    textarea,
+    select {
+      background-color: #0a0a0a !important;
+      color: #ffffff !important;
+      border-color: #333333 !important;
+    }
+
+    /* Botones */
+    .orvio-btn,
+    .orvio-btn13 {
+      background-color: #0a0a0a !important;
+      color: #ffffff !important;
+      border-color: #8cff00 !important;
+    }
+
+    .orvio-btn:hover,
+    .orvio-btn13:hover {
+      background-color: #8cff00 !important;
+      color: #000000 !important;
+    }
+
+    /* Hamburger menu */
+    .hamburger-bar {
+      background-color: #ffffff !important;
+    }
+
+    .hamburger-menu-close {
+      color: #ffffff !important;
+    }
+
+    /* Iconos sociales */
+    .social ul li a,
+    .mobile-menu-social-media a {
+      color: #ffffff !important;
+    }
+
+    .social ul li a:hover,
+    .mobile-menu-social-media a:hover {
+      color: #8cff00 !important;
+    }
+
+    /* Swiper y sliders */
+    .swiper-slide {
+      background-color: transparent !important;
+    }
+
+    .team-slider-wrapper {
+      margin-top: 50px;
+      position: relative;
+      padding: 0 80px;
+    }
+
+    @media (max-width: 991px) {
+      .team-slider-wrapper {
+        padding: 0 48px;
+      }
+    }
+
+    @media (max-width: 575px) {
+      .team-slider-wrapper {
+        padding: 0 16px;
+      }
+    }
+
+    .team-slider-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 52px;
+      height: 52px;
+      border: 1px solid #333333;
+      border-radius: 50%;
+      color: #ffffff;
+      background-color: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      outline: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      z-index: 2;
+      pointer-events: all;
+    }
+
+    .team-slider-wrapper .swiper-button-disabled {
+      opacity: 0.35;
+    }
+
+    .team-slider-arrow:hover {
+      background-color: #8cff00;
+      color: #000000;
+    }
+
+    .team-slider-prev {
+      left: 12px;
+    }
+
+    .team-slider-next {
+      right: 12px;
+    }
+
+    @media (max-width: 767px) {
+      .team-slider-arrow {
+        width: 44px;
+        height: 44px;
+      }
+    }
+
+    .team-slider-pagination {
+      margin-top: 32px;
+      text-align: center;
+      position: relative;
+    }
+
+    .team-slider-pagination .swiper-pagination-bullet {
+      background-color: #ffffff;
+      opacity: 0.4;
+    }
+
+    .team-slider-pagination .swiper-pagination-bullet-active {
+      background-color: #8cff00;
+      opacity: 1;
+    }
+
+    .team-slider .swiper-slide {
+      height: auto;
+    }
+
+    /* Hero gallery thumbnails */
+    .hero-two__gallery .thumbnail {
+      background-color: #0a0a0a !important;
+    }
+
+    /* Elementos específicos de animación y texto */
+    .tp_text_invert {
+      color: #ffffff !important;
+    }
+
+    /* Ajustes para imágenes de fondo */
+    .bg-shape {
+      opacity: 0.05 !important;
+    }
+
+    /* Sub-menús */
+    .orvio__submenu,
+    .sub-menu {
+      background-color: #0a0a0a !important;
+    }
+
+    .orvio__submenu-item a,
+    .sub-menu li a {
+      color: #ffffff !important;
+    }
+
+    /* Loader sections */
+    .loader-section {
+      background-color: #000000 !important;
+    }
+
+    /* Contact button en newsletter */
+    .contact-button .text {
+      color: #ffffff !important;
+    }
+
+    /* Elementos de overlay y overlays de imágenes */
+    .item-thumb::before,
+    .blog-thumb::before,
+    .team-thumb::before {
+      background-color: rgba(0, 0, 0, 0.5) !important;
+    }
+
+    /* Ajustes para mantener legibilidad en elementos con pseudo-elementos */
+    .orvio__nav-item.active>.orvio__nav-link {
+      color: #8cff00 !important;
+    }
+
+    /* Fecha del blog - ajuste de contraste */
+    .blog-date .month {
+      color: #ffffff !important;
+    }
+
+    /* Hero style custom section */
+    .hero-style1 {
+      background-color: #000000 !important;
+    }
+
+    .hero-style1 .fit-img {
+      background-color: #0a0a0a !important;
+    }
+
+    /* Ajustes para textos con opacidad */
+    .opacity-7 {
+      opacity: 0.7 !important;
+      color: #ffffff !important;
+    }
+
+    /* Copyright y footer bottom */
+    .footer-two__bottom {
+      background-color: #000000 !important;
+      border-top: 1px solid #333333 !important;
+    }
+
+    .footer-office-row {
+      row-gap: 30px;
+    }
+
+    .office-info h6 {
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+
+    .office-info p {
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .footer-social-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .footer-social-center a {
+      font-size: 16px;
+    }
+
+    /* Mobile menu copyright */
+    .orvio__mobile-menu-copyright-text {
+      color: #cccccc !important;
+    }
+
+    .orvio__mobile-menu-copyright-text a {
+      color: #8cff00 !important;
+    }
+
+    /* Asegurar que las imágenes SVG de clientes se vean bien */
+    .item-marq img {
+      opacity: 0.8;
+    }
+
+    .item-marq:hover img {
+      opacity: 1;
+    }
+
+    /* Ajustes adicionales para elementos específicos del hero */
+    .background-img img {
+      opacity: 0.9;
+    }
+
+    /* Newsletter shape images */
+    .newsletter-2__shape-1 {
+      opacity: 0.1 !important;
+    }
+
+    .shape-1 {
+      opacity: 0.3 !important;
+    }
+
+    /* Ajuste del wrapper de smooth scroll */
+    #smooth-wrapper,
+    #smooth-content {
+      background-color: #000000 !important;
+    }
+
+    /* Card wrappers y contenedores adicionales */
+    .cards-wrapper {
+      background-color: transparent !important;
+    }
+
+    /* Sticky items en work section */
+    .sticky-item {
+      background-color: #0a0a0a !important;
+    }
+
+    /* Fade animations - mantener visibilidad */
+    .fade-anim,
+    .fade-right-item {
+      color: inherit !important;
+    }
+
+    /* Section padding areas */
+    .section-padding-top-bottom,
+    .section-padding-top,
+    .section-padding-bottom {
+      background-color: #000000 !important;
+    }
+
+    /* Large container backgrounds */
+    .large-container {
+      background-color: transparent !important;
+    }
+
+    /* Newsletter background image - añadir overlay oscuro */
+    .newsletter-2::before {
+      content: '' !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      background-color: rgba(0, 0, 0, 0.85) !important;
+      z-index: 1 !important;
+    }
+
+    .newsletter-2 .container {
+      position: relative !important;
+      z-index: 2 !important;
+    }
+
+    .newsletter-2 .newsletter-2__content {
+      position: relative !important;
+      z-index: 2 !important;
+    }
+
+    /* Ondark variant - asegurar que los textos sean visibles */
+    .section-header.ondark .section-title,
+    .section-header.ondark .section-sub-title {
+      color: #ffffff !important;
+    }
+
+    /* Ajustes para elementos de texto en secciones con imágenes de fondo */
+    [data-bg-src] {
+      position: relative !important;
+    }
+
+    /* Ajuste de contraste para el año en about section */
+    .since-year .year {
+      color: #ffffff !important;
+      -webkit-text-stroke: 2px #8cff00 !important;
+    }
+
+    /* Ajustes para asegurar que todos los párrafos sean blancos */
+    .section-header p,
+    .about-2__content p,
+    .service-2__header p {
+      color: #ffffff !important;
+    }
+
+    /* Tags en la sección de work */
+    .tags a {
+      background-color: #0a0a0a !important;
+      color: #ffffff !important;
+    }
+
+    /* Designation en cards */
+    .designation {
+      color: #cccccc !important;
+    }
+
+    /* Row backgrounds */
+    .row {
+      background-color: transparent !important;
+    }
+
+    /* Asegurar visibilidad en elementos con clases v2, v3 */
+    .orvio-btn.v3,
+    .orvio-btn.v2 {
+      background-color: #0a0a0a !important;
+      border: 2px solid #8cff00 !important;
+    }
+
+    .orvio-btn.v3 .text,
+    .orvio-btn.v2 .text {
+      color: #ffffff !important;
+    }
+
+    /* Header variants */
+    .header-2.v2 {
+      background-color: #000000 !important;
+    }
+
+    /* Offcanvas v2 */
+    .offcanvas.v2 {
+      background-color: #000000 !important;
+    }
+
+    /* ============================================
    GROWTH BY DESIGN SECTION - Custom Styles
    ============================================ */
 
-/* Sección Growth */
-.growth-section {
-  background-color: #000000 !important;
-  position: relative;
-  overflow: hidden;
-}
+    /* Sección Growth */
+    .growth-section {
+      background-color: #000000 !important;
+      position: relative;
+      overflow: hidden;
+    }
 
-/* Párrafos con fade-in mejorado */
-.growth-paragraph {
-  margin-bottom: 1.5rem !important;
-  opacity: 0 !important;
-  filter: blur(10px) !important;
-  transform: translateY(50px) !important;
-  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), 
-              filter 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-              transform 1.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  will-change: opacity, filter, transform !important;
-}
+    /* Párrafos con fade-in mejorado */
+    .growth-paragraph {
+      margin-bottom: 1.5rem !important;
+      opacity: 0 !important;
+      filter: blur(10px) !important;
+      transform: translateY(50px) !important;
+      transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+        filter 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 1.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      will-change: opacity, filter, transform !important;
+    }
 
-/* Estado visible de los párrafos */
-.growth-paragraph.fade-anim.animated {
-  opacity: 1 !important;
-  filter: blur(0px) !important;
-  transform: translateY(0) !important;
-}
+    /* Estado visible de los párrafos */
+    .growth-paragraph.fade-anim.animated {
+      opacity: 1 !important;
+      filter: blur(0px) !important;
+      transform: translateY(0) !important;
+    }
 
-/* Responsive para móviles */
-@media (max-width: 767px) {
-  .growth-paragraph {
-    margin-bottom: 1.25rem !important;
-  }
-}
+    /* Responsive para móviles */
+    @media (max-width: 767px) {
+      .growth-paragraph {
+        margin-bottom: 1.25rem !important;
+      }
+    }
 
+    /* ============================================
+       SPECIAL PARTNERS SECTION - Custom Styles
+       ============================================ */
+    .special-partners-grid {
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .special-partner-item {
+      background-color: #0a0a0a;
+      border: 1px solid #333333;
+      border-radius: 8px;
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      transition: all 0.3s ease;
+      min-height: 120px;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .special-partner-item.animated {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .special-partner-item:hover {
+      background-color: #111111;
+      border-color: var(--color-primary2);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .special-partner-item img {
+      max-width: 100%;
+      max-height: 60px;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+      /* filter: brightness(0) invert(1); Removed because images are JPEGs */
+    }
+
+    .special-partner-item:hover img {
+      /* opacity: 1; Removed as base opacity is now 1 */
+    }
+
+    /* ============================================
+       NEW SERVICES SECTION - Custom Styles
+       ============================================ */
+    .new-services-section {
+      background-color: #000000;
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+
+    .new-service-card {
+      background-color: #0a0a0a;
+      border: 1px solid #333333;
+      border-radius: 12px;
+      padding: 40px;
+      height: 100%;
+      transition: all 0.5s ease;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    .new-service-card.animated {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .new-service-card:hover {
+      border-color: var(--color-primary2);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .new-service-number {
+      font-size: 14px;
+      color: var(--color-primary2);
+      margin-bottom: 20px;
+      display: block;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    .new-service-title {
+      font-size: 32px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 30px;
+      line-height: 1.2;
+    }
+
+    .new-service-sub-area {
+      margin-bottom: 25px;
+    }
+
+    .new-service-sub-area:last-child {
+      margin-bottom: 0;
+    }
+
+    .new-service-subtitle {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--color-primary2);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .new-service-subtitle::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: var(--color-primary2);
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .new-service-content {
+      font-size: 15px;
+      color: #cccccc;
+      line-height: 1.6;
+      padding-left: 18px;
+    }
+
+    .new-service-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .new-service-list li {
+      font-size: 15px;
+      color: #cccccc;
+      line-height: 1.6;
+      margin-bottom: 8px;
+      position: relative;
+    }
+
+    .new-service-list li::before {
+      content: '-';
+      position: absolute;
+      left: -15px;
+      color: var(--color-primary2);
+    }
+
+    .new-service-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 767px) {
+      .new-service-card {
+        padding: 30px 20px;
+      }
+
+      .new-service-title {
+        font-size: 24px;
+      }
+    }
+
+    /* Button Overrides */
+    .orvio-btn.v3 {
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    }
+
+    .orvio-btn.v3:hover {
+      border-color: var(--color-primary2) !important;
+      background-color: transparent !important;
+    }
+
+    .orvio-btn.v3:hover .icon {
+      background-color: var(--color-primary2) !important;
+      color: #fff !important;
+    }
+
+    /* "Ver más" button homogenization */
+    .service-2__header .orvio-btn.v3 {
+      /* Ensure it matches other buttons */
+    }
   </style>
-  </head>
+</head>
 
-  <body class="home-two">
-    <!-- ================= Preloader Start ================= -->
-    <div id="preloader">
-      <div id="container" class="container-preloader">
-        <div class="animation-preloader">
-          <div class="spinner"></div>
-        </div>
-        <div class="loader-section section-left"></div>
-        <div class="loader-section section-right"></div>
+<body class="home-two">
+  <!-- ================= Preloader Start ================= -->
+  <div id="preloader">
+    <div id="container" class="container-preloader">
+      <div class="animation-preloader">
+        <div class="spinner"></div>
       </div>
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
     </div>
-    <!-- ================= Preloader End ================= -->
+  </div>
+  <!-- ================= Preloader End ================= -->
 
-    <!-- ================= Scroll to top Start ================= -->
-    <div class="progress-wrap">
-      <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
-      </svg>
+  <!-- ================= Scroll to top Start ================= -->
+  <div class="progress-wrap">
+    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+      <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+    </svg>
+  </div>
+  <!-- ================= Scroll to top End ================= -->
+
+  <!-- ================= Sidebar area start here ================= -->
+  <div class="offcanvas offcanvas-end v2" tabindex="-1" id="offcanvasRight">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">
+        <a href="index.html" class="header__logo">
+          <img src="./assets/images/logo.svg" alt="logo" />
+        </a>
+      </h5>
+      <button type="button" class="hamburger-menu-close v2" data-bs-dismiss="offcanvas" aria-label="Close">
+        <i class="fa-duotone fa-regular fa-xmark"></i>
+      </button>
     </div>
-    <!-- ================= Scroll to top End ================= -->
-
-    <!-- ================= Sidebar area start here ================= -->
-    <div class="offcanvas offcanvas-end v2" tabindex="-1" id="offcanvasRight">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title">
-          <a href="index.html" class="header__logo">
-            <img src="./assets/images/logo.svg" alt="logo" />
+    <div class="offcanvas-menu">
+      <!-- Start Mobile Menu -->
+      <nav>
+        <ul class="orvio__nav-list">
+          <li class="orvio__nav-item">
+            <a href="#" class="orvio__nav-link" onclick="return false;">
+              Inicio
+              <span class="orvio__toggle-btn"></span>
+            </a>
+        </ul>
+        </li>
+        <li class="orvio__nav-item">
+          <a href="about.html" class="orvio__nav-link">Casos</a>
+        </li>
+        <li class="orvio__nav-item">
+          <a href="#" class="orvio__nav-link" onclick="return false;">
+            Servicios
+            <span class="orvio__toggle-btn"></span>
           </a>
-        </h5>
-        <button type="button" class="hamburger-menu-close v2" data-bs-dismiss="offcanvas" aria-label="Close">
-          <i class="fa-duotone fa-regular fa-xmark"></i>
-        </button>
-      </div>
-      <div class="offcanvas-menu">
-        <!-- Start Mobile Menu -->
-        <nav>
-          <ul class="orvio__nav-list">
-            <li class="orvio__nav-item">
+          <ul class="orvio__submenu">
+            <li class="orvio__submenu-item">
               <a href="#" class="orvio__nav-link" onclick="return false;">
-                Inicio
-                <span class="orvio__toggle-btn"></span>
-              </a>
-              </ul>
-            </li>
-            <li class="orvio__nav-item">
-              <a href="about.html" class="orvio__nav-link">Casos</a>
-            </li>
-            <li class="orvio__nav-item">
-              <a href="#" class="orvio__nav-link" onclick="return false;">
-                Servicios
+                Clientes
                 <span class="orvio__toggle-btn"></span>
               </a>
               <ul class="orvio__submenu">
-                <li class="orvio__submenu-item">
-                  <a href="#" class="orvio__nav-link" onclick="return false;">
-                    Clientes
-                    <span class="orvio__toggle-btn"></span>
-                  </a>
-                  <ul class="orvio__submenu">
-                  </ul>
-                </li>
-                <li class="orvio__submenu-item">
-                  <a href="#" class="orvio__nav-link" onclick="return false;">
-                    Connections Trends
-                    <span class="orvio__toggle-btn"></span>
-                  </a>
-                <li class="orvio__submenu-item">
-                  <a href="#" class="orvio__nav-link" onclick="return false;">
-                    Equipo
-                    <span class="orvio__toggle-btn"></span>
-                  </a>
-                  <ul class="orvio__submenu">
-                  </ul>
-                </li>
               </ul>
             </li>
-
-            <li class="orvio__nav-item">
+            <li class="orvio__submenu-item">
               <a href="#" class="orvio__nav-link" onclick="return false;">
-                Blogs
+                Connections Trends
+                <span class="orvio__toggle-btn"></span>
+              </a>
+            <li class="orvio__submenu-item">
+              <a href="#" class="orvio__nav-link" onclick="return false;">
+                Equipo
                 <span class="orvio__toggle-btn"></span>
               </a>
               <ul class="orvio__submenu">
-                <li class="orvio__submenu-item">
-                  <a href="#" class="orvio__nav-link" onclick="return false;">
-                    Blog
-                    <span class="orvio__toggle-btn"></span>
-                  </a>
-                  <ul class="orvio__submenu">
-                  </ul>
-                </li>
               </ul>
-            </li>
-
-            <li class="orvio__nav-item">
-              <a href="contact.html" class="orvio__nav-link">Contacto</a>
             </li>
           </ul>
-        </nav>
-        <!-- End Mobile Menu -->
+        </li>
+
+        <li class="orvio__nav-item">
+          <a href="#" class="orvio__nav-link" onclick="return false;">
+            Blogs
+            <span class="orvio__toggle-btn"></span>
+          </a>
+          <ul class="orvio__submenu">
+            <li class="orvio__submenu-item">
+              <a href="#" class="orvio__nav-link" onclick="return false;">
+                Blog
+                <span class="orvio__toggle-btn"></span>
+              </a>
+              <ul class="orvio__submenu">
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li class="orvio__nav-item">
+          <a href="contact.html" class="orvio__nav-link">Contacto</a>
+        </li>
+        </ul>
+      </nav>
+      <!-- End Mobile Menu -->
+    </div>
+    <div class="offcanvas-body">
+      <div class="mobile-menu-social-media">
+        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
       </div>
-      <div class="offcanvas-body">
-        <div class="mobile-menu-social-media">
-          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#"><i class="fa-brands fa-youtube"></i></a>
-          <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-          <a href="#"><i class="fa-brands fa-twitter"></i></a>
-        </div>
-        <p class="info">Human Connections Media</p>
-        <div class="orvio__mobile-menu-copyright">
-          <p class="orvio__mobile-menu-copyright-text">© <span class="current-year"></span> <a href="https://wprealizer.com/">HCM.</a> Todos los derechos reservados</p>
-        </div>
+      <p class="info">Human Connections Media</p>
+      <div class="orvio__mobile-menu-copyright">
+        <p class="orvio__mobile-menu-copyright-text">© <span class="current-year"></span> <a
+            href="https://wprealizer.com/">HCM.</a> Todos los derechos reservados</p>
       </div>
     </div>
-    <!-- ================= Sidebar area end here ================= -->
+  </div>
+  <!-- ================= Sidebar area end here ================= -->
 
-    <div id="smooth-wrapper">
-      <div id="smooth-content">
+  <div id="smooth-wrapper">
+    <div id="smooth-content">
 
-<!-- ================= Popup area end here ================= -->
+      <!-- ================= Popup area end here ================= -->
 
-        <div id="popup">
-                    <video autoplay loop muted id="video-fondo">
-                    <source src="./assets/videos/hcm-intro.mp4" type="video/mp4">
-                    </video>
-			  </div>
-        <!-- ================= Header Section Start ================= -->
-        <header class="header-2 section position-absolute top-0 w-100">
-          <div class="container large-container">
-            <div class="header__main">
-              <div class="header-2__left-content">
-                <a href="index.html" class="header__logo">
-                  <img src="./assets/images/logo.svg" alt="logo" />
-                </a>
-              </div>
+      <div id="popup">
+        <video autoplay loop muted id="video-fondo">
+          <source src="./assets/videos/hcm-intro.mp4" type="video/mp4">
+        </video>
+      </div>
+      <!-- ================= Header Section Start ================= -->
+      <header class="header-2 section position-absolute top-0 w-100">
+        <div class="container large-container">
+          <div class="header__main">
+            <div class="header-2__left-content">
+              <a href="index.html" class="header__logo">
+                <img src="./assets/images/logo.svg" alt="logo" />
+              </a>
+            </div>
 
-              <div class="header__main-menu v2">
-                <nav class="circle">
-                  <ul>
-                    <li class="active">
-                      <a href="javascript:void(0)"> Inicio </a>
-                    </li>
-                    <li>
-                      <a href="about.html"> Casos </a>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0)">Servicios</a>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0)">Blogs</a>
-                      <ul class="sub-menu">
-                        <li>
-                          <a href="javascript:void(0)">
-                            Blog
-                            <i class="fa-regular fa-angle-down"></i>
-                          </a> 
-                    </li>
-                  </ul>
-                </nav>
-                <div class="menu-btns">
-                  <button class="hamburger-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                    <span class="hamburger-bar"></span>
-                    <span class="hamburger-bar"></span>
-                    <span class="hamburger-bar"></span>
-                  </button>
-                </div>
+            <div class="header__main-menu v2">
+              <nav class="circle">
+                <ul>
+                  <li class="active">
+                    <a href="javascript:void(0)"> Inicio </a>
+                  </li>
+                  <li>
+                    <a href="about.html"> Casos </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">Servicios</a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">Blogs</a>
+                    <ul class="sub-menu">
+                      <li>
+                        <a href="javascript:void(0)">
+                          Blog
+                          <i class="fa-regular fa-angle-down"></i>
+                        </a>
+                      </li>
+                    </ul>
+              </nav>
+              <div class="menu-btns">
+                <button class="hamburger-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                  aria-controls="offcanvasRight">
+                  <span class="hamburger-bar"></span>
+                  <span class="hamburger-bar"></span>
+                  <span class="hamburger-bar"></span>
+                </button>
               </div>
             </div>
           </div>
-        </header>
-        <!-- ================= HEADER end ================= -->
+        </div>
+      </header>
+      <!-- ================= HEADER end ================= -->
 
-        <main>
-          <!--================= HERO start =================-->
-          <section class="hero-two section">
-            <div class="hero-two__area">
-              <div class="hero-two__background">
-                <div class="background-img">
-                  <img src="./assets/images/hero/hero-thumb-2-1.png" alt="Zow" />
-                </div>
-                <div class="background-img">
-                  <img src="./assets/images/hero/hero-thumb-2-2.png" alt="BUN" />
-                </div>
-                <div class="background-img">
-                  <img src="./assets/images/hero/hero-thumb-2-3.png" alt="Blank" />
-                </div>
-                <div class="background-img">
-                  <img src="./assets/images/hero/hero-thumb-2-4.png" alt="Koi no Yokan" />
-                </div>
-                <div class="background-img">
-                  <img src="./assets/images/hero/hero-thumb-2-5.png" alt="Brew" />
-                </div>
-                <div class="background-img">
-                  <img src="./assets/images/hero/hero-thumb-2-6.png" alt="Kier" />
-                </div>
-                <div class="background-img">
-                  <img src="./assets/images/hero/hero-thumb-2-7.png" alt="Zow 2" />
-                </div>
-                <div class="background-img">
-                  <img src="./assets/images/hero/hero-thumb-2-8.png" alt="Bun 2" />
-                </div>
-                <div class="background-img">
-                  <img src="./assets/images/hero/hero-thumb-2-9.png" alt="Zow 3" />
-                </div>
-                <div class="background-img">
-                  <img src="./assets/images/hero/hero-thumb-2-10.png" alt="Kier 3" />
-                </div>
+      <main>
+        <!--================= HERO start =================-->
+        <section class="hero-two section">
+          <div class="hero-two__area">
+            <div class="hero-two__background">
+              <div class="background-img">
+                <img src="./assets/images/hero/hero-thumb-2-1.png" alt="Zow" />
               </div>
-              <div class="container large-container">
-                <div class="row">
-                  <div class="col-12">
-                    <div class="hero-two__content">
-                      <div class="left-content">
-                        <h1 class="title fade-anim" data-direction="left" data-offset="200">HUMAN CONNECTIONS MEDIA</h1>
-                      </div>
-                  
+              <div class="background-img">
+                <img src="./assets/images/hero/hero-thumb-2-2.png" alt="BUN" />
+              </div>
+              <div class="background-img">
+                <img src="./assets/images/hero/hero-thumb-2-3.png" alt="Blank" />
+              </div>
+              <div class="background-img">
+                <img src="./assets/images/hero/hero-thumb-2-4.png" alt="Koi no Yokan" />
+              </div>
+              <div class="background-img">
+                <img src="./assets/images/hero/hero-thumb-2-5.png" alt="Brew" />
+              </div>
+              <div class="background-img">
+                <img src="./assets/images/hero/hero-thumb-2-6.png" alt="Kier" />
+              </div>
+              <div class="background-img">
+                <img src="./assets/images/hero/hero-thumb-2-7.png" alt="Zow 2" />
+              </div>
+              <div class="background-img">
+                <img src="./assets/images/hero/hero-thumb-2-8.png" alt="Bun 2" />
+              </div>
+              <div class="background-img">
+                <img src="./assets/images/hero/hero-thumb-2-9.png" alt="Zow 3" />
+              </div>
+              <div class="background-img">
+                <img src="./assets/images/hero/hero-thumb-2-10.png" alt="Kier 3" />
+              </div>
+            </div>
+            <div class="container large-container">
+              <div class="row">
+                <div class="col-12">
+                  <div class="hero-two__content">
+                    <div class="left-content">
+                      <h1 class="title fade-anim" data-direction="left" data-offset="200">HUMAN CONNECTIONS MEDIA</h1>
                     </div>
+
                   </div>
                 </div>
               </div>
-              <div class="container large-container d-none d-xl-block">
-                <div class="row">
-                  <div class="col-12">
-                    <div class="hero-two__gallery fade-anim" data-delay="0.8">
-                      <a href="work.html" class="thumbnail" data-index="0">
-                        <img src="./assets/images/hero/hero-thumb-2-1.png" alt="Zow" />
-                        <h6 class="title">WEB</h6>
-                      </a>
-                      <a href="work.html" class="thumbnail" data-index="1">
-                        <img src="./assets/images/hero/hero-thumb-2-2.png" alt="BUN" />
-                        <h6 class="title">MARKETPLACE</h6>
-                      </a>
-                      <a href="work.html" class="thumbnail" data-index="2">
-                        <img src="./assets/images/hero/hero-thumb-2-3.png" alt="Blank" />
-                        <h6 class="title">INBOUND</h6>
-                      </a>
-                      <a href="work.html" class="thumbnail" data-index="3">
-                        <img src="./assets/images/hero/hero-thumb-2-4.png" alt="Koi no Yokan" />
-                        <h6 class="title">DIGITAL MARKETING</h6>
-                      </a>
-                      <a href="work.html" class="thumbnail" data-index="4">
-                        <img src="./assets/images/hero/hero-thumb-2-5.png" alt="Brew" />
-                        <h6 class="title">CONTENIDOS</h6>
-                      </a>
-                      <a href="work.html" class="thumbnail" data-index="5">
-                        <img src="./assets/images/hero/hero-thumb-2-6.png" alt="Kier" />
-                        <h6 class="title">SOCIAL MEDIA</h6>
-                      </a>
-                      <a href="work.html" class="thumbnail" data-index="6">
-                        <img src="./assets/images/hero/hero-thumb-2-7.png" alt="Zow 2" />
-                        <h6 class="title">COMMS</h6>
-                      </a>
-                      <a href="work.html" class="thumbnail" data-index="7">
-                        <img src="./assets/images/hero/hero-thumb-2-8.png" alt="Bun 2" />
-                        <h6 class="title">MEDIOA PLANNING</h6>
-                      </a>
-                      <a href="work.html" class="thumbnail" data-index="8">
-                        <img src="./assets/images/hero/hero-thumb-2-9.png" alt="Zow 3" />
-                        <h6 class="title">ANALYTICS</h6>
-                      </a>
-                      <a href="work.html" class="thumbnail" data-index="9">
-                        <img src="./assets/images/hero/hero-thumb-2-10.png" alt="Kier 2" />
-                        <h6 class="title">ASSESMENT</h6>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper hero-two__gallery-slider">
-                <div class="swiper-wrapper linear">
-                  <div class="swiper-slide">
-                    <a href="work.html" class="thumbnail">
+            </div>
+            <div class="container large-container d-none d-xl-block">
+              <div class="row">
+                <div class="col-12">
+                  <div class="hero-two__gallery fade-anim" data-delay="0.8">
+                    <a href="work.html" class="thumbnail" data-index="0">
                       <img src="./assets/images/hero/hero-thumb-2-1.png" alt="Zow" />
                       <h6 class="title">WEB</h6>
                     </a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="work.html" class="thumbnail">
+                    <a href="work.html" class="thumbnail" data-index="1">
                       <img src="./assets/images/hero/hero-thumb-2-2.png" alt="BUN" />
                       <h6 class="title">MARKETPLACE</h6>
                     </a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="work.html" class="thumbnail">
+                    <a href="work.html" class="thumbnail" data-index="2">
                       <img src="./assets/images/hero/hero-thumb-2-3.png" alt="Blank" />
                       <h6 class="title">INBOUND</h6>
                     </a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="work.html" class="thumbnail">
+                    <a href="work.html" class="thumbnail" data-index="3">
                       <img src="./assets/images/hero/hero-thumb-2-4.png" alt="Koi no Yokan" />
                       <h6 class="title">DIGITAL MARKETING</h6>
                     </a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="work.html" class="thumbnail">
+                    <a href="work.html" class="thumbnail" data-index="4">
                       <img src="./assets/images/hero/hero-thumb-2-5.png" alt="Brew" />
                       <h6 class="title">CONTENIDOS</h6>
                     </a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="work.html" class="thumbnail">
-                      <img src="./assets/images/hero/hero-thumb-2-3.png" alt="Kier" />
+                    <a href="work.html" class="thumbnail" data-index="5">
+                      <img src="./assets/images/hero/hero-thumb-2-6.png" alt="Kier" />
                       <h6 class="title">SOCIAL MEDIA</h6>
                     </a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="work.html" class="thumbnail">
-                      <img src="./assets/images/hero/hero-thumb-2-4.png" alt="Zow 2" />
+                    <a href="work.html" class="thumbnail" data-index="6">
+                      <img src="./assets/images/hero/hero-thumb-2-7.png" alt="Zow 2" />
                       <h6 class="title">COMMS</h6>
                     </a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="work.html" class="thumbnail">
+                    <a href="work.html" class="thumbnail" data-index="7">
                       <img src="./assets/images/hero/hero-thumb-2-8.png" alt="Bun 2" />
-                      <h6 class="title">MEDIA PLANNING</h6>
+                      <h6 class="title">MEDIOA PLANNING</h6>
                     </a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="work.html" class="thumbnail">
+                    <a href="work.html" class="thumbnail" data-index="8">
                       <img src="./assets/images/hero/hero-thumb-2-9.png" alt="Zow 3" />
                       <h6 class="title">ANALYTICS</h6>
                     </a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="work.html" class="thumbnail">
+                    <a href="work.html" class="thumbnail" data-index="9">
                       <img src="./assets/images/hero/hero-thumb-2-10.png" alt="Kier 2" />
                       <h6 class="title">ASSESMENT</h6>
                     </a>
                   </div>
-                  <div class="swiper-slide">
-                    <a href="work.html" class="thumbnail">
-                      <img src="./assets/images/hero/hero-thumb-2-1.png" alt="Zow" />
-                      <h6 class="title">WEB</h6>
-                    </a>
+                </div>
+              </div>
+            </div>
+            <div class="swiper hero-two__gallery-slider">
+              <div class="swiper-wrapper linear">
+                <div class="swiper-slide">
+                  <a href="work.html" class="thumbnail">
+                    <img src="./assets/images/hero/hero-thumb-2-1.png" alt="Zow" />
+                    <h6 class="title">WEB</h6>
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a href="work.html" class="thumbnail">
+                    <img src="./assets/images/hero/hero-thumb-2-2.png" alt="BUN" />
+                    <h6 class="title">MARKETPLACE</h6>
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a href="work.html" class="thumbnail">
+                    <img src="./assets/images/hero/hero-thumb-2-3.png" alt="Blank" />
+                    <h6 class="title">INBOUND</h6>
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a href="work.html" class="thumbnail">
+                    <img src="./assets/images/hero/hero-thumb-2-4.png" alt="Koi no Yokan" />
+                    <h6 class="title">DIGITAL MARKETING</h6>
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a href="work.html" class="thumbnail">
+                    <img src="./assets/images/hero/hero-thumb-2-5.png" alt="Brew" />
+                    <h6 class="title">CONTENIDOS</h6>
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a href="work.html" class="thumbnail">
+                    <img src="./assets/images/hero/hero-thumb-2-3.png" alt="Kier" />
+                    <h6 class="title">SOCIAL MEDIA</h6>
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a href="work.html" class="thumbnail">
+                    <img src="./assets/images/hero/hero-thumb-2-4.png" alt="Zow 2" />
+                    <h6 class="title">COMMS</h6>
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a href="work.html" class="thumbnail">
+                    <img src="./assets/images/hero/hero-thumb-2-8.png" alt="Bun 2" />
+                    <h6 class="title">MEDIA PLANNING</h6>
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a href="work.html" class="thumbnail">
+                    <img src="./assets/images/hero/hero-thumb-2-9.png" alt="Zow 3" />
+                    <h6 class="title">ANALYTICS</h6>
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a href="work.html" class="thumbnail">
+                    <img src="./assets/images/hero/hero-thumb-2-10.png" alt="Kier 2" />
+                    <h6 class="title">ASSESMENT</h6>
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a href="work.html" class="thumbnail">
+                    <img src="./assets/images/hero/hero-thumb-2-1.png" alt="Zow" />
+                    <h6 class="title">WEB</h6>
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a href="work.html" class="thumbnail">
+                    <img src="./assets/images/hero/hero-thumb-2-2.png" alt="BUN" />
+                    <h6 class="title">MARKETPLACE</h6>
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a href="work.html" class="thumbnail">
+                    <img src="./assets/images/hero/hero-thumb-2-3.png" alt="Blank" />
+                    <h6 class="title">INBOUND</h6>
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a href="work.html" class="thumbnail">
+                    <img src="./assets/images/hero/hero-thumb-2-4.png" alt="Koi no Yokan" />
+                    <h6 class="title">DIGITAL MARKETING</h6>
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a href="work.html" class="thumbnail">
+                    <img src="./assets/images/hero/hero-thumb-2-5.png" alt="Brew" />
+                    <h6 class="title">CONTENIDOS</h6>
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a href="work.html" class="thumbnail">
+                    <img src="./assets/images/hero/hero-thumb-2-3.png" alt="Kier" />
+                    <h6 class="title">SOCIAL MEDIA</h6>
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a href="work.html" class="thumbnail">
+                    <img src="./assets/images/hero/hero-thumb-2-4.png" alt="Zow 2" />
+                    <h6 class="title">COMMS</h6>
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a href="work.html" class="thumbnail">
+                    <img src="./assets/images/hero/hero-thumb-2-8.png" alt="Bun 2" />
+                    <h6 class="title">MEDIA PLANNING</h6>
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a href="work.html" class="thumbnail">
+                    <img src="./assets/images/hero/hero-thumb-2-9.png" alt="Zow 3" />
+                    <h6 class="title">ANALYTICS</h6>
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a href="work.html" class="thumbnail">
+                    <img src="./assets/images/hero/hero-thumb-2-10.png" alt="Kier 2" />
+                    <h6 class="title">ASSESMENT/h6>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!--================= HERO start =================-->
+
+
+        <!-- ==================== Start GROWTH BY DESIGN ==================== -->
+        <section class="growth-section section section-padding-top-bottom">
+          <div class="container">
+            <div class="row g-4 g-lg-5 align-items-center">
+              <!-- Título estático a la izquierda -->
+              <div class="col-lg-5">
+                <div class="section-header">
+                  <h2 class="section-title">Growth by Design.</h2>
+                </div>
+              </div>
+
+              <!-- Párrafos con fade-in a la derecha -->
+              <div class="col-lg-7">
+                <div class="section-header">
+                  <p class="growth-paragraph fade-anim" data-delay="0.2">
+                    En un entorno hiperfragmentado y saturado, la atención es escasa y el impacto para generar
+                    relevancia, es estratégico.
+                  </p>
+                  <p class="growth-paragraph fade-anim" data-delay="0.4">
+                    Combinamos contextos culturales, hábitos sociales y visión de negocio para desarrollar soluciones
+                    eficaces.
+                  </p>
+                  <p class="growth-paragraph fade-anim" data-delay="0.6">
+                    Transformamos datos estáticos en estrategias dinámicas, y así impulsamos a las marcas a tomar
+                    decisiones inteligentes.
+                  </p>
+                  <p class="growth-paragraph fade-anim" data-delay="0.8">
+                    No planificamos medios. Diseñamos conexiones que impulsan el desarrollo continuo del negocio.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- ==================== End GROWTH BY DESIGN ==================== -->
+
+
+
+        <!-- ==================== Start CUSTOM ==================== -->
+
+        <div class="hero-style1">
+          <div class="container">
+            <div class="row align-items-center mt-80px">
+              <div class="col-lg-8">
+                <div class="lg-text md-hide">
+                  <h1>HCM</h1>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="d-lg-flex d-none justify-content-end wrapper-imgs">
+                  <div class="fit-img">
+                    <img src="assets/images/works/1/4.webp" alt="">
+                    <div class="info">
+                      <h6 class="fw-600">HONDA NAVI</h6>
+                      <span class="text-uppercase mt-5px fs-14 opacity-7">Innovación en Medios</span>
+                    </div>
                   </div>
-                  <div class="swiper-slide">
-                    <a href="work.html" class="thumbnail">
-                      <img src="./assets/images/hero/hero-thumb-2-2.png" alt="BUN" />
-                      <h6 class="title">MARKETPLACE</h6>
-                    </a>
+                  <div class="fit-img">
+                    <img src="assets/images/works/1/1.webp" alt="">
+                    <div class="info">
+                      <h6 class="fw-600">HONDA NAVI</h6>
+                      <span class="text-uppercase mt-5px fs-14 opacity-7">Innovación en Medios</span>
+                    </div>
                   </div>
-                  <div class="swiper-slide">
-                    <a href="work.html" class="thumbnail">
-                      <img src="./assets/images/hero/hero-thumb-2-3.png" alt="Blank" />
-                      <h6 class="title">INBOUND</h6>
-                    </a>
+                  <div class="fit-img">
+                    <img src="assets/images/works/1/2.webp" alt="">
+                    <div class="info">
+                      <h6 class="fw-600">OGGI</h6>
+                      <span class="text-uppercase mt-5px fs-14 opacity-7">Tráfico Omnicanal</span>
+                    </div>
                   </div>
-                  <div class="swiper-slide">
-                    <a href="work.html" class="thumbnail">
-                      <img src="./assets/images/hero/hero-thumb-2-4.png" alt="Koi no Yokan" />
-                      <h6 class="title">DIGITAL MARKETING</h6>
-                    </a>
+                  <div class="fit-img">
+                    <img src="assets/images/works/1/3.webp" alt="">
+                    <div class="info">
+                      <h6 class="fw-600">DR. PEPPER</h6>
+                      <span class="text-uppercase mt-5px fs-14 opacity-7">Posicionamiento de Marca en Nuevas
+                        Audiencias</span>
+                    </div>
                   </div>
-                  <div class="swiper-slide">
-                    <a href="work.html" class="thumbnail">
-                      <img src="./assets/images/hero/hero-thumb-2-5.png" alt="Brew" />
-                      <h6 class="title">CONTENIDOS</h6>
-                    </a>
+                </div>
+                <div class="d-lg-flex d-none justify-content-end wrapper-imgs">
+                  <div class="fit-img">
+                    <img src="assets/images/works/1/4.webp" alt="">
+                    <div class="info">
+                      <h6 class="fw-600">HONDA NAVI</h6>
+                      <span class="text-uppercase mt-5px fs-14 opacity-7">Innovación en Medios</span>
+                    </div>
                   </div>
-                  <div class="swiper-slide">
-                    <a href="work.html" class="thumbnail">
-                      <img src="./assets/images/hero/hero-thumb-2-3.png" alt="Kier" />
-                      <h6 class="title">SOCIAL MEDIA</h6>
-                    </a>
+                  <div class="fit-img">
+                    <img src="assets/images/works/1/1.webp" alt="">
+                    <div class="info">
+                      <h6 class="fw-600">HONDA NAVI</h6>
+                      <span class="text-uppercase mt-5px fs-14 opacity-7">Innovación en Medios</span>
+                    </div>
                   </div>
-                  <div class="swiper-slide">
-                    <a href="work.html" class="thumbnail">
-                      <img src="./assets/images/hero/hero-thumb-2-4.png" alt="Zow 2" />
-                      <h6 class="title">COMMS</h6>
-                    </a>
+                  <div class="fit-img">
+                    <img src="assets/images/works/1/2.webp" alt="">
+                    <div class="info">
+                      <h6 class="fw-600">OGGI</h6>
+                      <span class="text-uppercase mt-5px fs-14 opacity-7">Tráfico Omnicanal</span>
+                    </div>
                   </div>
-                  <div class="swiper-slide">
-                    <a href="work.html" class="thumbnail">
-                      <img src="./assets/images/hero/hero-thumb-2-8.png" alt="Bun 2" />
-                      <h6 class="title">MEDIA PLANNING</h6>
-                    </a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="work.html" class="thumbnail">
-                      <img src="./assets/images/hero/hero-thumb-2-9.png" alt="Zow 3" />
-                      <h6 class="title">ANALYTICS</h6>
-                    </a>
-                  </div>
-                  <div class="swiper-slide">
-                    <a href="work.html" class="thumbnail">
-                      <img src="./assets/images/hero/hero-thumb-2-10.png" alt="Kier 2" />
-                      <h6 class="title">ASSESMENT/h6>
-                    </a>
+                  <div class="fit-img">
+                    <img src="assets/images/works/1/3.webp" alt="">
+                    <div class="info">
+                      <h6 class="fw-600">DR. PEPPER</h6>
+                      <span class="text-uppercase mt-5px fs-14 opacity-7">Posicionamiento de Marca en Nuevas
+                        Audiencias</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </section>
-          <!--================= HERO start =================-->
-
-          <!-- ==================== Start CUSTOM ==================== -->
-
-          <div class="hero-style1">
-            <div class="container">
-              <div class="row align-items-center mt-80px">
-                <div class="col-lg-8">
-                  <div class="lg-text md-hide">
-                    <h1>HCM</h1>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div class="d-lg-flex d-none justify-content-end wrapper-imgs">
-                    <div class="fit-img">
-                      <img src="assets/images/works/1/4.webp" alt="">
-                      <div class="info">
-                        <h6 class="fw-600">HONDA NAVI</h6>
-                        <span class="text-uppercase mt-5px fs-14 opacity-7">Innovación en Medios</span>
-                      </div>
-                    </div>
+            <div class="cards-wrapper section-target">
+              <div class="row d-flex d-lg-none">
+                <div class="col-lg-3 col-md-6">
+                  <div class="item md-mb30">
                     <div class="fit-img">
                       <img src="assets/images/works/1/1.webp" alt="">
                       <div class="info">
@@ -1001,44 +1427,21 @@ input, textarea, select {
                         <span class="text-uppercase mt-5px fs-14 opacity-7">Innovación en Medios</span>
                       </div>
                     </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                  <div class="item md-mb30">
                     <div class="fit-img">
                       <img src="assets/images/works/1/2.webp" alt="">
                       <div class="info">
                         <h6 class="fw-600">OGGI</h6>
                         <span class="text-uppercase mt-5px fs-14 opacity-7">Tráfico Omnicanal</span>
-                      </div>
-                    </div>
-                    <div class="fit-img">
-                      <img src="assets/images/works/1/3.webp" alt="">
-                      <div class="info">
-                        <h6 class="fw-600">DR. PEPPER</h6>
-                        <span class="text-uppercase mt-5px fs-14 opacity-7">Posicionamiento de Marca en Nuevas
-                          Audiencias</span>
                       </div>
                     </div>
                   </div>
-                  <div class="d-lg-flex d-none justify-content-end wrapper-imgs">
-                    <div class="fit-img">
-                      <img src="assets/images/works/1/4.webp" alt="">
-                      <div class="info">
-                        <h6 class="fw-600">HONDA NAVI</h6>
-                        <span class="text-uppercase mt-5px fs-14 opacity-7">Innovación en Medios</span>
-                      </div>
-                    </div>
-                    <div class="fit-img">
-                      <img src="assets/images/works/1/1.webp" alt="">
-                      <div class="info">
-                        <h6 class="fw-600">HONDA NAVI</h6>
-                        <span class="text-uppercase mt-5px fs-14 opacity-7">Innovación en Medios</span>
-                      </div>
-                    </div>
-                    <div class="fit-img">
-                      <img src="assets/images/works/1/2.webp" alt="">
-                      <div class="info">
-                        <h6 class="fw-600">OGGI</h6>
-                        <span class="text-uppercase mt-5px fs-14 opacity-7">Tráfico Omnicanal</span>
-                      </div>
-                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                  <div class="item sm-mb30">
                     <div class="fit-img">
                       <img src="assets/images/works/1/3.webp" alt="">
                       <div class="info">
@@ -1049,51 +1452,13 @@ input, textarea, select {
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="cards-wrapper section-target">
-                <div class="row d-flex d-lg-none">
-                  <div class="col-lg-3 col-md-6">
-                    <div class="item md-mb30">
-                      <div class="fit-img">
-                        <img src="assets/images/works/1/1.webp" alt="">
-                        <div class="info">
-                          <h6 class="fw-600">HONDA NAVI</h6>
-                          <span class="text-uppercase mt-5px fs-14 opacity-7">Innovación en Medios</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6">
-                    <div class="item md-mb30">
-                      <div class="fit-img">
-                        <img src="assets/images/works/1/2.webp" alt="">
-                        <div class="info">
-                          <h6 class="fw-600">OGGI</h6>
-                          <span class="text-uppercase mt-5px fs-14 opacity-7">Tráfico Omnicanal</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6">
-                    <div class="item sm-mb30">
-                      <div class="fit-img">
-                        <img src="assets/images/works/1/3.webp" alt="">
-                        <div class="info">
-                          <h6 class="fw-600">DR. PEPPER</h6>
-                          <span class="text-uppercase mt-5px fs-14 opacity-7">Posicionamiento de Marca en Nuevas
-                            Audiencias</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6">
-                    <div class="item">
-                      <div class="fit-img">
-                        <img src="assets/images/works/1/4.webp" alt="">
-                        <div class="info">
-                          <h6 class="fw-600">PEÑAFIEL</h6>
-                          <span class="text-uppercase mt-5px fs-14 opacity-7">Negociación con Medios</span>
-                        </div>
+                <div class="col-lg-3 col-md-6">
+                  <div class="item">
+                    <div class="fit-img">
+                      <img src="assets/images/works/1/4.webp" alt="">
+                      <div class="info">
+                        <h6 class="fw-600">PEÑAFIEL</h6>
+                        <span class="text-uppercase mt-5px fs-14 opacity-7">Negociación con Medios</span>
                       </div>
                     </div>
                   </div>
@@ -1101,524 +1466,454 @@ input, textarea, select {
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- ==================== End CUSTOM ==================== -->
+        <!-- ==================== End CUSTOM ==================== -->
 
-          <!-- ==================== Start GROWTH BY DESIGN ==================== -->
-          <section class="growth-section section section-padding-top-bottom">
-            <div class="container">
-              <div class="row g-4 g-lg-5 align-items-center">
-                <!-- Título estático a la izquierda -->
-                <div class="col-lg-5">
-                  <div class="section-header">
-                    <h2 class="section-title">Growth by Design.</h2>
+
+
+        <!--================= SERVICIOS start =================-->
+        <section class="service-2 section section-padding-top-bottom">
+          <div class="container">
+            <div class="row g-2 g-lg-4 justify-content-between align-items-end">
+              <div class="col-lg-5 col-xl-5">
+                <div class="section-header v2 service-2__header header-left">
+                  <h2 class="section-title orvio_title_anim">Servicios</h2>
+                  <p class="orvio_title_anim">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat
+                    euismod ligula. Nunc et lectus lorem. Integer rutrum mauris tellus.</p>
+                </div>
+              </div>
+              <div class="col-lg-7 col-xl-6">
+                <div class="section-header v2 service-2__header header-right">
+                  <p class="orvio_title_anim">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat
+                    euismod ligula. Nunc et lectus lorem. Integer rutrum mauris tellus.</p>
+                  <a href="service.html" class="orvio-btn v3 fade-anim" data-direction="top">
+                    <span class="text">Conoce más</span>
+                    <span class="icon"><i class="fa-solid fa-arrow-right-long"></i></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="row g-4 mt-5">
+              <!-- Service 1: Media & Audiences -->
+              <div class="col-md-6">
+                <div class="new-service-card">
+                  <span class="new-service-number">//01</span>
+                  <h3 class="new-service-title">Media & Audiences</h3>
+
+                  <div class="new-service-sub-area">
+                    <h4 class="new-service-subtitle">Research & Insights</h4>
+                    <ul class="new-service-list">
+                      <li>Asignación y optimización de presupuesto y mix de medios</li>
+                      <li>Investigación de audiencias, consumidor, mercado y tendencias</li>
+                    </ul>
+                  </div>
+
+                  <div class="new-service-sub-area">
+                    <h4 class="new-service-subtitle">Media Planning & Buying</h4>
+                    <ul class="new-service-list">
+                      <li>Planeación efectiva de medios on-off</li>
+                      <li>Compra y negociación de medios</li>
+                    </ul>
                   </div>
                 </div>
-                
-                <!-- Párrafos con fade-in a la derecha -->
-                <div class="col-lg-7">
-                  <div class="section-header">
-                    <p class="growth-paragraph fade-anim" data-delay="0.2">
-                      En un entorno hiperfragmentado y saturado, la atención es escasa y el impacto para generar relevancia, es estratégico.
-                    </p>
-                    <p class="growth-paragraph fade-anim" data-delay="0.4">
-                      Combinamos contextos culturales, hábitos sociales y visión de negocio para desarrollar soluciones eficaces.
-                    </p>
-                    <p class="growth-paragraph fade-anim" data-delay="0.6">
-                      Transformamos datos estáticos en estrategias dinámicas, y así impulsamos a las marcas a tomar decisiones inteligentes.
-                    </p>
-                    <p class="growth-paragraph fade-anim" data-delay="0.8">
-                      No planificamos medios. Diseñamos conexiones que impulsan el desarrollo continuo del negocio.
-                    </p>
+              </div>
+
+              <!-- Service 2: Marketing Effectiveness -->
+              <div class="col-md-6">
+                <div class="new-service-card">
+                  <span class="new-service-number">//02</span>
+                  <h3 class="new-service-title">Marketing Effectiveness</h3>
+
+                  <div class="new-service-sub-area">
+                    <h4 class="new-service-subtitle">Business Assessment</h4>
+                    <ul class="new-service-list">
+                      <li>Marketing Mix Modelling</li>
+                      <li>ROI-ROAS y modelos de atribución</li>
+                    </ul>
+                  </div>
+
+                  <div class="new-service-sub-area">
+                    <h4 class="new-service-subtitle">Intelligence & Analytics</h4>
+                    <ul class="new-service-list">
+                      <li>Reporting & Dashboarding Integral</li>
+                      <li>Database Marketing</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Service 3: Content & Comms -->
+              <div class="col-md-6">
+                <div class="new-service-card">
+                  <span class="new-service-number">//03</span>
+                  <h3 class="new-service-title">Content & Comms</h3>
+
+                  <div class="new-service-sub-area">
+                    <h4 class="new-service-subtitle">Content & Social Media</h4>
+                    <ul class="new-service-list">
+                      <li>Influencer Marketing</li>
+                      <li>Dynamic Content Optimization</li>
+                    </ul>
+                  </div>
+
+                  <div class="new-service-sub-area">
+                    <h4 class="new-service-subtitle">Comms Planning</h4>
+                    <ul class="new-service-list">
+                      <li>Arquitectura de campañas</li>
+                      <li>Planeación Estratégica</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Service 4: Performance Marketing -->
+              <div class="col-md-6">
+                <div class="new-service-card">
+                  <span class="new-service-number">//04</span>
+                  <h3 class="new-service-title">Performance Marketing</h3>
+
+                  <div class="new-service-sub-area">
+                    <h4 class="new-service-subtitle">Inbound & Digital Marketing</h4>
+                    <ul class="new-service-list">
+                      <li>Shop & Social Ads</li>
+                      <li>SEM</li>
+                    </ul>
+                  </div>
+
+                  <div class="new-service-sub-area">
+                    <h4 class="new-service-subtitle">Web & Marketplace</h4>
+                    <ul class="new-service-list">
+                      <li>CRM</li>
+                      <li>UX / CX</li>
+                      <li>SEO</li>
+                    </ul>
                   </div>
                 </div>
               </div>
             </div>
-          </section>
-          <!-- ==================== End GROWTH BY DESIGN ==================== -->
+          </div>
+        </section>
+        <!--================= NEW SERVICES SECTION end =================-->
 
 
-          <!--================= SERVICIOS start =================-->
-          <section class="service-2 section section-padding-top-bottom">
-            <div class="container">
-              <div class="row g-2 g-lg-4 justify-content-between align-items-end">
-                <div class="col-lg-5 col-xl-5">
-                  <div class="section-header v2 service-2__header header-left">
-                    <span class="section-sub-title orvio_title_anim">Servicios</span>
-                    <h2 class="section-title orvio_title_anim">Nuestras áreas de especialidad</h2>
-                    <p class="orvio_title_anim">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat euismod ligula. Nunc et lectus lorem. Integer rutrum mauris tellus.</p>
+        <!--================= NOVEDADES start =================-->
+        <section class="blog-2 section section-padding-bottom">
+          <div class="container">
+            <div class="row">
+              <div class="col-12">
+                <div class="section-header v2">
+                  <!--span class="section-sub-title">Novedades</span-->
+                  <h2 class="section-title">Novedades</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container large-container">
+            <div class="row g-4 row-padding-top">
+              <div class="col-md-6 col-lg-4 col-xxl-3">
+                <div class="blog-2__item fade-anim" data-delay="0.45">
+                  <div class="blog-thumb">
+                    <img src="./assets/images/blog/blog-thumb-2-1.png" alt="blog-thumb" class="w-100" />
+                    <div class="blog-date">
+                      29
+                      <span class="month">AGOSTO</span>
+                    </div>
+                  </div>
+                  <div class="blog-content">
+                    <span class="blog-sub-title">El Economista</span>
+                    <h5 class="blog-title">
+                      <a href="blog-details.html"> Gastronomía mexicana: Su impulso económico </a>
+                    </h5>
                   </div>
                 </div>
-                <div class="col-lg-7 col-xl-6">
-                  <div class="section-header v2 service-2__header header-right">
-                    <p class="orvio_title_anim">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat euismod ligula. Nunc et lectus lorem. Integer rutrum mauris tellus.</p>
-                    <a href="service.html" class="orvio-btn v3 fade-anim" data-direction="top">
-                      <span class="text">Conoce más</span>
-                      <span class="icon"><i class="fa-solid fa-arrow-right-long"></i></span>
-                    </a>
+              </div>
+              <div class="col-md-6 col-lg-4 col-xxl-3">
+                <div class="blog-2__item fade-anim" data-delay="0.60">
+                  <div class="blog-thumb">
+                    <img src="./assets/images/blog/blog-thumb-2-2.png" alt="blog-thumb" class="w-100" />
+                    <div class="blog-date">
+                      30
+                      <span class="month">JULIO</span>
+                    </div>
+                  </div>
+                  <div class="blog-content">
+                    <span class="blog-sub-title">Expansión</span>
+                    <h5 class="blog-title">
+                      <a href="blog-details.html"> El efecto podcast </a>
+                    </h5>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-4 col-xxl-3">
+                <div class="blog-2__item fade-anim" data-delay="0.75">
+                  <div class="blog-thumb">
+                    <img src="./assets/images/blog/blog-thumb-2-3.png" alt="blog-thumb" class="w-100" />
+                    <div class="blog-date">
+                      29
+                      <span class="month">JUNIO</span>
+                    </div>
+                  </div>
+                  <div class="blog-content">
+                    <span class="blog-sub-title">Fast Company</span>
+                    <h5 class="blog-title">
+                      <a href="blog-details.html"> Entrevista a Hugo Gómez Oliver </a>
+                    </h5>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-4 col-xxl-3">
+                <div class="blog-2__item fade-anim" data-delay="0.90">
+                  <div class="blog-thumb">
+                    <img src="./assets/images/blog/blog-thumb-2-4.png" alt="blog-thumb" class="w-100" />
+                    <div class="blog-date">
+                      24
+                      <span class="month">MAYO</span>
+                    </div>
+                  </div>
+                  <div class="blog-content">
+                    <span class="blog-sub-title">Forbes</span>
+                    <h5 class="blog-title">
+                      <a href="blog-details.html"> Mercado de lujo: Saliendo de la zona de confort </a>
+                    </h5>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="container large-container row-padding-top">
-              <div class="row row-padding-top fade-right-section">
-                <div class="col-12">
-                  <div class="service-2__item fade-right-item">
-                    <span class="service-number">//01</span>
-                    <h3 class="service-title">
-                      <a href="service-details.html" data-text="WEB&nbsp;&&nbsp;MARKETPLACE">WEB & MARKETPLACE</a>
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat euismod ligula.</p>
-                    <div class="service-thumb">
-                      <img src="./assets/images/services/service-item-thumb-2-1.png" alt="service-item-thumb" class="w-100" />
-                    </div>
-                  </div>
-                  <div class="service-2__item fade-right-item">
-                    <span class="service-number">//02</span>
-                    <h3 class="service-title">
-                      <a href="service-details.html" data-text="INBOUND&nbsp;&&nbsp;DIGITAL&nbsp;MARKETING">INBOUND & DIGITAL MARKETING</a>
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat euismod ligula.</p>
-                    <div class="service-thumb">
-                      <img src="./assets/images/services/service-item-thumb-2-2.png" alt="service-item-thumb" class="w-100" />
-                    </div>
-                  </div>
-                  <div class="service-2__item fade-right-item">
-                    <span class="service-number">//03</span>
-                    <h3 class="service-title">
-                      <a href="service-details.html" data-text="CONTENT&nbsp;&&nbsp;SOCIAL&nbsp;MEDIA">CONTENT & SOCIAL MEDIA</a>
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat euismod ligula.</p>
-                    <div class="service-thumb">
-                      <img src="./assets/images/services/service-item-thumb-2-3.png" alt="service-item-thumb" class="w-100" />
-                    </div>
-                  </div>
-                  <div class="service-2__item fade-right-item">
-                    <span class="service-number">//04</span>
-                    <h3 class="service-title">
-                      <a href="service-details.html" data-text="COMMS&nbsp;PLANNING">COMMS PLANNING</a>
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat euismod ligula.</p>
-                    <div class="service-thumb">
-                      <img src="./assets/images/services/service-item-thumb-2-4.png" alt="service-item-thumb" class="w-100" />
-                    </div>
-                  </div>
+          </div>
+        </section>
+        <!--================= NOVEDADES end =================-->
+        <!--================= EQUIPO start =================-->
+        <section class="team-2 section section-padding-top-bottom">
+          <div class="container">
+            <div class="row g-2 justify-content-between">
+              <div class="col-md-auto">
+                <div class="section-header v2 team-2__header-left">
+                  <h2 class="section-title">Equipo</h2>
+                </div>
+              </div>
+              <div class="col-md-7 col-xl-5">
+                <div class="section-header team-2__header-right">
+                  <h2 class="section-title tp_text_invert">Especialistas apasionados en llevar tu empresa a su mejor
+                    momento</h2>
+                  <a href="team.html" class="orvio-btn v3">
+                    <span class="text">Conoce a todos</span>
+                    <span class="icon"><i class="fa-solid fa-arrow-right-long"></i></span>
+                  </a>
                 </div>
               </div>
             </div>
-          </section>
-          <!--================= SERVICES end =================-->
-
-           <!-- ==================== Start CLIENTS ==================== -->
-
-                <div class="marq-brand">
-                  <div class="row">
-                    <div class="col-12">
-                      <div class="brands-2__header">
-                        <span class="title orvio_title_anim">Nuestros Clientes & Partners</span>
+          </div>
+          <div class="container large-container">
+            <div class="team-slider-wrapper">
+              <div class="swiper team-slider">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="team-2__item fade-anim" data-delay="0.3">
+                      <div class="team-thumb">
+                        <img src="./assets/images/team/team-thumb-2-1.png" alt="team-thumb" class="w-100" />
                       </div>
-                    </div>
-                  </div>
-                    <div class="main-marq">
-                        <div class="slide-har st1">
-                            <div class="box">
-                                <div class="item-marq">
-                                    <a href="#0">
-                                        <img src="assets/images/clients/1.svg" alt="">
-                                    </a>
-                                </div>
-                                <div class="item-marq">
-                                    <a href="#0">
-                                        <img src="assets/images/clients/2.svg" alt="">
-                                    </a>
-                                </div>
-                                <div class="item-marq">
-                                    <a href="#0">
-                                        <img src="assets/images/clients/3.svg" alt="">
-                                    </a>
-                                </div>
-                                <div class="item-marq">
-                                    <a href="#0">
-                                        <img src="assets/images/clients/4.svg" alt="">
-                                    </a>
-                                </div>
-                                <div class="item-marq">
-                                    <a href="#0">
-                                        <img src="assets/images/clients/1.svg" alt="">
-                                    </a>
-                                </div>
-                                <div class="item-marq">
-                                    <a href="#0">
-                                        <img src="assets/images/clients/2.svg" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="box">
-                                <div class="item-marq">
-                                    <a href="#0">
-                                        <img src="assets/images/clients/1.svg" alt="">
-                                    </a>
-                                </div>
-                                <div class="item-marq">
-                                    <a href="#0">
-                                        <img src="assets/images/clients/2.svg" alt="">
-                                    </a>
-                                </div>
-                                <div class="item-marq">
-                                    <a href="#0">
-                                        <img src="assets/images/clients/3.svg" alt="">
-                                    </a>
-                                </div>
-                                <div class="item-marq">
-                                    <a href="#0">
-                                        <img src="assets/images/clients/4.svg" alt="">
-                                    </a>
-                                </div>
-                                <div class="item-marq">
-                                    <a href="#0">
-                                        <img src="assets/images/clients/1.svg" alt="">
-                                    </a>
-                                </div>
-                                <div class="item-marq">
-                                    <a href="#0">
-                                        <img src="assets/images/clients/2.svg" alt="">
-                                    </a>
-                                </div>
-                            </div>
+                      <div class="team-content">
+                        <span class="designation">Global Company Lead</span>
+                        <h5 class="title">
+                          <a href="team-details.html">Enrico Campochiaro</a>
+                        </h5>
+
+                        <div class="social">
+                          <ul>
+                            <li>
+                              <a href="#"><i class="fa-light fa-share-nodes"></i></a>
+                            </li>
+                            <li>
+                              <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                            </li>
+                            <li>
+                              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            </li>
+                          </ul>
                         </div>
+                      </div>
                     </div>
-                    <div class="main-marq">
-                        <div class="slide-har st2">
-                            <div class="box">
-                                <div class="item-marq">
-                                    <a href="#0">
-                                        <img src="assets/images/clients/1.svg" alt="">
-                                    </a>
-                                </div>
-                                <div class="item-marq">
-                                    <a href="#0">
-                                        <img src="assets/images/clients/2.svg" alt="">
-                                    </a>
-                                </div>
-                                <div class="item-marq">
-                                    <a href="#0">
-                                        <img src="assets/images/clients/3.svg" alt="">
-                                    </a>
-                                </div>
-                                <div class="item-marq">
-                                    <a href="#0">
-                                        <img src="assets/images/clients/4.svg" alt="">
-                                    </a>
-                                </div>
-                                <div class="item-marq">
-                                    <a href="#0">
-                                        <img src="assets/images/clients/1.svg" alt="">
-                                    </a>
-                                </div>
-                                <div class="item-marq">
-                                    <a href="#0">
-                                        <img src="assets/images/clients/2.svg" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="box">
-                                <div class="item-marq">
-                                    <a href="#0">
-                                        <img src="assets/images/clients/1.svg" alt="">
-                                    </a>
-                                </div>
-                                <div class="item-marq">
-                                    <a href="#0">
-                                        <img src="assets/images/clients/2.svg" alt="">
-                                    </a>
-                                </div>
-                                <div class="item-marq">
-                                    <a href="#0">
-                                        <img src="assets/images/clients/3.svg" alt="">
-                                    </a>
-                                </div>
-                                <div class="item-marq">
-                                    <a href="#0">
-                                        <img src="assets/images/clients/4.svg" alt="">
-                                    </a>
-                                </div>
-                                <div class="item-marq">
-                                    <a href="#0">
-                                        <img src="assets/images/clients/1.svg" alt="">
-                                    </a>
-                                </div>
-                                <div class="item-marq">
-                                    <a href="#0">
-                                        <img src="assets/images/clients/2.svg" alt="">
-                                    </a>
-                                </div>
-                            </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="team-2__item fade-anim" data-delay="0.5">
+                      <div class="team-thumb">
+                        <img src="./assets/images/team/team-thumb-2-2.png" alt="team-thumb" class="w-100" />
+                      </div>
+                      <div class="team-content">
+                        <span class="designation">CEO México</span>
+                        <h5 class="title">
+                          <a href="team-details.html">Hugo Gómez</a>
+                        </h5>
+
+                        <div class="social">
+                          <ul>
+                            <li>
+                              <a href="#"><i class="fa-light fa-share-nodes"></i></a>
+                            </li>
+                            <li>
+                              <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                            </li>
+                            <li>
+                              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            </li>
+                          </ul>
                         </div>
-                    </div>
-                </div>
-
-                <!-- ==================== End CLIENTS ==================== -->
-
-          <!--================= EQUIPO start =================-->
-          <section class="team-2 section section-padding-top-bottom">
-            <div class="container">
-              <div class="row g-2 justify-content-between">
-                <div class="col-md-auto">
-                  <div class="section-header v2 team-2__header-left">
-                    <span class="section-highlight">Nuestro Equipo</span>
-                  </div>
-                </div>
-                <div class="col-md-7 col-xl-5">
-                  <div class="section-header team-2__header-right">
-                    <h2 class="section-title tp_text_invert">Especialistas apasionados en llevar tu empresa a su mejor momento</h2>
-                    <a href="team.html" class="orvio-btn v3">
-                      <span class="text">Conoce a todos</span>
-                      <span class="icon"><i class="fa-solid fa-arrow-right-long"></i></span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="container large-container">
-              <div class="row g-4 row-padding-top">
-                <div class="col-md-6 col-lg-4 col-xxl-3">
-                  <div class="team-2__item fade-anim" data-delay="0.3">
-                    <div class="team-thumb">
-                      <img src="./assets/images/team/team-thumb-2-1.png" alt="team-thumb" class="w-100" />
-                    </div>
-                    <div class="team-content">
-                      <span class="designation">Global Company Lead</span>
-                      <h5 class="title">
-                        <a href="team-details.html">Enrico Campochiaro</a>
-                      </h5>
-
-                      <div class="social">
-                        <ul>
-                          <li>
-                            <a href="#"><i class="fa-light fa-share-nodes"></i></a>
-                          </li>
-                          <li>
-                            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                          </li>
-                          <li>
-                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                          </li>
-                        </ul>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xxl-3">
-                  <div class="team-2__item fade-anim" data-delay="0.5">
-                    <div class="team-thumb">
-                      <img src="./assets/images/team/team-thumb-2-2.png" alt="team-thumb" class="w-100" />
-                    </div>
-                    <div class="team-content">
-                      <span class="designation">CEO México</span>
-                      <h5 class="title">
-                        <a href="team-details.html">Hugo Gómez</a>
-                      </h5>
+                  <div class="swiper-slide">
+                    <div class="team-2__item fade-anim" data-delay="0.7">
+                      <div class="team-thumb">
+                        <img src="./assets/images/team/team-thumb-2-3.png" alt="team-thumb" class="w-100" />
+                      </div>
+                      <div class="team-content">
+                        <span class="designation">CEO Argentina</span>
+                        <h5 class="title">
+                          <a href="team-details.html">Fabián Basteguieta</a>
+                        </h5>
 
-                      <div class="social">
-                        <ul>
-                          <li>
-                            <a href="#"><i class="fa-light fa-share-nodes"></i></a>
-                          </li>
-                          <li>
-                            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                          </li>
-                          <li>
-                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                          </li>
-                        </ul>
+                        <div class="social">
+                          <ul>
+                            <li>
+                              <a href="#"><i class="fa-light fa-share-nodes"></i></a>
+                            </li>
+                            <li>
+                              <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                            </li>
+                            <li>
+                              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            </li>
+                          </ul>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xxl-3">
-                  <div class="team-2__item fade-anim" data-delay="0.7">
-                    <div class="team-thumb">
-                      <img src="./assets/images/team/team-thumb-2-3.png" alt="team-thumb" class="w-100" />
-                    </div>
-                    <div class="team-content">
-                      <span class="designation">CEO Argentina</span>
-                      <h5 class="title">
-                        <a href="team-details.html">Fabián Basteguieta</a>
-                      </h5>
-
-                      <div class="social">
-                        <ul>
-                          <li>
-                            <a href="#"><i class="fa-light fa-share-nodes"></i></a>
-                          </li>
-                          <li>
-                            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                          </li>
-                          <li>
-                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                          </li>
-                        </ul>
+                  <div class="swiper-slide">
+                    <div class="team-2__item fade-anim" data-delay="0.9">
+                      <div class="team-thumb">
+                        <img src="./assets/images/team/team-thumb-2-4.png" alt="team-thumb" class="w-100" />
                       </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xxl-3">
-                  <div class="team-2__item fade-anim" data-delay="0.9">
-                    <div class="team-thumb">
-                      <img src="./assets/images/team/team-thumb-2-4.png" alt="team-thumb" class="w-100" />
-                    </div>
-                    <div class="team-content">
-                      <span class="designation">CEO Chile</span>
-                      <h5 class="title">
-                        <a href="team-details.html">Cristián León</a>
-                      </h5>
-                      <div class="social">
-                        <ul>
-                          <li>
-                            <a href="#"><i class="fa-light fa-share-nodes"></i></a>
-                          </li>
-                          <li>
-                            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                          </li>
-                          <li>
-                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                          </li>
-                        </ul>
+                      <div class="team-content">
+                        <span class="designation">CEO Chile</span>
+                        <h5 class="title">
+                          <a href="team-details.html">Cristián León</a>
+                        </h5>
+                        <div class="social">
+                          <ul>
+                            <li>
+                              <a href="#"><i class="fa-light fa-share-nodes"></i></a>
+                            </li>
+                            <li>
+                              <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                            </li>
+                            <li>
+                              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            </li>
+                          </ul>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <button type="button" class="team-slider-arrow team-slider-prev" aria-label="Slide anterior">
+                <i class="fa-solid fa-arrow-left-long"></i>
+              </button>
+              <button type="button" class="team-slider-arrow team-slider-next" aria-label="Slide siguiente">
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </button>
+              <div class="swiper-pagination team-slider-pagination"></div>
             </div>
-          </section>
-          <!--================= EQUIPO end =================-->
+          </div>
+        </section>
+        <!--================= EQUIPO end =================-->
 
- <!-- ================= CONNECTIONS start ================= -->
-          <section class="work-7 section section-padding-top-bottom">
-            <img
-              src="./assets/images/page-6/work/work-bg-shape.png"
-              alt="work-bg-shape"
-              class="bg-shape"
-            />
-            <div class="container">
-              <div class="row gy-2 justify-content-between align-items-end">
-                <div class="col-xl-auto">
-                  <div class="section-header">
-                    <h2 class="section-title orvio_title_anim">
-                      CONNECTION
-                      <br class="d-none d-xl-inline-block" />
-                      TRENDS
-                    </h2>
-                  </div>
+        <!-- ================= CONNECTIONS start ================= -->
+        <section class="work-7 section section-padding-top-bottom">
+          <img src="./assets/images/page-6/work/work-bg-shape.png" alt="work-bg-shape" class="bg-shape" />
+          <div class="container">
+            <div class="row gy-2 justify-content-between align-items-end">
+              <div class="col-xl-auto">
+                <div class="section-header">
+                  <h2 class="section-title orvio_title_anim">
+                    CONNECTION
+                    <br class="d-none d-xl-inline-block" />
+                    TRENDS
+                  </h2>
                 </div>
-                <div class="col-md-auto">
-                  <div class="section-header">
-                  </div>
+              </div>
+              <div class="col-md-auto">
+                <div class="section-header">
                 </div>
-                <div class="col-md-auto">
-                  <div class="section-header">
-                    <a href="./work.html" class="orvio-btn13 v2">
-                      <span class="filter-icon">
-                        <svg width="0" height="0">
-                          <defs>
-                            <filter id="buttonFilter">
-                              <feGaussianBlur
-                                in="SourceGraphic"
-                                stdDeviation="5"
-                                result="blur"
-                              ></feGaussianBlur>
-                              <feColorMatrix
-                                in="blur"
-                                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-                              ></feColorMatrix>
-                              <feComposite
-                                in="SourceGraphic"
-                                in2="buttonFilter5"
-                                operator="atop"
-                              ></feComposite>
-                              <feBlend
-                                in="SourceGraphic"
-                                in2="buttonFilter5"
-                              ></feBlend>
-                            </filter>
-                          </defs>
+              </div>
+              <div class="col-md-auto">
+                <div class="section-header">
+                  <a href="./work.html" class="orvio-btn13 v2">
+                    <span class="filter-icon">
+                      <svg width="0" height="0">
+                        <defs>
+                          <filter id="buttonFilter">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"></feGaussianBlur>
+                            <feColorMatrix in="blur" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9">
+                            </feColorMatrix>
+                            <feComposite in="SourceGraphic" in2="buttonFilter5" operator="atop"></feComposite>
+                            <feBlend in="SourceGraphic" in2="buttonFilter5"></feBlend>
+                          </filter>
+                        </defs>
+                      </svg>
+                    </span>
+
+                    <span class="btn-content" style="filter: url(#buttonFilter)">
+                      <span class="btn-text">Ver más</span>
+                      <span class="btn-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="13" viewBox="0 0 17 13" fill="none">
+                          <path
+                            d="M1.5 5.75C1.08579 5.75 0.75 6.08579 0.75 6.5C0.75 6.91421 1.08579 7.25 1.5 7.25V6.5V5.75ZM16.0303 7.03033C16.3232 6.73744 16.3232 6.26256 16.0303 5.96967L11.2574 1.1967C10.9645 0.903806 10.4896 0.903806 10.1967 1.1967C9.90381 1.48959 9.90381 1.96447 10.1967 2.25736L14.4393 6.5L10.1967 10.7426C9.90381 11.0355 9.90381 11.5104 10.1967 11.8033C10.4896 12.0962 10.9645 12.0962 11.2574 11.8033L16.0303 7.03033ZM1.5 6.5V7.25H15.5V6.5V5.75H1.5V6.5Z"
+                            fill="currentColor"></path>
                         </svg>
                       </span>
-
-                      <span
-                        class="btn-content"
-                        style="filter: url(#buttonFilter)"
-                      >
-                        <span class="btn-text">Ver más</span>
-                        <span class="btn-circle">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="17"
-                            height="13"
-                            viewBox="0 0 17 13"
-                            fill="none"
-                          >
-                            <path
-                              d="M1.5 5.75C1.08579 5.75 0.75 6.08579 0.75 6.5C0.75 6.91421 1.08579 7.25 1.5 7.25V6.5V5.75ZM16.0303 7.03033C16.3232 6.73744 16.3232 6.26256 16.0303 5.96967L11.2574 1.1967C10.9645 0.903806 10.4896 0.903806 10.1967 1.1967C9.90381 1.48959 9.90381 1.96447 10.1967 2.25736L14.4393 6.5L10.1967 10.7426C9.90381 11.0355 9.90381 11.5104 10.1967 11.8033C10.4896 12.0962 10.9645 12.0962 11.2574 11.8033L16.0303 7.03033ZM1.5 6.5V7.25H15.5V6.5V5.75H1.5V6.5Z"
-                              fill="currentColor"
-                            ></path>
-                          </svg>
-                        </span>
-                      </span>
-                    </a>
-                  </div>
+                    </span>
+                  </a>
                 </div>
               </div>
-              <div class="row g-4 justify-content-center row-padding-top">
-                <div class="col-xxl-8">
-                  <div class="work-7__item-wrapper">
-                    <div class="work-7__item sticky-item">
-                      <div class="item-thumb">
-                        <img
-                          src="./assets/images/page-6/work/work-thumb-1.png"
-                          alt="work-thumb"
-                          class="w-100"
-                        />
-                      </div>
-                      <div class="item-content">
-                        <div class="tags">
-                          <a href="./work-details.html">DESCARGAR</a>
-                        </div>
-                        <h4 class="item-title">
-                          <a href="./work-details.html">Turismo de ultra lujo: Claves y tendencias 2025</a>
-                        </h4>
-                      </div>
+            </div>
+            <div class="row g-4 justify-content-center row-padding-top">
+              <div class="col-xxl-8">
+                <div class="work-7__item-wrapper">
+                  <div class="work-7__item sticky-item">
+                    <div class="item-thumb">
+                      <img src="./assets/images/page-6/work/work-thumb-1.png" alt="work-thumb" class="w-100" />
                     </div>
-                    <div class="work-7__item sticky-item">
-                      <div class="item-thumb">
-                        <img
-                          src="./assets/images/page-6/work/work-thumb-2.png"
-                          alt="work-thumb"
-                          class="w-100"
-                        />
+                    <div class="item-content">
+                      <div class="tags">
+                        <a href="./work-details.html">DESCARGAR</a>
                       </div>
-                      <div class="item-content">
-                        <div class="tags">
-                          <a href="./work-details.html">DESCARGAR</a>
-                        </div>
-                        <h4 class="item-title">
-                          <a href="./work-details.html"
-                            >Mercado de lujo: Saliendo de la zona de confort</a
-                          >
-                        </h4>
-                      </div>
+                      <h4 class="item-title">
+                        <a href="./work-details.html">Turismo de ultra lujo: Claves y tendencias 2025</a>
+                      </h4>
                     </div>
-                    <div class="work-7__item sticky-item">
-                      <div class="item-thumb">
-                        <img
-                          src="./assets/images/page-6/work/work-thumb-3.png"
-                          alt="work-thumb"
-                          class="w-100"
-                        />
+                  </div>
+                  <div class="work-7__item sticky-item">
+                    <div class="item-thumb">
+                      <img src="./assets/images/page-6/work/work-thumb-2.png" alt="work-thumb" class="w-100" />
+                    </div>
+                    <div class="item-content">
+                      <div class="tags">
+                        <a href="./work-details.html">DESCARGAR</a>
                       </div>
-                      <div class="item-content">
-                        <div class="tags">
-                          <a href="./work-details.html">DESCARGAR</a>
+                      <h4 class="item-title">
+                        <a href="./work-details.html">Mercado de lujo: Saliendo de la zona de confort</a>
+                      </h4>
+                    </div>
+                  </div>
+                  <div class="work-7__item sticky-item">
+                    <div class="item-thumb">
+                      <img src="./assets/images/page-6/work/work-thumb-3.png" alt="work-thumb" class="w-100" />
+                    </div>
+                    <div class="item-content">
+                      <div class="tags">
+                        <a href="./work-details.html">DESCARGAR</a>
                         <h4 class="item-title">
                           <a href="./work-details.html">AI en Marketing: Presente y futuro</a>
                         </h4>
@@ -1626,11 +1921,7 @@ input, textarea, select {
                     </div>
                     <div class="work-7__item sticky-item">
                       <div class="item-thumb">
-                        <img
-                          src="./assets/images/page-6/work/work-thumb-4.png"
-                          alt="work-thumb"
-                          class="w-100"
-                        />
+                        <img src="./assets/images/page-6/work/work-thumb-4.png" alt="work-thumb" class="w-100" />
                       </div>
                       <div class="item-content">
                         <div class="tags">
@@ -1645,317 +1936,398 @@ input, textarea, select {
                 </div>
               </div>
             </div>
-          </section>
-          <!-- ================= CONNECTIONS end ================= -->
+        </section>
+        <!-- ================= CONNECTIONS end ================= -->
 
-          <!--================= NOVEDADES start =================-->
-          <section class="blog-2 section section-padding-bottom">
-            <div class="container">
-              <div class="row">
-                <div class="col-12">
-                  <div class="section-header v2">
-                    <span class="section-sub-title">Novedades</span>
-                    <h2 class="section-title">Artículos recientes</h2>
-                  </div>
+
+
+
+
+        <!-- ==================== Start CLIENTS ==================== -->
+
+        <div class="marq-brand">
+          <div class="row">
+            <div class="col-12">
+              <div class="brands-2__header">
+                <h2 class="title orvio_title_anim">Clientes & Partners</h2>
+              </div>
+            </div>
+          </div>
+
+          <!-- Special Partners Section -->
+          <div class="container special-partners-grid">
+            <div class="row g-4 justify-content-center">
+              <!-- Partner 1 -->
+              <div class="col-6 col-md-3">
+                <div class="special-partner-item" data-delay="0.2">
+                  <img src="assets/images/partners/google-partner.jpeg" alt="Google Partner">
+                </div>
+              </div>
+              <!-- Partner 2 -->
+              <div class="col-6 col-md-3">
+                <div class="special-partner-item" data-delay="0.4">
+                  <img src="assets/images/partners/facebook-partner.jpeg" alt="Facebook Partner">
+                </div>
+              </div>
+              <!-- Partner 3 -->
+              <div class="col-6 col-md-3">
+                <div class="special-partner-item" data-delay="0.6">
+                  <img src="assets/images/partners/scopen.jpeg" alt="Scopen">
+                </div>
+              </div>
+              <!-- Partner 4 -->
+              <div class="col-6 col-md-3">
+                <div class="special-partner-item" data-delay="0.8">
+                  <img src="assets/images/partners/effi-argentina.jpeg" alt="Effie Argentina">
                 </div>
               </div>
             </div>
-            <div class="container large-container">
-              <div class="row g-4 row-padding-top">
-                <div class="col-md-6 col-lg-4 col-xxl-3">
-                  <div class="blog-2__item fade-anim" data-delay="0.45">
-                    <div class="blog-thumb">
-                      <img src="./assets/images/blog/blog-thumb-2-1.png" alt="blog-thumb" class="w-100" />
-                      <div class="blog-date">
-                        29
-                        <span class="month">AGOSTO</span>
-                      </div>
-                    </div>
-                    <div class="blog-content">
-                      <span class="blog-sub-title">El Economista</span>
-                      <h5 class="blog-title">
-                        <a href="blog-details.html"> Gastronomía mexicana: Su impulso económico </a>
-                      </h5>
-                    </div>
-                  </div>
+          </div>
+          <!-- End Special Partners Section -->
+
+          <div class="main-marq">
+            <div class="slide-har st1">
+              <div class="box">
+                <div class="item-marq">
+                  <a href="#0">
+                    <img src="assets/images/clients/1.svg" alt="">
+                  </a>
                 </div>
-                <div class="col-md-6 col-lg-4 col-xxl-3">
-                  <div class="blog-2__item fade-anim" data-delay="0.60">
-                    <div class="blog-thumb">
-                      <img src="./assets/images/blog/blog-thumb-2-2.png" alt="blog-thumb" class="w-100" />
-                      <div class="blog-date">
-                        30
-                        <span class="month">JULIO</span>
-                      </div>
-                    </div>
-                    <div class="blog-content">
-                      <span class="blog-sub-title">Expansión</span>
-                      <h5 class="blog-title">
-                        <a href="blog-details.html"> El efecto podcast </a>
-                      </h5>
-                    </div>
-                  </div>
+                <div class="item-marq">
+                  <a href="#0">
+                    <img src="assets/images/clients/2.svg" alt="">
+                  </a>
                 </div>
-                <div class="col-md-6 col-lg-4 col-xxl-3">
-                  <div class="blog-2__item fade-anim" data-delay="0.75">
-                    <div class="blog-thumb">
-                      <img src="./assets/images/blog/blog-thumb-2-3.png" alt="blog-thumb" class="w-100" />
-                      <div class="blog-date">
-                        29
-                        <span class="month">JUNIO</span>
-                      </div>
-                    </div>
-                    <div class="blog-content">
-                      <span class="blog-sub-title">Fast Company</span>
-                      <h5 class="blog-title">
-                        <a href="blog-details.html"> Entrevista a Hugo Gómez Oliver </a>
-                      </h5>
-                    </div>
-                  </div>
+                <div class="item-marq">
+                  <a href="#0">
+                    <img src="assets/images/clients/3.svg" alt="">
+                  </a>
                 </div>
-                <div class="col-md-6 col-lg-4 col-xxl-3">
-                  <div class="blog-2__item fade-anim" data-delay="0.90">
-                    <div class="blog-thumb">
-                      <img src="./assets/images/blog/blog-thumb-2-4.png" alt="blog-thumb" class="w-100" />
-                      <div class="blog-date">
-                        24
-                        <span class="month">MAYO</span>
-                      </div>
-                    </div>
-                    <div class="blog-content">
-                      <span class="blog-sub-title">Forbes</span>
-                      <h5 class="blog-title">
-                        <a href="blog-details.html"> Mercado de lujo: Saliendo de la zona de confort </a>
-                      </h5>
-                    </div>
-                  </div>
+                <div class="item-marq">
+                  <a href="#0">
+                    <img src="assets/images/clients/4.svg" alt="">
+                  </a>
+                </div>
+                <div class="item-marq">
+                  <a href="#0">
+                    <img src="assets/images/clients/1.svg" alt="">
+                  </a>
+                </div>
+                <div class="item-marq">
+                  <a href="#0">
+                    <img src="assets/images/clients/2.svg" alt="">
+                  </a>
+                </div>
+              </div>
+              <div class="box">
+                <div class="item-marq">
+                  <a href="#0">
+                    <img src="assets/images/clients/1.svg" alt="">
+                  </a>
+                </div>
+                <div class="item-marq">
+                  <a href="#0">
+                    <img src="assets/images/clients/2.svg" alt="">
+                  </a>
+                </div>
+                <div class="item-marq">
+                  <a href="#0">
+                    <img src="assets/images/clients/3.svg" alt="">
+                  </a>
+                </div>
+                <div class="item-marq">
+                  <a href="#0">
+                    <img src="assets/images/clients/4.svg" alt="">
+                  </a>
+                </div>
+                <div class="item-marq">
+                  <a href="#0">
+                    <img src="assets/images/clients/1.svg" alt="">
+                  </a>
+                </div>
+                <div class="item-marq">
+                  <a href="#0">
+                    <img src="assets/images/clients/2.svg" alt="">
+                  </a>
                 </div>
               </div>
             </div>
-          </section>
-          <!--================= NOVEDADES end =================-->
-
-          <!--================= BANNER start =================-->
-          <section class="newsletter-2 section section-padding-top-bottom" data-bg-src="./assets/images/newsletter/newsletter-2-bg.png">
-            <img src="./assets/images/newsletter/newsletter-2-shape-1.png" alt="newsletter-2__shape-1" class="newsletter-2__shape-1" />
-            <div class="container">
-              <div class="row">
-                <div class="col-12">
-                  <div class="section-header v2 ondark newsletter-2__content">
-                    <span class="section-sub-title"> Diseñamos conexiones que
-impulsan el desarrollo continuo del negocio </span>
-                    <h2 class="section-title fade-anim">
-                      ¡HAGAMOS
-                      <img src="./assets/images/newsletter/newsletter-2-shape-2.png" alt="newsletter-2-shape" class="shape-1" />
-                      ALGO
-                    </h2>
-                    <div class="section-title line-2 fade-anim">
-                      MUY
-                      <span class="current-year"> </span>
-                      CREATIVO!
-
-                      <div class="contact-button">
-                        <a href="contact.html" class="contact">
-                          <span class="icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="85" height="85" viewBox="0 0 85 85" fill="none">
-                              <path d="M85 85.0005H75.0626V16.964L7.02608 85.0005L0 77.9744L68.0365 9.93791L0 9.93743V0L85 0.00047338V85.0005Z" fill="white" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="85" height="85" viewBox="0 0 85 85" fill="none">
-                              <path d="M85 85.0005H75.0626V16.964L7.02608 85.0005L0 77.9744L68.0365 9.93791L0 9.93743V0L85 0.00047338V85.0005Z" fill="white" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="85" height="85" viewBox="0 0 85 85" fill="none">
-                              <path d="M85 85.0005H75.0626V16.964L7.02608 85.0005L0 77.9744L68.0365 9.93791L0 9.93743V0L85 0.00047338V85.0005Z" fill="white" />
-                            </svg>
-                          </span>
-                        </a>
-                        <span class="text">PONTE EN CONTACTO</span>
-                      </div>
-                    </div>
-                  </div>
+          </div>
+          <div class="main-marq">
+            <div class="slide-har st2">
+              <div class="box">
+                <div class="item-marq">
+                  <a href="#0">
+                    <img src="assets/images/clients/1.svg" alt="">
+                  </a>
+                </div>
+                <div class="item-marq">
+                  <a href="#0">
+                    <img src="assets/images/clients/2.svg" alt="">
+                  </a>
+                </div>
+                <div class="item-marq">
+                  <a href="#0">
+                    <img src="assets/images/clients/3.svg" alt="">
+                  </a>
+                </div>
+                <div class="item-marq">
+                  <a href="#0">
+                    <img src="assets/images/clients/4.svg" alt="">
+                  </a>
+                </div>
+                <div class="item-marq">
+                  <a href="#0">
+                    <img src="assets/images/clients/1.svg" alt="">
+                  </a>
+                </div>
+                <div class="item-marq">
+                  <a href="#0">
+                    <img src="assets/images/clients/2.svg" alt="">
+                  </a>
+                </div>
+              </div>
+              <div class="box">
+                <div class="item-marq">
+                  <a href="#0">
+                    <img src="assets/images/clients/1.svg" alt="">
+                  </a>
+                </div>
+                <div class="item-marq">
+                  <a href="#0">
+                    <img src="assets/images/clients/2.svg" alt="">
+                  </a>
+                </div>
+                <div class="item-marq">
+                  <a href="#0">
+                    <img src="assets/images/clients/3.svg" alt="">
+                  </a>
+                </div>
+                <div class="item-marq">
+                  <a href="#0">
+                    <img src="assets/images/clients/4.svg" alt="">
+                  </a>
+                </div>
+                <div class="item-marq">
+                  <a href="#0">
+                    <img src="assets/images/clients/1.svg" alt="">
+                  </a>
+                </div>
+                <div class="item-marq">
+                  <a href="#0">
+                    <img src="assets/images/clients/2.svg" alt="">
+                  </a>
                 </div>
               </div>
             </div>
-          </section>
-          <!--================= newsletter section end =================-->
-        </main>
+          </div>
+        </div>
 
-        
-                <!-- ==================== Start Footer ==================== -->
+        <!-- ==================== End CLIENTS ==================== -->
 
-                <footer class="pt-80px pb-50px">
-                  <div class="call-action-style2">
-                      <div class="main-marq lg-text text-uppercase">
-                          <div class="slide-har st1">
-                              <div class="box">
-                                  <div class="item-marq">
-                                      <h2>TRABAJEMOS</h2>
-                                  </div>
-                                  <div class="item-marq">
-                                      <h2> JUNTOS</h2>
-                                  </div>
-                                  <div class="item-marq">
-                                      <h2>TRABAJEMOS</h2>
-                                  </div>
-                                  <div class="item-marq">
-                                      <h2> JUNTOS</h2>
-                                  </div>
-                                   <div class="item-marq">
-                                      <h2>TRABAJEMOS</h2>
-                                  </div>
-                                  <div class="item-marq">
-                                      <h2> JUNTOS</h2>
-                                  </div>
-                              </div>
-                              <div class="box">
-                                  <div class="item-marq">
-                                      <h2>TRABAJEMOS</h2>
-                                  </div>
-                                  <div class="item-marq">
-                                      <h2> JUNTOS</h2>
-                                  </div>
-                                  <div class="item-marq">
-                                      <h2>TRABAJEMOS</h2>
-                                  </div>
-                                  <div class="item-marq">
-                                      <h2> JUNTOS</h2>
-                                  </div>
-                                    <div class="item-marq">
-                                      <h2>TRABAJEMOS</h2>
-                                  </div>
-                                  <div class="item-marq">
-                                      <h2> JUNTOS</h2>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="container mt-80px">
-                      <div class="row">
-                          <div class="col-lg-3">
-                              <div class="social-icon-circle md-mb50">
-                                  <a href="#"> <i class="fab fa-x-twitter"></i> </a>
-                                  <a href="#"> <i class="fab fa-facebook-f"></i> </a>
-                                  <a href="#"> <i class="fab fa-instagram"></i> </a>
-                                  <a href="#"> <i class="fab fa-linkedin-in"></i> </a>
-                                  <a href="#"> <i class="fab fa-youtube"></i> </a>
-                              </div>
-                          </div>
-                          <div class="col-lg-3">
-                              <div class="item md-mb30">
-                                  <h6 class="mb-30px">CDMX</h6>
-                                  <p class="fs-14 mb-5px">Av. Ejército Nacional 425-102, col. Granada</p>
-                                  <p class="fs-14 mb-5px">Miguel Hidalgo C.P.11520</p>
-                                  <p class="fs-14">+52 55 8659 8900</p>
-                              </div>
-                          </div>
-                          <div class="col-lg-3">
-                              <div class="item">
-                                  <h6 class="mb-30px">BUENOS AIRES</h6>
-                                  <p class="fs-14 mb-5px">Arribeños 3619 - Piso 8</p>
-                                  <p class="fs-14 mb-5px">Nuñez - C.P. 1429</p>
-                                  <p class="fs-14">CABA</p>
-                              </div>
-                          </div>
-            <div class="col-lg-3">
-                              <div class="item">
-                                  <h6 class="mb-30px">LIMA</h6>
-                                  <p class="fs-14 mb-5px">Calle Monte Rosa 240</p>
-                                  <p class="fs-14 mb-5px">Of. 1004</p>
-                                  <p class="fs-14">Santiago de Surco</p>
-                              </div>
-                          </div>
-                      </div>
-                      
-                  </div>
-              </footer>
+      </main>
+      <!-- ==================== Start Footer ==================== -->
 
-              <!-- ==================== End Footer ==================== -->
+      <footer class="pt-80px pb-50px">
+        <div class="call-action-style2">
+          <div class="main-marq lg-text text-uppercase">
+            <div class="slide-har st1">
+              <div class="box">
+                <div class="item-marq">
+                  <h2>TRABAJEMOS</h2>
+                </div>
+                <div class="item-marq">
+                  <h2> JUNTOS</h2>
+                </div>
+                <div class="item-marq">
+                  <h2>TRABAJEMOS</h2>
+                </div>
+                <div class="item-marq">
+                  <h2> JUNTOS</h2>
+                </div>
+                <div class="item-marq">
+                  <h2>TRABAJEMOS</h2>
+                </div>
+                <div class="item-marq">
+                  <h2> JUNTOS</h2>
+                </div>
+              </div>
+              <div class="box">
+                <div class="item-marq">
+                  <h2>TRABAJEMOS</h2>
+                </div>
+                <div class="item-marq">
+                  <h2> JUNTOS</h2>
+                </div>
+                <div class="item-marq">
+                  <h2>TRABAJEMOS</h2>
+                </div>
+                <div class="item-marq">
+                  <h2> JUNTOS</h2>
+                </div>
+                <div class="item-marq">
+                  <h2>TRABAJEMOS</h2>
+                </div>
+                <div class="item-marq">
+                  <h2> JUNTOS</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container mt-80px">
+          <div class="row footer-office-row">
+            <div class="col-6 col-md-4 col-lg-2">
+              <div class="item office-info md-mb30">
+                <h6>CDMX</h6>
+                <p>Av. Ejército Nacional 425-102</p>
+                <p>Col. Granada</p>
+                <p>Miguel Hidalgo C.P.11520</p>
+                <p>+52 55 8659 8900</p>
+              </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+              <div class="item office-info md-mb30">
+                <h6>BUENOS AIRES</h6>
+                <p>Arribeños 3619 – Piso 8</p>
+                <p>Nuñez – C.P. 1429</p>
+                <p>CABA</p>
+              </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+              <div class="item office-info md-mb30">
+                <h6>LIMA</h6>
+                <p>Calle Monte Rosa 240</p>
+                <p>Of. 1004</p>
+                <p>Santiago de Surco</p>
+              </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+              <div class="item office-info md-mb30">
+                <h6>MIAMI</h6>
+                <p>55SW 9ST Brickell</p>
+                <p>Zip Code 33130</p>
+                <p>Florida</p>
+              </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+              <div class="item office-info md-mb30">
+                <h6>PARAGUAY</h6>
+                <p>José Berges esquina</p>
+                <p>Gral. Mariano Melgarejo</p>
+                <p>Asunción</p>
+              </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+              <div class="item office-info md-mb30">
+                <h6>SANTIAGO</h6>
+                <p>Av Kennedy 3368</p>
+                <p>Oficina 92</p>
+                <p>Región Metropolitana Vitacura</p>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-40px">
+            <div class="col-12">
+              <div class="social-icon-circle footer-social-center">
+                <a href="#"> <i class="fab fa-x-twitter"></i> </a>
+                <a href="#"> <i class="fab fa-facebook-f"></i> </a>
+                <a href="#"> <i class="fab fa-instagram"></i> </a>
+                <a href="#"> <i class="fab fa-linkedin-in"></i> </a>
+                <a href="#"> <i class="fab fa-youtube"></i> </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
 
-      </div>
+      <!-- ==================== End Footer ==================== -->
+
     </div>
+  </div>
 
-    <!-- JS Files -->
-    <!-- jQuery -->
-    <script src="assets/js/vendor/jquery-3.7.1.min.js"></script>
+  <!-- JS Files -->
+  <!-- jQuery -->
+  <script src="assets/js/vendor/jquery-3.7.1.min.js"></script>
 
-    <!-- Counter JS -->
-    <script src="assets/js/vendor/counter.js"></script>
+  <!-- Counter JS -->
+  <script src="assets/js/vendor/counter.js"></script>
 
-    <!-- Bootstrap -->
-    <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
 
-    <!-- jQuery meanMenu -->
-    <script src="assets/js/vendor/jquery.meanmenu.min.js"></script>
+  <!-- jQuery meanMenu -->
+  <script src="assets/js/vendor/jquery.meanmenu.min.js"></script>
 
-    <!-- Swiper slider Plugin -->
-    <script src="assets/js/vendor/swiper-bundle.min.js"></script>
+  <!-- Swiper slider Plugin -->
+  <script src="assets/js/vendor/swiper-bundle.min.js"></script>
 
-    <!-- Swiper slider Plugin -->
-    <script src="assets/js/vendor/jquery.magnific-popup.min.js"></script>
+  <!-- Swiper slider Plugin -->
+  <script src="assets/js/vendor/jquery.magnific-popup.min.js"></script>
 
-    <!-- GSAP -->
-    <script src="./assets/js/vendor/gsap.min.js"></script>
-    <script src="./assets/js/vendor/ScrollSmoother.min.js"></script>
-    <script src="./assets/js/vendor/ScrollTrigger.min.js"></script>
-    <script src="./assets/js/vendor/ScrollToPlugin.min.js"></script>
-    <script src="./assets/js/vendor/SplitText.min.js"></script>
-    <script src="./assets/js/vendor/split-types.min.js"></script>
-    <!-- <script src="./assets/js/vendor/lenis.min.js"></script> -->
+  <!-- GSAP -->
+  <script src="./assets/js/vendor/gsap.min.js"></script>
+  <script src="./assets/js/vendor/ScrollSmoother.min.js"></script>
+  <script src="./assets/js/vendor/ScrollTrigger.min.js"></script>
+  <script src="./assets/js/vendor/ScrollToPlugin.min.js"></script>
+  <script src="./assets/js/vendor/SplitText.min.js"></script>
+  <script src="./assets/js/vendor/split-types.min.js"></script>
+  <!-- <script src="./assets/js/vendor/lenis.min.js"></script> -->
 
-    <!-- BackToTop JavaScript File -->
-    <script src="assets/js/vendor/backToTop.js"></script>
+  <!-- BackToTop JavaScript File -->
+  <script src="assets/js/vendor/backToTop.js"></script>
 
-    <!-- Main JavaScript File -->
-    <script src="assets/js/main.js"></script>
-    <script>
-        gsap.fromTo(".hero-style1 .wrapper-imgs .fit-img", 
-            {
-                y: 0,
-                x: "0%",
-                width: "80"
-            },
-            {
-                y: 550,
-                x: "-900",
-                width: "310px",
-                height: "400px",
-                borderRadius: 15,
-                stagger: 0.1,
-                scrollTrigger: {
-                    trigger: ".section-target",
-                    start: "top bottom",
-                    end: "bottom 80%",
-                    scrub: 1,
-                    onEnter: () => {
-                        gsap.to(".hero-style1 .wrapper-imgs .fit-img .info", {
-                            opacity: 1,
-                            duration: 1
-                        });
-                    },
-                    onLeaveBack: () => {
-                        gsap.to(".hero-style1 .wrapper-imgs .fit-img .info", {
-                            opacity: 0,
-                            duration: 1
-                        });
-                    }
-                }
-            }
-        );
-    </script>
+  <!-- Main JavaScript File -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    gsap.fromTo(".hero-style1 .wrapper-imgs .fit-img",
+      {
+        y: 0,
+        x: "0%",
+        width: "80"
+      },
+      {
+        y: 550,
+        x: "-900",
+        width: "310px",
+        height: "400px",
+        borderRadius: 15,
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: ".section-target",
+          start: "top bottom",
+          end: "bottom 80%",
+          scrub: 1,
+          onEnter: () => {
+            gsap.to(".hero-style1 .wrapper-imgs .fit-img .info", {
+              opacity: 1,
+              duration: 1
+            });
+          },
+          onLeaveBack: () => {
+            gsap.to(".hero-style1 .wrapper-imgs .fit-img .info", {
+              opacity: 0,
+              duration: 1
+            });
+          }
+        }
+      }
+    );
+  </script>
 
-    <script>
+  <script>
     // Espera 8 segundos (7s + 1s de fade out) y luego aplica fade out
     setTimeout(() => {
       const popup = document.getElementById('popup');
       popup.classList.add('fade-out');
-      
+
       // Quita el popup del DOM después de la animación (1000ms = 1s)
       setTimeout(() => {
         popup.remove();
-        
+
         // ¡CÓDIGO A AJUSTAR/AGREGAR!
         // Habilita el scroll al quitar la restricción del body
-        document.body.style.overflowY = 'auto'; 
+        document.body.style.overflowY = 'auto';
 
       }, 1000);
     }, 11000);
@@ -1963,7 +2335,7 @@ impulsan el desarrollo continuo del negocio </span>
 
   <script>
     // Growth by Design Section - Bidirectional Fade Animation (Enhanced)
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       const observerOptions = {
         threshold: 0.15, // 15% del elemento visible para activar
         rootMargin: '0px 0px -50px 0px' // Activar cuando está más cerca del viewport
@@ -1972,10 +2344,10 @@ impulsan el desarrollo continuo del negocio </span>
       // Map para almacenar los timeouts y poder cancelarlos si es necesario
       const timeoutMap = new Map();
 
-      const observer = new IntersectionObserver(function(entries) {
+      const observer = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
           const delay = parseInt(entry.target.dataset.delay) * 200 || 0;
-          
+
           // Limpiar timeout previo si existe
           if (timeoutMap.has(entry.target)) {
             clearTimeout(timeoutMap.get(entry.target));
@@ -2000,12 +2372,55 @@ impulsan el desarrollo continuo del negocio </span>
         });
       }, observerOptions);
 
-      // Observar todos los párrafos de growth
-      const growthParagraphs = document.querySelectorAll('.growth-paragraph');
-      growthParagraphs.forEach(paragraph => {
-        observer.observe(paragraph);
+      // Observar todos los párrafos de growth, partners especiales y nuevas tarjetas de servicio
+      const elementsToAnimate = document.querySelectorAll('.growth-paragraph, .special-partner-item, .new-service-card');
+      elementsToAnimate.forEach(el => {
+        observer.observe(el);
       });
     });
   </script>
-  </body>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof Swiper === 'undefined') return;
+
+      const teamSliderEl = document.querySelector('.team-slider');
+      if (!teamSliderEl) return;
+
+      const teamSlidesCount = teamSliderEl.querySelectorAll('.swiper-slide').length || 1;
+
+      new Swiper(teamSliderEl, {
+        loop: teamSlidesCount > 1,
+        loopedSlides: teamSlidesCount,
+        loopAdditionalSlides: teamSlidesCount,
+        spaceBetween: 24,
+        slidesPerView: 1.05,
+        speed: 650,
+        navigation: {
+          nextEl: '.team-slider-next',
+          prevEl: '.team-slider-prev',
+        },
+        pagination: {
+          el: '.team-slider-pagination',
+          clickable: true,
+        },
+        breakpoints: {
+          576: {
+            slidesPerView: 1.4,
+          },
+          768: {
+            slidesPerView: 2,
+          },
+          992: {
+            slidesPerView: 3,
+          },
+          1200: {
+            slidesPerView: 4,
+          },
+        },
+      });
+    });
+  </script>
+</body>
+
 </html>
