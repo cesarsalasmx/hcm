@@ -10130,7 +10130,7 @@ header {
 .service-2__item .service-title a::before {
   white-space: nowrap;
   content: attr(data-text);
-  color: var(--color-2);
+  color: var(--color-primary2);
   height: 100%;
   top: 0;
   left: 0;
