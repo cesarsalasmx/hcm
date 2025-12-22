@@ -1,0 +1,25 @@
+# --- Sistema Operativo ---
+# Ignora .DS_Store en la carpeta raíz y en cualquier subcarpeta
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+Network Trash Folder
+Temporary Items
+.Spotlight-V100
+.Trashes
+
+# --- Dependencias (si usas npm o librerías) ---
+node_modules/
+dist/
+build/
+
+# --- Editor de código (VS Code) ---
+.vscode/
+*.swp
+*.bak
+
+# --- Logs ---
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

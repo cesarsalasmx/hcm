@@ -1,13 +1,3 @@
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <div class="section-header v2 text-center">
-                <h2 class="section-title">Clientes</h2>
-              </div>
-            </div>
-          </div>
-        </div>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,6 +60,65 @@
     #popup.fade-out {
       opacity: 0;
       pointer-events: none;
+    }
+
+    /* ============================================
+       TECH PRELOADER (Huge Inc inspired)
+       - Vanilla JS + CSS only
+       ============================================ */
+    .tech-preloader {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      z-index: 10000; /* encima del #popup (9999) */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transform: translateY(0);
+      transition: transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+
+    .tech-preloader--done {
+      transform: translateY(-100%);
+    }
+
+    .tech-preloader__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 24px;
+    }
+
+    .tech-preloader__phrase {
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Helvetica Neue", sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.75);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 320ms ease, transform 320ms ease;
+      will-change: opacity, transform;
+      min-height: 1.6em; /* evita saltos al cambiar frase */
+    }
+
+    .tech-preloader__phrase.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .tech-preloader__counter {
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Helvetica Neue", sans-serif;
+      font-size: clamp(64px, 8vw, 120px);
+      line-height: 1;
+      font-weight: 500;
+      color: #fff;
+      letter-spacing: -0.02em;
+      font-variant-numeric: tabular-nums;
     }
 
   #video-fondo {
@@ -144,6 +193,12 @@ a:hover {
   color: #8cff00 !important;
 }
 
+/* NOVEDADES: hover del título en naranja (Color primario 2) */
+#novedades .blog-2__item:hover .blog-content .blog-title a,
+#novedades .blog-title a:hover {
+  color: var(--color-primary2) !important;
+}
+
 /* Headers y navegación */
 .header-2,
 .offcanvas {
@@ -171,6 +226,15 @@ a:hover {
 /* Hero section */
 .hero-two__area {
   background-color: #000000 !important;
+  /* Evitar que se recorte el contenido (thumbnails) en pantallas medianas */
+  height: auto !important;
+  min-height: 100vh !important;
+  overflow: visible !important;
+  position: relative;
+}
+
+.hero-two.section {
+  overflow: visible !important;
 }
 
 .hero-two__gallery .thumbnail .title {
@@ -187,7 +251,10 @@ a:hover {
   background-color: #0a0a0a !important;
   border-color: #333333 !important;
   padding: 30px 28px;
-  min-height: 220px;
+}
+
+.service-2__item .service-number {
+  margin-top: 0 !important;
 }
 
 .service-2__item--grid {
@@ -251,11 +318,16 @@ a:hover {
 .service-2__item .service-title {
   font-size: 26px;
   margin-bottom: 8px;
+  line-height: 1.15 !important;
 }
 
 .service-2__item .service-title a {
   color: #ffffff !important;
-  display: inline-block;
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   transition: transform 0.3s ease, color 0.3s ease;
   transform-origin: left top;
 }
@@ -289,7 +361,26 @@ a:hover {
   background-color: #000000 !important;
 }
 
-.brands-2__header .title {
+/* CLIENTES: centrar logos dentro de cada card */
+.marq-brand .item-marq a {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  line-height: normal !important;
+}
+
+.marq-brand .item-marq a img {
+  display: block;
+  margin: 0 auto;
+  /* Hacer el logo más pequeño sin cambiar la card */
+  max-width: 70px !important;
+  max-height: 70px !important;
+  width: auto;
+  height: auto;
+}
+
+.brands-2__header .title,
+.brands-2__header .section-title {
   color: #ffffff !important;
 }
 
@@ -305,7 +396,18 @@ a:hover {
 }
 
 .team-content .designation {
-  color: #cccccc !important;
+  color: #000000 !important;
+}
+
+/* EQUIPO: icono LinkedIn negro + hover primario 2 */
+#equipo .team-content .social a,
+#equipo .team-content .social a i {
+  color: #000000 !important;
+}
+
+#equipo .team-content .social a:hover,
+#equipo .team-content .social a:hover i {
+  color: var(--color-primary2, #e85a2f) !important;
 }
 
 /* Work/Connections section */
@@ -315,6 +417,16 @@ a:hover {
 
 .work-7__item {
   background-color: #0a0a0a !important;
+}
+
+/* CONNECTIONS TRENDS: título negro + hover en primario 2 */
+#connections-trends .item-title,
+#connections-trends .item-title a {
+  color: #000000 !important;
+}
+
+#connections-trends .item-title a:hover {
+  color: var(--color-primary2, #e85a2f) !important;
 }
 
 .item-content .tags a {
@@ -395,8 +507,13 @@ a:hover {
 
 /* Ajustes adicionales para elementos específicos */
 .hero-style1 .lg-text h1 {
-  color: #ffffff !important;
-  -webkit-text-stroke: 2px #ffffff !important;
+  color: var(--color-primary2, #e85a2f) !important;
+  -webkit-text-stroke: 0 transparent !important;
+  font-family: "Nanami Outline", "Creato Display", sans-serif !important;
+  font-weight: 400 !important;
+  line-height: 1.1 !important;
+  font-size: clamp(4rem, 8vw, 5rem) !important;
+  text-transform: none !important;
 }
 
 /* Inputs y forms si existen */
@@ -528,6 +645,255 @@ a:hover {
 
     .team-slider .swiper-slide {
       height: auto;
+    }
+
+    /* Novedades slider */
+    .novedades-slider-wrapper {
+      margin-top: 50px;
+      position: relative;
+      padding: 0 80px;
+    }
+
+    @media (max-width: 991px) {
+      .novedades-slider-wrapper {
+        padding: 0 48px;
+      }
+    }
+
+    @media (max-width: 575px) {
+      .novedades-slider-wrapper {
+        padding: 0 16px;
+      }
+    }
+
+    .novedades-slider-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 52px;
+      height: 52px;
+      border: 1px solid #333333;
+      border-radius: 50%;
+      color: #ffffff;
+      background-color: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      outline: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      z-index: 2;
+      pointer-events: all;
+    }
+
+    .novedades-slider-wrapper .swiper-button-disabled {
+      opacity: 0.35;
+    }
+
+    .novedades-slider-arrow:hover {
+      background-color: #8cff00;
+      color: #000000;
+    }
+
+    .novedades-slider-prev {
+      left: 12px;
+    }
+
+    .novedades-slider-next {
+      right: 12px;
+    }
+
+    @media (max-width: 767px) {
+      .novedades-slider-arrow {
+        width: 44px;
+        height: 44px;
+      }
+    }
+
+    .novedades-slider-pagination {
+      margin-top: 32px;
+      text-align: center;
+      position: relative;
+      padding-bottom: 0;
+    }
+
+    .novedades-slider-pagination .swiper-pagination-bullet {
+      background-color: #ffffff;
+      opacity: 0.4;
+    }
+
+    .novedades-slider-pagination .swiper-pagination-bullet-active {
+      background-color: #8cff00;
+      opacity: 1;
+    }
+
+    .novedades-slider .swiper-slide {
+      height: auto;
+    }
+
+    /* Cards estilo v1 (aislado para no romper v2) */
+    #novedades .v1-blog-card {
+      color: inherit;
+    }
+
+    #novedades .v1-blog-card__media {
+      position: relative;
+      height: 350px;
+      border-radius: 15px;
+      overflow: hidden;
+      background: #0a0a0a;
+    }
+
+    #novedades .v1-blog-card__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1);
+      transition: transform 0.6s ease;
+    }
+
+    #novedades .swiper-slide:hover .v1-blog-card__media img {
+      transform: scale(1.03);
+    }
+
+    /* Replicar comportamiento/forma del Blog v1:
+       - Fecha visible abajo-derecha
+       - Al hover, la fecha se desvanece y aparece el botón circular dentro de una esquina en cuarto de círculo */
+    #novedades .v1-blog-card {
+      position: relative;
+    }
+
+    #novedades .v1-blog-card:hover .v1-blog-card__date {
+      opacity: 0;
+    }
+
+    #novedades .v1-blog-card:hover .v1-blog-card__icon span {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    #novedades .v1-blog-card__date {
+      position: absolute;
+      bottom: -6px;
+      right: -6px;
+      width: 90px;
+      height: 90px;
+      padding: 15px;
+      color: #fff;
+      z-index: 4;
+      transition: all .4s;
+      text-decoration: none;
+      display: block;
+    }
+
+    #novedades .v1-blog-card__date-inner {
+      width: 60px;
+      height: 60px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 50%;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #novedades .v1-blog-card__date-inner span {
+      display: inline-block;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    #novedades .v1-blog-card__date-inner i {
+      display: block;
+      font-style: normal;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    #novedades .v1-blog-card__icon {
+      position: absolute;
+      bottom: -6px;
+      right: -6px;
+      width: 90px;
+      height: 90px;
+      background: #000000;
+      border-top-left-radius: 50%;
+      padding: 15px;
+      z-index: 3;
+      text-decoration: none;
+      display: block;
+    }
+
+    #novedades .v1-blog-card__icon:before {
+      position: absolute;
+      content: "";
+      bottom: 6px;
+      left: -20px;
+      background: transparent;
+      width: 20px;
+      height: 20px;
+      border-bottom-right-radius: 20px;
+      box-shadow: 6px 6px 0 6px #000000;
+    }
+
+    #novedades .v1-blog-card__icon:after {
+      position: absolute;
+      content: "";
+      top: -20px;
+      right: 6px;
+      background: transparent;
+      width: 20px;
+      height: 20px;
+      border-bottom-right-radius: 20px;
+      box-shadow: 6px 6px 0 6px #000000;
+    }
+
+    #novedades .v1-blog-card__icon span {
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0;
+      transform: scale(0);
+      transition: all .4s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #novedades .v1-blog-card__icon span svg {
+      width: 15px;
+      fill: #000;
+    }
+
+    #novedades .v1-blog-card__icon:hover span {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    #novedades .v1-blog-card__icon:hover span svg {
+      fill: #5fff66;
+    }
+
+    #novedades .v1-blog-card__body {
+      padding-top: 18px;
+    }
+
+    #novedades .v1-blog-card__meta {
+      font-size: 13px;
+      opacity: 0.75;
+      margin-bottom: 10px;
+      text-transform: none;
+    }
+
+    #novedades .v1-blog-card__title {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.35;
+      color: #fff;
     }
 
     /* Controlar espaciado del wrapper del team slider */
@@ -830,6 +1196,15 @@ a:hover {
    GROWTH BY DESIGN SECTION - Custom Styles
    ============================================ */
 
+/* Nanami (Outline) font */
+@font-face {
+  font-family: "Nanami Outline";
+  src: url("./assets/fonts/nanami/Nanami-OutlineRegular%202.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Sección Growth */
 .growth-section {
   background-color: #000000 !important;
@@ -863,11 +1238,52 @@ a:hover {
 
 .growth-title-wrapper .section-title {
   font-size: clamp(4rem, 8vw, 8rem);
-  color: #ffffff;
+  color: #ffffff !important;
   margin-bottom: 0;
   line-height: 1.1;
-  font-family: "Creato Display", sans-serif;
+  font-family: "Creato Display", sans-serif !important;
   font-weight: 400;
+}
+
+/* ============================================
+   SECTION TITLES (H2) - Match Growth by Design
+   ============================================ */
+h2.section-title:not(.tp_text_invert) {
+  font-size: clamp(4rem, 8vw, 8rem) !important;
+  color: var(--color-primary2, #e85a2f) !important;
+  margin-bottom: 0 !important;
+  line-height: 1.1 !important;
+  font-family: "Nanami Outline", "Creato Display", sans-serif !important;
+  font-weight: 400 !important;
+}
+
+/* Ajuste de tamaño para títulos específicos (sin afectar Growth by Design) */
+#servicios .section-title,
+#clientes .section-title,
+#novedades .section-title,
+#equipo .section-title,
+#connections-trends .section-title,
+#reconocimientos .section-title,
+#casos .section-title,
+#premios .section-title {
+  /* +2rem vs el ajuste anterior, manteniendo buen comportamiento responsive */
+  font-size: clamp(4rem, calc(8vw + 2rem), 7rem) !important;
+}
+
+/* Growth by Design (solo este título): tomar font-family y color de la copia */
+#cultura .growth-title-wrapper .section-title {
+  color: #ffffff !important;
+  font-family: "Creato Display", sans-serif !important;
+}
+
+.growth-title-word {
+  display: inline-block;
+  white-space: nowrap;
+  filter: blur(10px);
+  opacity: 0.3;
+  transform: translateY(10px);
+  transition: filter 0.6s ease-out, opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: filter, opacity, transform;
 }
 
 /* Salto de línea después de "by" */
@@ -888,27 +1304,86 @@ a:hover {
 }
 
 .growth-paragraphs p {
-  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-size: clamp(1.65rem, 3.2vw, 2.0rem);
   color: #ffffff;
-  line-height: 1.5;
+  line-height: 1.25;
   margin-bottom: 3rem;
 }
 
-/* Párrafos con fade-in basado en scroll */
+/* ============================================
+   DESKTOP (>= 992px): 2 filas (título + párrafos)
+   - Título en una sola línea
+   - Párrafos ocupan mitad derecha de la pantalla
+   ============================================ */
+@media (min-width: 992px) {
+  .growth-section .row {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  /* Anula el grid de Bootstrap (col-lg-*) para forzar 1 columna */
+  .growth-title-column,
+  .growth-paragraphs-column {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .growth-title-column {
+    position: relative;
+    top: auto;
+    height: auto;
+    justify-content: flex-start;
+    padding: 200px 40px;
+  }
+
+  .growth-title-wrapper .section-title {
+    white-space: nowrap;
+  }
+
+  .growth-paragraphs-column {
+    padding: 0 40px 60px;
+    min-height: auto;
+    align-items: flex-start;
+  }
+
+  .growth-paragraphs {
+    width: 50vw;
+    margin-left: auto; /* desde la mitad hacia la derecha */
+  }
+
+  .growth-paragraphs p {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Párrafos / líneas con blur-in basado en scroll */
 .growth-paragraph {
-  opacity: 0;
-  transform: translateY(60px);
-  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
-              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  padding-left: 18px;
+  border-left: 2px solid rgba(var(--color-primary2-rgb, 232, 90, 47), 0.55);
 }
 
 .growth-paragraph:last-child {
   margin-bottom: 0;
 }
 
-/* Estado visible de los párrafos */
-.growth-paragraph.visible {
+/* Cada línea se anima individualmente (blur -> nítido) */
+.growth-paragraph .growth-line {
+  display: inline-block;
+  opacity: 0.15;
+  filter: blur(14px);
+  transform: translateY(10px);
+  transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1),
+              filter 0.9s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0s;
+  will-change: opacity, filter, transform;
+}
+
+.growth-paragraph.visible .growth-line {
   opacity: 1;
+  filter: blur(0px);
   transform: translateY(0);
 }
 
@@ -917,9 +1392,13 @@ a:hover {
   .growth-title-wrapper .section-title {
     font-size: clamp(3rem, 7vw, 6rem);
   }
+
+  h2.section-title:not(.tp_text_invert) {
+    font-size: clamp(3rem, 7vw, 6rem) !important;
+  }
   
   .growth-paragraphs p {
-    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-size: clamp(1.5rem, 3.4vw, 2.4rem);
     margin-bottom: 2.5rem;
   }
   
@@ -949,6 +1428,10 @@ a:hover {
   .growth-title-wrapper .section-title {
     font-size: clamp(2.5rem, 10vw, 4rem);
   }
+
+  h2.section-title:not(.tp_text_invert) {
+    font-size: clamp(2.5rem, 10vw, 4rem) !important;
+  }
   
   .growth-paragraphs-column {
     padding: 40px 20px 60px;
@@ -956,7 +1439,7 @@ a:hover {
   }
   
   .growth-paragraphs p {
-    font-size: clamp(1.35rem, 5vw, 2rem);
+    font-size: clamp(1.15rem, 4.6vw, 1.75rem);
     margin-bottom: 2rem;
   }
 }
@@ -970,8 +1453,8 @@ a:hover {
     }
 
     .special-partner-item {
-      background: radial-gradient(circle at top, rgba(140, 255, 0, 0.12), rgba(10, 10, 10, 0.95));
-      border: 1px solid rgba(140, 255, 0, 0.4);
+      background: radial-gradient(circle at top, rgba(var(--color-primary2-rgb, 232, 90, 47), 0.12), rgba(10, 10, 10, 0.95));
+      border: 1px solid rgba(var(--color-primary2-rgb, 232, 90, 47), 0.4);
       border-radius: 16px;
       padding: 3rem 2.5rem;
       display: flex;
@@ -991,9 +1474,9 @@ a:hover {
     }
 
     .special-partner-item:hover {
-      border-color: #8cff00;
+      border-color: var(--color-primary2, #e85a2f);
       transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.65), 0 0 25px rgba(140, 255, 0, 0.2);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.65), 0 0 25px rgba(var(--color-primary2-rgb, 232, 90, 47), 0.25);
     }
 
     .special-partner-item img {
@@ -1004,9 +1487,55 @@ a:hover {
       /* filter: brightness(0) invert(1); Removed because images are JPEGs */
     }
 
-    .special-partner-item:hover img {
-      /* opacity: 1; Removed as base opacity is now 1 */
+    /* PREMIOS: recuadro a lo ancho (logo + lista dentro) */
+    .awards-row .special-partner-item {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      padding: 2.25rem 2.5rem;
+      min-height: 140px;
+      text-align: center;
     }
+
+    .award-logo {
+      flex: 0 0 auto;
+      width: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .award-logo img {
+      max-width: 220px;
+      max-height: 140px;
+      width: auto;
+      height: auto;
+      display: block;
+    }
+
+    .award-content {
+      flex: 1 1 auto;
+    }
+
+    .award-content ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .award-content li {
+      color: #ffffff;
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+
+    .award-content li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* .special-partner-item:hover img { }  (removed empty ruleset) */
 
     /* ============================================
        NEW SERVICES SECTION - Custom Styles
@@ -1143,25 +1672,28 @@ a:hover {
       color: #fff !important;
     }
 
-    /* "Ver más" button homogenization */
-    .service-2__header .orvio-btn.v3 {
-      /* Ensure it matches other buttons */
-    }
+    /* "Ver más" button homogenization (removed empty ruleset) */
   </style>
   </head>
 
   <body class="home-two">
-    <!-- ================= Preloader Start ================= -->
-    <div id="preloader">
-      <div id="container" class="container-preloader">
-        <div class="animation-preloader">
-          <div class="spinner"></div>
-        </div>
-        <div class="loader-section section-left"></div>
-        <div class="loader-section section-right"></div>
+    <!-- ================= Legacy Preloader (hidden) =================
+         Nota: `assets/js/main.js` espera #preloader y #container para
+         disparar la animación de entrada del header. Lo dejamos oculto
+         para no afectar el nuevo Tech Preloader.
+    -->
+    <div id="preloader" style="display:none !important;">
+      <div id="container" style="display:none !important;"></div>
+    </div>
+
+    <!-- ================= Tech Preloader Start ================= -->
+    <div id="tech-preloader" class="tech-preloader" aria-hidden="false">
+      <div class="tech-preloader__inner">
+        <div id="tech-preloader-phrase" class="tech-preloader__phrase">HUMAN</div>
+        <div id="tech-preloader-counter" class="tech-preloader__counter">0%</div>
       </div>
     </div>
-    <!-- ================= Preloader End ================= -->
+    <!-- ================= Tech Preloader End ================= -->
 
     <!-- ================= Scroll to top Start ================= -->
     <div class="progress-wrap">
@@ -1188,64 +1720,28 @@ a:hover {
         <nav>
           <ul class="orvio__nav-list">
             <li class="orvio__nav-item">
-              <a href="#" class="orvio__nav-link" onclick="return false;">
-                Inicio
-                <span class="orvio__toggle-btn"></span>
-              </a>
-              </ul>
+              <a href="#cultura" class="orvio__nav-link" data-bs-dismiss="offcanvas">Cultura</a>
             </li>
             <li class="orvio__nav-item">
-              <a href="about.html" class="orvio__nav-link">Casos</a>
+              <a href="about.html" class="orvio__nav-link" data-bs-dismiss="offcanvas">Casos</a>
             </li>
             <li class="orvio__nav-item">
-              <a href="#" class="orvio__nav-link" onclick="return false;">
-                Servicios
-                <span class="orvio__toggle-btn"></span>
-              </a>
-              <ul class="orvio__submenu">
-                <li class="orvio__submenu-item">
-                  <a href="#" class="orvio__nav-link" onclick="return false;">
-                    Clientes
-                    <span class="orvio__toggle-btn"></span>
-                  </a>
-                  <ul class="orvio__submenu">
-                  </ul>
-                </li>
-                <li class="orvio__submenu-item">
-                  <a href="#" class="orvio__nav-link" onclick="return false;">
-                    Connections Trends
-                    <span class="orvio__toggle-btn"></span>
-                  </a>
-                <li class="orvio__submenu-item">
-                  <a href="#" class="orvio__nav-link" onclick="return false;">
-                    Equipo
-                    <span class="orvio__toggle-btn"></span>
-                  </a>
-                  <ul class="orvio__submenu">
-                  </ul>
-                </li>
-              </ul>
+              <a href="#servicios" class="orvio__nav-link" data-bs-dismiss="offcanvas">Servicios</a>
             </li>
-
             <li class="orvio__nav-item">
-              <a href="#" class="orvio__nav-link" onclick="return false;">
-                Blogs
-                <span class="orvio__toggle-btn"></span>
-              </a>
-              <ul class="orvio__submenu">
-                <li class="orvio__submenu-item">
-                  <a href="#" class="orvio__nav-link" onclick="return false;">
-                    Blog
-                    <span class="orvio__toggle-btn"></span>
-                  </a>
-                  <ul class="orvio__submenu">
-                  </ul>
-                </li>
-              </ul>
+              <a href="#clientes" class="orvio__nav-link" data-bs-dismiss="offcanvas">Clientes</a>
             </li>
-
             <li class="orvio__nav-item">
-              <a href="contact.html" class="orvio__nav-link">Contacto</a>
+              <a href="#novedades" class="orvio__nav-link" data-bs-dismiss="offcanvas">Novedades</a>
+            </li>
+            <li class="orvio__nav-item">
+              <a href="#equipo" class="orvio__nav-link" data-bs-dismiss="offcanvas">Equipo</a>
+            </li>
+            <li class="orvio__nav-item">
+              <a href="#connections-trends" class="orvio__nav-link" data-bs-dismiss="offcanvas">Connections Trends</a>
+            </li>
+            <li class="orvio__nav-item">
+              <a href="#reconocimientos" class="orvio__nav-link" data-bs-dismiss="offcanvas">Partners</a>
             </li>
           </ul>
         </nav>
@@ -1258,10 +1754,14 @@ a:hover {
           <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
           <a href="#"><i class="fa-brands fa-twitter"></i></a>
         </div>
-        <p class="info">Human Connections Media</p>
+        <p class="orvio__mobile-menu-copyright-text">
+          <a href="https://hcm-global.com/docs/HCM_PP.PDF" target="_blank" rel="noopener noreferrer">Aviso de privacidad</a>
+          <span aria-hidden="true"> | </span>
+          <a href="https://hcm-global.com/equipo.php" target="_blank" rel="noopener noreferrer">Términos y condiciones</a>
+        </p>
+        <p class="info">HUMAN CONNECTIONS MEDIA®</p>
         <div class="orvio__mobile-menu-copyright">
-        <p class="orvio__mobile-menu-copyright-text">© <span class="current-year"></span> <a
-            href="https://wprealizer.com/">HCM.</a> Todos los derechos reservados</p>
+          <p class="orvio__mobile-menu-copyright-text">Todos los derechos reservados</p>
         </div>
       </div>
     </div>
@@ -1291,22 +1791,28 @@ a:hover {
                 <nav class="circle">
                   <ul>
                     <li class="active">
-                      <a href="javascript:void(0)"> Inicio </a>
+                      <a href="#cultura">Cultura</a>
                     </li>
                     <li>
-                      <a href="about.html"> Casos </a>
+                      <a href="about.html">Casos</a>
                     </li>
                     <li>
-                      <a href="javascript:void(0)">Servicios</a>
+                      <a href="#servicios">Servicios</a>
                     </li>
                     <li>
-                      <a href="javascript:void(0)">Blogs</a>
-                      <ul class="sub-menu">
-                        <li>
-                          <a href="javascript:void(0)">
-                            Blog
-                            <i class="fa-regular fa-angle-down"></i>
-                          </a> 
+                      <a href="#clientes">Clientes</a>
+                    </li>
+                    <li>
+                      <a href="#novedades">Novedades</a>
+                    </li>
+                    <li>
+                      <a href="#equipo">Equipo</a>
+                    </li>
+                    <li>
+                      <a href="#connections-trends">Connections Trends</a>
+                    </li>
+                    <li>
+                      <a href="#reconocimientos">Partners</a>
                     </li>
                   </ul>
                 </nav>
@@ -1550,13 +2056,13 @@ a:hover {
 
 
           <!-- ==================== Start GROWTH BY DESIGN ==================== -->
-          <section class="growth-section section">
+          <section id="cultura" class="growth-section section">
             <div class="container-fluid">
               <div class="row g-0">
                 <!-- Título sticky centrado verticalmente - 100vh -->
                 <div class="col-lg-5 growth-title-column">
                   <div class="growth-title-wrapper">
-                    <h2 class="section-title">Growth by<br>Design.</h2>
+                    <h2 class="section-title">Growth by Design.</h2>
                   </div>
                 </div>
                 
@@ -1564,19 +2070,25 @@ a:hover {
                 <div class="col-lg-7 growth-paragraphs-column">
                   <div class="growth-paragraphs">
                     <p class="growth-paragraph">
-                      En un entorno hiperfragmentado y saturado, la atención es escasa y el impacto para generar
-                      relevancia, es estratégico.
+                      <span class="growth-line" style="--d: 0s;">En un entorno hiperfragmentado y saturado,</span><br>
+                      <span class="growth-line" style="--d: 0.18s;">la atención es escasa y</span><br>
+                      <span class="growth-line" style="--d: 0.36s;">el impacto para generar relevancia, es estratégico.</span>
                     </p>
                     <p class="growth-paragraph">
-                      Combinamos contextos culturales, hábitos sociales y visión de negocio para desarrollar soluciones
-                      eficaces.
+                      <span class="growth-line" style="--d: 0.6s;">Combinamos contextos culturales,</span><br>
+                      <span class="growth-line" style="--d: 0.78s;">hábitos sociales y visión de negocio</span><br>
+                      <span class="growth-line" style="--d: 0.96s;">para desarrollar soluciones eficaces.</span>
                     </p>
                     <p class="growth-paragraph">
-                      Transformamos datos estáticos en estrategias dinámicas, y así impulsamos a las marcas a tomar
-                      decisiones inteligentes.
+                      <span class="growth-line" style="--d: 1.2s;">Transformamos datos estáticos</span><br>
+                      <span class="growth-line" style="--d: 1.38s;">en estrategias dinámicas,</span><br>
+                      <span class="growth-line" style="--d: 1.56s;">y así impulsamos a las marcas</span><br>
+                      <span class="growth-line" style="--d: 1.74s;">a tomar decisiones inteligentes.</span>
                     </p>
                     <p class="growth-paragraph">
-                      No planificamos medios. Diseñamos conexiones que impulsan el desarrollo continuo del negocio.
+                      <span class="growth-line" style="--d: 2.0s;">No planificamos medios.</span><br>
+                      <span class="growth-line" style="--d: 2.18s;">Diseñamos conexiones que impulsan</span><br>
+                      <span class="growth-line" style="--d: 2.36s;">el desarrollo continuo del negocio.</span>
                     </p>
                   </div>
                 </div>
@@ -1589,74 +2101,72 @@ a:hover {
           
           <!-- ==================== Start CUSTOM ==================== -->
 
-          <div class="hero-style1">
+          <div id="casos" class="hero-style1">
             <div class="container">
               <div class="row align-items-center mt-80px">
                 <div class="col-lg-8">
-                  <div class="lg-text md-hide">
-                    <h1>HCM</h1>
+                  <div class="section-header v2 service-2__header header-left md-hide">
+                    <h2 class="section-title orvio_title_anim">Casos</h2>
                   </div>
                 </div>
                 <div class="col-lg-4">
                   <div class="d-lg-flex d-none justify-content-end wrapper-imgs">
                     <div class="fit-img">
-                      <img src="assets/images/works/1/4.webp" alt="">
-                      <div class="info">
-                        <h6 class="fw-600">HONDA NAVI</h6>
-                        <span class="text-uppercase mt-5px fs-14 opacity-7">Innovación en Medios</span>
-                      </div>
-                    </div>
-                    <div class="fit-img">
                       <img src="assets/images/works/1/1.webp" alt="">
                       <div class="info">
-                        <h6 class="fw-600">HONDA NAVI</h6>
+                        <h6 class="fw-600"></h6>
                         <span class="text-uppercase mt-5px fs-14 opacity-7">Innovación en Medios</span>
                       </div>
                     </div>
                     <div class="fit-img">
                       <img src="assets/images/works/1/2.webp" alt="">
                       <div class="info">
-                        <h6 class="fw-600">OGGI</h6>
+                        <h6 class="fw-600"></h6>
                         <span class="text-uppercase mt-5px fs-14 opacity-7">Tráfico Omnicanal</span>
                       </div>
                     </div>
                     <div class="fit-img">
                       <img src="assets/images/works/1/3.webp" alt="">
                       <div class="info">
-                        <h6 class="fw-600">DR. PEPPER</h6>
-                        <span class="text-uppercase mt-5px fs-14 opacity-7">Posicionamiento de Marca en Nuevas
-                          Audiencias</span>
+                        <h6 class="fw-600"></h6>
+                        <span class="text-uppercase mt-5px fs-14 opacity-7">Posicionamiento de Marca</span>
+                      </div>
+                    </div>
+                    <div class="fit-img">
+                      <img src="assets/images/works/1/4.webp" alt="">
+                      <div class="info">
+                        <h6 class="fw-600"></h6>
+                        <span class="text-uppercase mt-5px fs-14 opacity-7">Negociación con Medios</span>
                       </div>
                     </div>
                   </div>
                   <div class="d-lg-flex d-none justify-content-end wrapper-imgs">
                     <div class="fit-img">
-                      <img src="assets/images/works/1/4.webp" alt="">
+                      <img src="assets/images/works/1/5.webp" alt="">
                       <div class="info">
-                        <h6 class="fw-600">HONDA NAVI</h6>
-                        <span class="text-uppercase mt-5px fs-14 opacity-7">Innovación en Medios</span>
+                        <h6 class="fw-600"></h6>
+                        <span class="text-uppercase mt-5px fs-14 opacity-7">Influencer Marketing</span>
                       </div>
                     </div>
                     <div class="fit-img">
-                      <img src="assets/images/works/1/1.webp" alt="">
+                      <img src="assets/images/works/1/6.webp" alt="">
                       <div class="info">
-                        <h6 class="fw-600">HONDA NAVI</h6>
-                        <span class="text-uppercase mt-5px fs-14 opacity-7">Innovación en Medios</span>
+                        <h6 class="fw-600"></h6>
+                        <span class="text-uppercase mt-5px fs-14 opacity-7">Ejecución + Amplificación</span>
                       </div>
                     </div>
                     <div class="fit-img">
-                      <img src="assets/images/works/1/2.webp" alt="">
+                      <img src="assets/images/works/1/7.webp" alt="">
                       <div class="info">
-                        <h6 class="fw-600">OGGI</h6>
-                        <span class="text-uppercase mt-5px fs-14 opacity-7">Tráfico Omnicanal</span>
+                        <h6 class="fw-600"></h6>
+                        <span class="text-uppercase mt-5px fs-14 opacity-7">Nuevas Tecnologías</span>
                       </div>
                     </div>
                     <div class="fit-img">
                       <img src="assets/images/works/1/3.webp" alt="">
                       <div class="info">
-                        <h6 class="fw-600">DR. PEPPER</h6>
-                        <span class="text-uppercase mt-5px fs-14 opacity-7">Posicionamiento de Marca en Nuevas
-                          Audiencias</span>
+                        <h6 class="fw-600"></h6>
+                        <span class="text-uppercase mt-5px fs-14 opacity-7">Posicionamiento de Marca</span>
                       </div>
                     </div>
                   </div>
@@ -1669,7 +2179,7 @@ a:hover {
                       <div class="fit-img">
                         <img src="assets/images/works/1/1.webp" alt="">
                         <div class="info">
-                          <h6 class="fw-600">HONDA NAVI</h6>
+                          <h6 class="fw-600"></h6>
                           <span class="text-uppercase mt-5px fs-14 opacity-7">Innovación en Medios</span>
                         </div>
                       </div>
@@ -1680,7 +2190,7 @@ a:hover {
                       <div class="fit-img">
                         <img src="assets/images/works/1/2.webp" alt="">
                         <div class="info">
-                          <h6 class="fw-600">OGGI</h6>
+                          <h6 class="fw-600"></h6>
                           <span class="text-uppercase mt-5px fs-14 opacity-7">Tráfico Omnicanal</span>
                         </div>
                       </div>
@@ -1691,7 +2201,7 @@ a:hover {
                       <div class="fit-img">
                         <img src="assets/images/works/1/3.webp" alt="">
                         <div class="info">
-                          <h6 class="fw-600">DR. PEPPER</h6>
+                          <h6 class="fw-600"></h6>
                           <span class="text-uppercase mt-5px fs-14 opacity-7">Posicionamiento de Marca en Nuevas
                             Audiencias</span>
                         </div>
@@ -1703,7 +2213,7 @@ a:hover {
                       <div class="fit-img">
                         <img src="assets/images/works/1/4.webp" alt="">
                         <div class="info">
-                          <h6 class="fw-600">PEÑAFIEL</h6>
+                          <h6 class="fw-600"></h6>
                           <span class="text-uppercase mt-5px fs-14 opacity-7">Negociación con Medios</span>
                         </div>
                       </div>
@@ -1719,27 +2229,19 @@ a:hover {
           
           
           <!--================= SERVICIOS start =================-->
-          <section class="service-2 section section-padding-top-bottom">
+          <section id="servicios" class="service-2 section section-padding-top-bottom">
             <div class="container">
               <div class="row g-2 g-lg-4 justify-content-between align-items-end">
                 <div class="col-lg-5 col-xl-5">
                   <div class="section-header v2 service-2__header header-left">
                   <h2 class="section-title orvio_title_anim">Servicios</h2>
-                  <p class="orvio_title_anim">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat
-                    euismod ligula. Nunc et lectus lorem. Integer rutrum mauris tellus.</p>
-                  </div>
-                </div>
-                <div class="col-lg-7 col-xl-6">
-                  <div class="section-header v2 service-2__header header-right">
-                    <p class="orvio_title_anim">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat
-                      euismod ligula. Nunc et lectus lorem. Integer rutrum mauris tellus.</p>
                   </div>
                 </div>
               </div>
 
               <!-- Old Services Section -->
-            <div class="container large-container row-padding-top">
-              <div class="row row-padding-top fade-right-section">
+            <div class="container large-container">
+              <div class="row fade-right-section">
                 <div class="col-12">
                     <div class="service-2__item fade-right-item service-2__item--grid">
                       <div class="service-2__col">
@@ -1833,104 +2335,6 @@ a:hover {
             </div>
                 </div>
               </div>
-            <div class="row g-4 mt-5">
-              <!-- Service 1: Media & Audiences -->
-              <div class="col-md-6">
-                <div class="new-service-card">
-                  <span class="new-service-number">//01</span>
-                  <h3 class="new-service-title">Media & Audiences</h3>
-
-                  <div class="new-service-sub-area">
-                    <h4 class="new-service-subtitle">Research & Insights</h4>
-                    <ul class="new-service-list">
-                      <li>Asignación y optimización de presupuesto y mix de medios</li>
-                      <li>Investigación de audiencias, consumidor, mercado y tendencias</li>
-                    </ul>
-            </div>
-
-                  <div class="new-service-sub-area">
-                    <h4 class="new-service-subtitle">Media Planning & Buying</h4>
-                    <ul class="new-service-list">
-                      <li>Planeación efectiva de medios on-off</li>
-                      <li>Compra y negociación de medios</li>
-                    </ul>
-                    </div>
-                  </div>
-                    </div>
-
-              <!-- Service 2: Marketing Effectiveness -->
-              <div class="col-md-6">
-                <div class="new-service-card">
-                  <span class="new-service-number">//02</span>
-                  <h3 class="new-service-title">Marketing Effectiveness</h3>
-
-                  <div class="new-service-sub-area">
-                    <h4 class="new-service-subtitle">Business Assessment</h4>
-                    <ul class="new-service-list">
-                      <li>Marketing Mix Modelling</li>
-                      <li>ROI-ROAS y modelos de atribución</li>
-                    </ul>
-                  </div>
-
-                  <div class="new-service-sub-area">
-                    <h4 class="new-service-subtitle">Intelligence & Analytics</h4>
-                    <ul class="new-service-list">
-                      <li>Reporting & Dashboarding Integral</li>
-                      <li>Database Marketing</li>
-                    </ul>
-                    </div>
-                  </div>
-                    </div>
-
-              <!-- Service 3: Content & Comms -->
-              <div class="col-md-6">
-                <div class="new-service-card">
-                  <span class="new-service-number">//03</span>
-                  <h3 class="new-service-title">Content & Comms</h3>
-
-                  <div class="new-service-sub-area">
-                    <h4 class="new-service-subtitle">Content & Social Media</h4>
-                    <ul class="new-service-list">
-                      <li>Influencer Marketing</li>
-                      <li>Dynamic Content Optimization</li>
-                    </ul>
-                  </div>
-
-                  <div class="new-service-sub-area">
-                    <h4 class="new-service-subtitle">Comms Planning</h4>
-                    <ul class="new-service-list">
-                      <li>Arquitectura de campañas</li>
-                      <li>Planeación Estratégica</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Service 4: Performance Marketing -->
-              <div class="col-md-6">
-                <div class="new-service-card">
-                  <span class="new-service-number">//04</span>
-                  <h3 class="new-service-title">Performance Marketing</h3>
-
-                  <div class="new-service-sub-area">
-                    <h4 class="new-service-subtitle">Inbound & Digital Marketing</h4>
-                    <ul class="new-service-list">
-                      <li>Shop & Social Ads</li>
-                      <li>SEM</li>
-                    </ul>
-                  </div>
-
-                  <div class="new-service-sub-area">
-                    <h4 class="new-service-subtitle">Web & Marketplace</h4>
-                    <ul class="new-service-list">
-                      <li>CRM</li>
-                      <li>UX / CX</li>
-                      <li>SEO</li>
-                    </ul>
-                  </div>
-                  </div>
-                </div>
-              </div>
 
               <div class="row justify-content-center mt-5">
                 <div class="col-auto">
@@ -1945,12 +2349,12 @@ a:hover {
         <!--================= NEW SERVICES SECTION end =================-->
 
         <!-- ==================== Start CLIENTES ==================== -->
-        <section class="marq-brand">
+        <section id="clientes" class="marq-brand">
           <div class="container">
                   <div class="row">
                     <div class="col-12">
                 <div class="section-header v2 header-left">
-                  <h2 class="section-title">Clientes</h2>
+                  <h2 class="section-title orvio_title_anim">Clientes</h2>
                 </div>
                       </div>
                     </div>
@@ -2096,104 +2500,138 @@ a:hover {
 
 
         <!--================= NOVEDADES start =================-->
-        <section class="blog-2 section section-padding-bottom">
+        <section id="novedades" class="blog-2 section section-padding-bottom">
           <div class="container">
             <div class="row">
               <div class="col-12">
                 <div class="section-header v2">
                   <!--span class="section-sub-title">Novedades</span-->
-                  <h2 class="section-title">Novedades</h2>
+                  <h2 class="section-title orvio_title_anim">Novedades</h2>
                 </div>
               </div>
             </div>
           </div>
           <div class="container large-container">
-            <div class="row g-4 row-padding-top">
-              <div class="col-md-6 col-lg-4 col-xxl-3">
-                <div class="blog-2__item fade-anim" data-delay="0.45">
-                  <div class="blog-thumb">
-                    <img src="./assets/images/blog/blog-thumb-2-1.png" alt="blog-thumb" class="w-100" />
-                    <div class="blog-date">
-                      29
-                      <span class="month">AGOSTO</span>
+            <div class="novedades-slider-wrapper">
+              <button class="novedades-slider-arrow novedades-slider-prev" type="button" aria-label="Anterior">
+                <i class="fa-solid fa-arrow-left"></i>
+              </button>
+              <button class="novedades-slider-arrow novedades-slider-next" type="button" aria-label="Siguiente">
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+
+              <div class="swiper novedades-slider">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="v1-blog-card">
+                      <div class="v1-blog-card__media">
+                        <img src="assets/imgs/blog/1.png" alt="Gastronomía Mexicana: Su impulso económico">
+                        <a href="#0" class="v1-blog-card__date">
+                          <div class="v1-blog-card__date-inner">
+                            <span><i>29</i> AUG</span>
+                          </div>
+                        </a>
+                        <a href="#0" class="v1-blog-card__icon" aria-label="Abrir artículo">
+                          <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28.5 28.5">
+                              <path d="M29.25.75V22.09H26.89V4.77L2.4,29.25.75,27.52,25.16,3.11H7.84V.75Z" transform="translate(-0.75 -0.75)" />
+                            </svg>
+                          </span>
+                        </a>
+                      </div>
+                      <div class="v1-blog-card__body">
+                        <div class="v1-blog-card__meta">El Economista</div>
+                        <h6 class="v1-blog-card__title">Gastronomía Mexicana: Su impulso económico</h6>
+                      </div>
                     </div>
                   </div>
-                  <div class="blog-content">
-                    <span class="blog-sub-title">El Economista</span>
-                    <h5 class="blog-title">
-                      <a href="blog-details.html"> Gastronomía mexicana: Su impulso económico </a>
-                    </h5>
+
+                  <div class="swiper-slide">
+                    <div class="v1-blog-card">
+                      <div class="v1-blog-card__media">
+                        <img src="assets/imgs/blog/2.png" alt="El efecto podcast">
+                        <a href="#0" class="v1-blog-card__date">
+                          <div class="v1-blog-card__date-inner">
+                            <span><i>15</i> AUG</span>
+                          </div>
+                        </a>
+                        <a href="#0" class="v1-blog-card__icon" aria-label="Abrir artículo">
+                          <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28.5 28.5">
+                              <path d="M29.25.75V22.09H26.89V4.77L2.4,29.25.75,27.52,25.16,3.11H7.84V.75Z" transform="translate(-0.75 -0.75)" />
+                            </svg>
+                          </span>
+                        </a>
+                      </div>
+                      <div class="v1-blog-card__body">
+                        <div class="v1-blog-card__meta">Expansión</div>
+                        <h6 class="v1-blog-card__title">El efecto podcast</h6>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="v1-blog-card">
+                      <div class="v1-blog-card__media">
+                        <img src="assets/imgs/blog/3.png" alt="Entrevista a Hugo Gómez Oliver">
+                        <a href="#0" class="v1-blog-card__date">
+                          <div class="v1-blog-card__date-inner">
+                            <span><i>30</i> JUL</span>
+                          </div>
+                        </a>
+                        <a href="#0" class="v1-blog-card__icon" aria-label="Abrir artículo">
+                          <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28.5 28.5">
+                              <path d="M29.25.75V22.09H26.89V4.77L2.4,29.25.75,27.52,25.16,3.11H7.84V.75Z" transform="translate(-0.75 -0.75)" />
+                            </svg>
+                          </span>
+                        </a>
+                      </div>
+                      <div class="v1-blog-card__body">
+                        <div class="v1-blog-card__meta">Fast Company</div>
+                        <h6 class="v1-blog-card__title">Entrevista a Hugo Gómez Oliver</h6>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="v1-blog-card">
+                      <div class="v1-blog-card__media">
+                        <img src="assets/imgs/blog/4.png" alt="Mercado de lujo: Saliendo de la zona de confort">
+                        <a href="#0" class="v1-blog-card__date">
+                          <div class="v1-blog-card__date-inner">
+                            <span><i>15</i> JUL</span>
+                          </div>
+                        </a>
+                        <a href="#0" class="v1-blog-card__icon" aria-label="Abrir artículo">
+                          <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28.5 28.5">
+                              <path d="M29.25.75V22.09H26.89V4.77L2.4,29.25.75,27.52,25.16,3.11H7.84V.75Z" transform="translate(-0.75 -0.75)" />
+                            </svg>
+                          </span>
+                        </a>
+                      </div>
+                      <div class="v1-blog-card__body">
+                        <div class="v1-blog-card__meta">Forbes</div>
+                        <h6 class="v1-blog-card__title">Mercado de lujo: Saliendo de la zona de confort</h6>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="col-md-6 col-lg-4 col-xxl-3">
-                <div class="blog-2__item fade-anim" data-delay="0.60">
-                  <div class="blog-thumb">
-                    <img src="./assets/images/blog/blog-thumb-2-2.png" alt="blog-thumb" class="w-100" />
-                    <div class="blog-date">
-                      30
-                      <span class="month">JULIO</span>
-                    </div>
-                  </div>
-                  <div class="blog-content">
-                    <span class="blog-sub-title">Expansión</span>
-                    <h5 class="blog-title">
-                      <a href="blog-details.html"> El efecto podcast </a>
-                    </h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4 col-xxl-3">
-                <div class="blog-2__item fade-anim" data-delay="0.75">
-                  <div class="blog-thumb">
-                    <img src="./assets/images/blog/blog-thumb-2-3.png" alt="blog-thumb" class="w-100" />
-                    <div class="blog-date">
-                      29
-                      <span class="month">JUNIO</span>
-                    </div>
-                  </div>
-                  <div class="blog-content">
-                    <span class="blog-sub-title">Fast Company</span>
-                    <h5 class="blog-title">
-                      <a href="blog-details.html"> Entrevista a Hugo Gómez Oliver </a>
-                    </h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4 col-xxl-3">
-                <div class="blog-2__item fade-anim" data-delay="0.90">
-                  <div class="blog-thumb">
-                    <img src="./assets/images/blog/blog-thumb-2-4.png" alt="blog-thumb" class="w-100" />
-                    <div class="blog-date">
-                      24
-                      <span class="month">MAYO</span>
-                    </div>
-                  </div>
-                  <div class="blog-content">
-                    <span class="blog-sub-title">Forbes</span>
-                    <h5 class="blog-title">
-                      <a href="blog-details.html"> Mercado de lujo: Saliendo de la zona de confort </a>
-                    </h5>
-                  </div>
-                </div>
-              </div>
+
+              <div class="swiper-pagination novedades-slider-pagination"></div>
             </div>
           </div>
         </section>
         <!--================= NOVEDADES end =================-->
           <!--================= EQUIPO start =================-->
-          <section class="team-2 section section-padding-top-bottom">
+          <section id="equipo" class="team-2 section section-padding-top-bottom">
             <div class="container">
               <div class="row g-2 justify-content-between">
                 <div class="col-md-auto">
                   <div class="section-header v2 team-2__header-left">
-                  <h2 class="section-title">Equipo</h2>
-                  </div>
-                </div>
-                <div class="col-md-7 col-xl-5">
-                  <div class="section-header team-2__header-right">
-                    <h2 class="section-title tp_text_invert">Especialistas apasionados en llevar tu empresa a su mejor
-                      momento</h2>
+                  <h2 class="section-title orvio_title_anim">Equipo</h2>
                   </div>
                 </div>
               </div>
@@ -2215,13 +2653,7 @@ a:hover {
                       <div class="social">
                         <ul>
                           <li>
-                            <a href="#"><i class="fa-light fa-share-nodes"></i></a>
-                          </li>
-                          <li>
-                            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                          </li>
-                          <li>
-                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
                           </li>
                         </ul>
                       </div>
@@ -2241,13 +2673,7 @@ a:hover {
                       <div class="social">
                         <ul>
                           <li>
-                            <a href="#"><i class="fa-light fa-share-nodes"></i></a>
-                          </li>
-                          <li>
-                            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                          </li>
-                          <li>
-                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
                           </li>
                         </ul>
                       </div>
@@ -2267,13 +2693,7 @@ a:hover {
                       <div class="social">
                         <ul>
                           <li>
-                            <a href="#"><i class="fa-light fa-share-nodes"></i></a>
-                          </li>
-                          <li>
-                            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                          </li>
-                          <li>
-                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
                           </li>
                         </ul>
                       </div>
@@ -2293,13 +2713,7 @@ a:hover {
                       <div class="social">
                         <ul>
                           <li>
-                            <a href="#"><i class="fa-light fa-share-nodes"></i></a>
-                          </li>
-                          <li>
-                            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                          </li>
-                          <li>
-                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
                           </li>
                         </ul>
                       </div>
@@ -2331,17 +2745,13 @@ a:hover {
           <!--================= EQUIPO end =================-->
 
  <!-- ================= CONNECTIONS start ================= -->
-          <section class="work-7 section section-padding-top-bottom">
+          <section id="connections-trends" class="work-7 section section-padding-top-bottom">
           <img src="./assets/images/page-6/work/work-bg-shape.png" alt="work-bg-shape" class="bg-shape" />
             <div class="container">
               <div class="row gy-2 justify-content-between align-items-end">
                 <div class="col-xl-auto">
                   <div class="section-header">
-                    <h2 class="section-title orvio_title_anim">
-                      CONNECTION
-                      <br class="d-none d-xl-inline-block" />
-                      TRENDS
-                    </h2>
+                    <h2 class="section-title orvio_title_anim">Connections Trends</h2>
                   </div>
                 </div>
                 <div class="col-md-auto">
@@ -2438,11 +2848,11 @@ a:hover {
           <!-- ================= CONNECTIONS end ================= -->
 
         <!-- ==================== Start PARTNERS ==================== -->
-        <section class="marq-brand">
+        <section id="reconocimientos" class="marq-brand">
           <div class="row mb-4">
                 <div class="col-12">
               <div class="brands-2__header">
-                <h2 class="title orvio_title_anim">Partners</h2>
+                <h2 class="section-title orvio_title_anim">Partners</h2>
                   </div>
                 </div>
               </div>
@@ -2463,6 +2873,73 @@ a:hover {
             </div>
           </section>
         <!-- ==================== End PARTNERS ==================== -->
+
+        <!-- ==================== Start PREMIOS ==================== -->
+        <section id="premios" class="marq-brand" style="margin-bottom: 120px;">
+          <div class="row mb-4">
+                <div class="col-12">
+              <div class="brands-2__header">
+                <h2 class="section-title orvio_title_anim">Premios</h2>
+                  </div>
+                </div>
+              </div>
+
+          <div class="container special-partners-grid">
+            <div class="row g-4 justify-content-center awards-row">
+              <!-- Premio 1: Effie -->
+              <div class="col-12 col-lg-8">
+                <div class="special-partner-item" data-delay="0.2">
+                  <div class="award-logo">
+                    <img src="assets/images/partners/logo-effie.webp" alt="Effie">
+                  </div>
+                  <div class="award-content">
+                    <ul>
+                      <li>Agencia de Medios del Año en Argentina (Enie 2024)</li>
+                      <li>2º puesto Agencia de Medios del Año en Argentina (Enie 2025)</li>
+                      <li>Oro categoría “Gran Idea de Medios” en Argentina (Enie 2024)</li>
+                      <li>Plata categoría “Influencers Marketing” en Argentina (Enie 2024)</li>
+                      <li>Bronce categoría “Social Media” en Argentina (Enie 2024)</li>
+                      <li>Oro categoría “Marketing de actualidad” en Argentina (Enie 2025)</li>
+                      <li>Oro categoría “Marketing de experiencia” en Argentina (Enie 2025)</li>
+                      <li>Bronce categoría “Vehiculos” en Argentina (Enie 2025)</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Premio 2: Lápiz -->
+              <div class="col-12 col-lg-8">
+                <div class="special-partner-item" data-delay="0.4">
+                  <div class="award-logo">
+                    <img src="assets/images/partners/logo-lapiz.webp" alt="Lápiz">
+                  </div>
+                  <div class="award-content">
+                    <ul>
+                      <li>Lápiz de oro “Marketing Digital” - 1 semestre 2024</li>
+                      <li>Lápiz de oro “Medios” - 1 semestre – 2024</li>
+                      <li>Lápiz de oro “Medios” - 1er semestre 2025</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Premio 3: Scope -->
+              <div class="col-12 col-lg-8">
+                <div class="special-partner-item" data-delay="0.6">
+                  <div class="award-logo">
+                    <img src="assets/images/partners/scopen.jpeg" alt="Agency Scope">
+                  </div>
+                  <div class="award-content">
+                    <ul>
+                      <li>La agencia de medios independiente mejor valorada por los clientes En Mexico (Agency Scope 2021 -2026)</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- ==================== End PREMIOS ==================== -->
 
         
         </main>
@@ -2656,6 +3133,77 @@ a:hover {
     </script>
 
     <script>
+      // Tech Preloader (Vanilla) - 0% -> 100% with easing + phrases
+      (function () {
+        const preloader = document.getElementById('tech-preloader');
+        const counterEl = document.getElementById('tech-preloader-counter');
+        const phraseEl = document.getElementById('tech-preloader-phrase');
+        if (!preloader || !counterEl || !phraseEl) return;
+
+        const phrases = ['HUMAN', 'CONNECTIONS', 'MEDIA', 'Growth by Design.'];
+        const thresholds = [0, 25, 50, 75]; // % donde cambia el texto
+        const durationMs = 5000; // ~5s
+
+        const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+        let lastPercent = -1;
+        let currentPhraseIndex = -1;
+
+        const setPhrase = (index) => {
+          if (index === currentPhraseIndex) return;
+          currentPhraseIndex = index;
+
+          // fade/slide out -> swap -> fade/slide in
+          phraseEl.classList.remove('is-visible');
+          window.setTimeout(() => {
+            phraseEl.textContent = phrases[index] || '';
+            phraseEl.classList.add('is-visible');
+          }, 140);
+        };
+
+        // Initial state
+        phraseEl.classList.add('is-visible');
+        setPhrase(0);
+
+        const start = performance.now();
+        const tick = (now) => {
+          const t = Math.min(1, (now - start) / durationMs);
+          const eased = easeOutCubic(t);
+          const percent = Math.round(eased * 100);
+
+          if (percent !== lastPercent) {
+            lastPercent = percent;
+            counterEl.textContent = `${percent}%`;
+
+            // Find phrase index based on thresholds
+            let idx = 0;
+            for (let i = 0; i < thresholds.length; i++) {
+              if (percent >= thresholds[i]) idx = i;
+            }
+            setPhrase(idx);
+          }
+
+          if (t < 1) {
+            requestAnimationFrame(tick);
+            return;
+          }
+
+          // Finish: slide up to reveal the intro video (#popup)
+          preloader.classList.add('tech-preloader--done');
+          preloader.setAttribute('aria-hidden', 'true');
+
+          const cleanup = () => {
+            preloader.removeEventListener('transitionend', cleanup);
+            preloader.remove();
+          };
+          preloader.addEventListener('transitionend', cleanup, { once: true });
+        };
+
+        requestAnimationFrame(tick);
+      })();
+    </script>
+
+    <script>
     // Espera 8 segundos (7s + 1s de fade out) y luego aplica fade out
     setTimeout(() => {
       const popup = document.getElementById('popup');
@@ -2674,7 +3222,9 @@ a:hover {
   </script>
 
   <script>
-    // Growth by Design Section - Scroll-based Paragraph Reveal
+    // Growth by Design Section - Scroll reveal (blur + opacity) por scroll
+    // - Título: palabra por palabra
+    // - Párrafos: línea por línea (cada .growth-line se revela de forma gradual)
     document.addEventListener('DOMContentLoaded', function () {
       // Observer para elementos generales (partners, servicios)
       const generalObserverOptions = {
@@ -2687,7 +3237,7 @@ a:hover {
       const generalObserver = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
           const delay = parseInt(entry.target.dataset.delay) * 200 || 0;
-          
+
           if (timeoutMap.has(entry.target)) {
             clearTimeout(timeoutMap.get(entry.target));
           }
@@ -2708,34 +3258,103 @@ a:hover {
         });
       }, generalObserverOptions);
 
-      // Observer específico para párrafos de Growth by Design
-      const growthParagraphs = document.querySelectorAll('.growth-paragraph');
-      
-      if (growthParagraphs.length > 0) {
-        const paragraphObserver = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              // Agregar clase visible cuando el párrafo entra en el viewport
-              entry.target.classList.add('visible');
-            } else {
-              // Quitar clase cuando sale (para efecto reversible)
-              entry.target.classList.remove('visible');
-            }
-          });
-        }, {
-          threshold: 0.2, // Activa cuando el 20% del párrafo es visible
-          rootMargin: '0px 0px -100px 0px' // Ajusta el punto de activación
-        });
-
-        // Observar cada párrafo individualmente
-        growthParagraphs.forEach((paragraph) => {
-          paragraphObserver.observe(paragraph);
-        });
-      }
-
       // Observar otros elementos (partners, servicios, etc.)
       const otherElements = document.querySelectorAll('.special-partner-item, .new-service-card');
       otherElements.forEach(el => generalObserver.observe(el));
+
+      // ===== Growth by Design: scroll-based reveal =====
+      const growthSection =
+        document.querySelector('#cultura.growth-section') ||
+        document.querySelector('.growth-section');
+      if (!growthSection) return;
+
+      // Split del título en palabras (si aún no está dividido)
+      const title = growthSection.querySelector('.growth-title-wrapper .section-title');
+      if (title && title.querySelectorAll('.growth-title-word').length === 0) {
+        const text = (title.textContent || '').trim();
+        const words = text.split(/\s+/).filter(Boolean);
+        title.textContent = '';
+
+        words.forEach((word, idx) => {
+          const span = document.createElement('span');
+          span.className = 'growth-title-word';
+          span.textContent = word;
+          span.dataset.revealed = 'false';
+          title.appendChild(span);
+          if (idx < words.length - 1) title.appendChild(document.createTextNode(' '));
+        });
+      }
+
+      const titleWords = Array.from(growthSection.querySelectorAll('.growth-title-word'));
+      const lines = Array.from(growthSection.querySelectorAll('.growth-line'));
+
+      const resetEl = (el, blurMax, opacityMin) => {
+        el.dataset.revealed = 'false';
+        el.style.filter = `blur(${blurMax}px)`;
+        el.style.opacity = String(opacityMin);
+        el.style.transform = 'translateY(10px)';
+      };
+
+      // Estado inicial
+      titleWords.forEach(el => resetEl(el, 10, 0.3));
+      lines.forEach(el => resetEl(el, 14, 0.15));
+
+      // Al salir del viewport, resetea (para que al re-entrar se vea de nuevo)
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            titleWords.forEach(el => resetEl(el, 10, 0.3));
+            lines.forEach(el => resetEl(el, 14, 0.15));
+          }
+        });
+      }, { threshold: 0, rootMargin: '100px' });
+      sectionObserver.observe(growthSection);
+
+      const animateEl = (el, blurMax, opacityMin) => {
+        if (el.dataset.revealed === 'true') return;
+
+        const rect = el.getBoundingClientRect();
+        const windowHeight = window.innerHeight || 1;
+        const elCenter = rect.top + rect.height / 2;
+        const viewportCenter = windowHeight / 2;
+
+        const distance = Math.abs(elCenter - viewportCenter);
+        const maxDistance = windowHeight * 0.6;
+        const progress = Math.max(0, Math.min(1, 1 - (distance / maxDistance)));
+
+        // Empieza a “despertar” cuando ya hay algo de progreso
+        if (progress > 0.1) {
+          const blur = (1 - progress) * blurMax;
+          const opacity = opacityMin + (progress * (1 - opacityMin));
+          const translate = (1 - progress) * 10;
+
+          el.style.filter = `blur(${blur.toFixed(2)}px)`;
+          el.style.opacity = String(opacity);
+          el.style.transform = `translateY(${translate.toFixed(2)}px)`;
+
+          if (progress >= 0.98) {
+            el.dataset.revealed = 'true';
+            el.style.filter = 'blur(0px)';
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0px)';
+          }
+        }
+      };
+
+      let ticking = false;
+      const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+
+        window.requestAnimationFrame(() => {
+          titleWords.forEach(el => animateEl(el, 10, 0.3));
+          lines.forEach(el => animateEl(el, 14, 0.15));
+          ticking = false;
+        });
+      };
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll(); // ejecutar una vez al cargar
     });
   </script>
 
@@ -2761,6 +3380,48 @@ a:hover {
         },
         pagination: {
           el: '.team-slider-pagination',
+          clickable: true,
+        },
+        breakpoints: {
+          576: {
+            slidesPerView: 1.4,
+          },
+          768: {
+            slidesPerView: 2,
+          },
+          992: {
+            slidesPerView: 3,
+          },
+          1200: {
+            slidesPerView: 4,
+          },
+        },
+      });
+    });
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof Swiper === 'undefined') return;
+
+      const novedadesSliderEl = document.querySelector('.novedades-slider');
+      if (!novedadesSliderEl) return;
+
+      const novedadesSlidesCount = novedadesSliderEl.querySelectorAll('.swiper-slide').length || 1;
+
+      new Swiper(novedadesSliderEl, {
+        loop: novedadesSlidesCount > 1,
+        loopedSlides: novedadesSlidesCount,
+        loopAdditionalSlides: novedadesSlidesCount,
+        spaceBetween: 24,
+        slidesPerView: 1.05,
+        speed: 650,
+        navigation: {
+          nextEl: '.novedades-slider-next',
+          prevEl: '.novedades-slider-prev',
+        },
+        pagination: {
+          el: '.novedades-slider-pagination',
           clickable: true,
         },
         breakpoints: {

@@ -2744,5 +2744,55 @@
   };
   testimonialSevenSlider();
 
+  // Igualar alturas de las tarjetas de Servicios (#servicios) sin min-height fijo.
+  const equalizeServicesHeights = () => {
+    const section = document.getElementById("servicios");
+    if (!section) return;
+
+    const items = section.querySelectorAll(".service-2__item");
+    if (!items || items.length === 0) return;
+
+    // Reset para medir altura natural
+    items.forEach((el) => {
+      el.style.height = "";
+      el.style.minHeight = "";
+    });
+
+    // Solo en desktop (en mobile se ve mejor con altura natural)
+    const isDesktop = window.matchMedia("(min-width: 992px)").matches;
+    if (!isDesktop) return;
+
+    let maxHeight = 0;
+    items.forEach((el) => {
+      maxHeight = Math.max(maxHeight, el.getBoundingClientRect().height);
+    });
+
+    if (maxHeight > 0) {
+      const rounded = Math.ceil(maxHeight);
+      items.forEach((el) => {
+        el.style.height = `${rounded}px`;
+      });
+    }
+  };
+
+  const debounce = (fn, wait = 150) => {
+    let t;
+    return (...args) => {
+      clearTimeout(t);
+      t = setTimeout(() => fn(...args), wait);
+    };
+  };
+
+  const equalizeServicesHeightsDebounced = debounce(() => {
+    equalizeServicesHeights();
+    requestAnimationFrame(equalizeServicesHeights);
+  }, 150);
+
+  window.addEventListener("load", () => {
+    equalizeServicesHeights();
+    requestAnimationFrame(equalizeServicesHeights);
+  });
+  window.addEventListener("resize", equalizeServicesHeightsDebounced);
+
   window.addEventListener("resize", fillLinesWithSpans);
 })(jQuery);
