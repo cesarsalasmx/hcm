@@ -104,6 +104,8 @@
       transition: opacity 320ms ease, transform 320ms ease;
       will-change: opacity, transform;
       min-height: 1.6em; /* evita saltos al cambiar frase */
+      /* dejarla debajo del contador aunque éste esté desplazado */
+      margin-top: 10px;
     }
 
     .tech-preloader__phrase.is-visible {
@@ -1090,6 +1092,20 @@ body {
 .section-padding-top,
 .section-padding-bottom {
   background-color: #000000 !important;
+  /* Neutralizar paddings del template para que el espaciado entre secciones
+     sea controlado de forma uniforme (5rem) */
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Espaciado uniforme entre secciones (<main>) */
+main > section {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+main > section + section {
+  margin-top: 5rem !important;
 }
 
 /* Large container backgrounds */
@@ -1683,8 +1699,8 @@ h2.section-title:not(.tp_text_invert) {
     <!-- ================= Tech Preloader Start ================= -->
     <div id="tech-preloader" class="tech-preloader" aria-hidden="false">
       <div class="tech-preloader__inner">
-        <div id="tech-preloader-phrase" class="tech-preloader__phrase">HUMAN</div>
         <div id="tech-preloader-counter" class="tech-preloader__counter">0%</div>
+        <div id="tech-preloader-phrase" class="tech-preloader__phrase">HUMAN</div>
       </div>
     </div>
     <!-- ================= Tech Preloader End ================= -->
@@ -2039,7 +2055,7 @@ h2.section-title:not(.tp_text_invert) {
                   <div class="swiper-slide">
                     <a href="work.html" class="thumbnail">
                       <img src="./assets/images/hero/hero-thumb-2-10.png" alt="Kier 2" />
-                      <h6 class="title">ASSESMENT/h6>
+                      <h6 class="title">ASSESMENT</h6>
                     </a>
                   </div>
                 </div>
@@ -2099,7 +2115,7 @@ h2.section-title:not(.tp_text_invert) {
           
           <!-- ==================== Start CUSTOM ==================== -->
 
-          <div id="casos" class="hero-style1">
+          <section id="casos" class="hero-style1 section">
             <div class="container">
               <div class="row align-items-center mt-80px">
                 <div class="col-lg-8">
@@ -2220,15 +2236,15 @@ h2.section-title:not(.tp_text_invert) {
                 </div>
               </div>
             </div>
-          </div>
-          <div class="row justify-content-center mt-5">
-            <div class="col-auto">
-              <a href="service.html" class="orvio-btn v3 fade-anim" data-direction="top">
-                <span class="text">Conoce más</span>
-                <span class="icon"><i class="fa-solid fa-arrow-right-long"></i></span>
-              </a>
+            <div class="row justify-content-center mt-5">
+              <div class="col-auto">
+                <a href="service.html" class="orvio-btn v3 fade-anim" data-direction="top">
+                  <span class="text">Conoce más</span>
+                  <span class="icon"><i class="fa-solid fa-arrow-right-long"></i></span>
+                </a>
+              </div>
             </div>
-          </div>
+          </section>
           <!-- ==================== End CUSTOM ==================== -->
           
           
@@ -2829,14 +2845,14 @@ h2.section-title:not(.tp_text_invert) {
                         </defs>
                       </svg>
                     </span>
-                    <div class="row justify-content-center mt-5">
-                      <div class="col-auto">
-                        <a href="service.html" class="orvio-btn v3 fade-anim" data-direction="top">
-                          <span class="text">Ver más</span>
-                          <span class="icon"><i class="fa-solid fa-arrow-right-long"></i></span>
-                        </a>
-                      </div>
-                    </div>
+                    <span class="btn-content" style="filter: url(#buttonFilter)">
+                      <span class="btn-text">Ver más</span>
+                      <span class="btn-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="13" viewBox="0 0 17 13" fill="none">
+                          <path d="M1.5 5.75C1.08579 5.75 0.75 6.08579 0.75 6.5C0.75 6.91421 1.08579 7.25 1.5 7.25V6.5V5.75ZM16.0303 7.03033C16.3232 6.73744 16.3232 6.26256 16.0303 5.96967L11.2574 1.1967C10.9645 0.903806 10.4896 0.903806 10.1967 1.1967C9.90381 1.48959 9.90381 1.96447 10.1967 2.25736L14.4393 6.5L10.1967 10.7426C9.90381 11.0355 9.90381 11.5104 10.1967 11.8033C10.4896 12.0962 10.9645 12.0962 11.2574 11.8033L16.0303 7.03033ZM1.5 6.5V7.25H15.5V6.5V5.75H1.5V6.5Z" fill="currentColor"></path>
+                        </svg>
+                      </span>
+                    </span>
                   </a>
                 </div>
               </div>
@@ -2908,7 +2924,7 @@ h2.section-title:not(.tp_text_invert) {
               <div class="col-12 col-lg-8">
                 <div class="special-partner-item" data-delay="0.4">
                   <div class="award-logo">
-                    <img src="assets/images/partners/logo-lapiz.webp" alt="Lápiz">
+                    <img src="assets/images/partners/lapiz-oro-transparente.webp" alt="Lápiz">
                   </div>
                   <div class="award-content">
                     <ul>
