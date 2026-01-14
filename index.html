@@ -69,7 +69,7 @@
     .tech-preloader {
       position: fixed;
       inset: 0;
-      background: #000;
+      background: transparent;
       z-index: 10000; /* encima del #popup (9999) */
       display: flex;
       align-items: center;
@@ -119,6 +119,7 @@
       color: #fff;
       letter-spacing: -0.02em;
       font-variant-numeric: tabular-nums;
+      transform: translateY(20vh);
     }
 
   #video-fondo {
@@ -186,11 +187,6 @@ body {
 .info-sub-title,
 .link-title {
   color: #ffffff !important;
-}
-
-/* Links y botones - mantener buen contraste */
-a:hover {
-  color: #8cff00 !important;
 }
 
 /* NOVEDADES: hover del título en naranja (Color primario 2) */
@@ -555,9 +551,7 @@ a:hover {
 }
 
 .social ul li a:hover,
-.mobile-menu-social-media a:hover {
-  color: #8cff00 !important;
-}
+
 
 /* Swiper y sliders */
 .swiper-slide {
@@ -1016,13 +1010,8 @@ a:hover {
       font-size: 16px;
 }
 
-/* Mobile menu copyright */
-.orvio__mobile-menu-copyright-text {
-  color: #cccccc !important;
-}
-
 .orvio__mobile-menu-copyright-text a {
-  color: #8cff00 !important;
+  color: var(--color-primary2) !important;
 }
 
 /* Asegurar que las imágenes SVG de clientes se vean bien */
@@ -1341,6 +1330,11 @@ h2.section-title:not(.tp_text_invert) {
     white-space: nowrap;
   }
 
+  /* Solo en el título de #cultura: permitir el salto en 2 líneas */
+  #cultura .growth-title-wrapper .section-title {
+    white-space: normal;
+  }
+
   .growth-paragraphs-column {
     padding: 0 40px 60px;
     min-height: auto;
@@ -1348,12 +1342,12 @@ h2.section-title:not(.tp_text_invert) {
   }
 
   .growth-paragraphs {
-    width: 50vw;
+    width: 70vw;
     margin-left: auto; /* desde la mitad hacia la derecha */
   }
 
   .growth-paragraphs p {
-    font-size: 3rem;
+    font-size: 2.8rem;
     margin-bottom: 2rem;
   }
 }
@@ -1741,7 +1735,7 @@ h2.section-title:not(.tp_text_invert) {
               <a href="#connections-trends" class="orvio__nav-link" data-bs-dismiss="offcanvas">Connections Trends</a>
             </li>
             <li class="orvio__nav-item">
-              <a href="#reconocimientos" class="orvio__nav-link" data-bs-dismiss="offcanvas">Partners</a>
+              <a href="#reconocimientos" class="orvio__nav-link" data-bs-dismiss="offcanvas">Reconocimientos</a>
             </li>
           </ul>
         </nav>
@@ -1773,7 +1767,7 @@ h2.section-title:not(.tp_text_invert) {
 <!-- ================= Popup area end here ================= -->
 
         <div id="popup">
-                    <video autoplay loop muted id="video-fondo">
+                    <video autoplay muted id="video-fondo">
                     <source src="./assets/videos/hcm-intro.mp4" type="video/mp4">
                     </video>
 			  </div>
@@ -1812,7 +1806,7 @@ h2.section-title:not(.tp_text_invert) {
                       <a href="#connections-trends">Connections Trends</a>
                     </li>
                     <li>
-                      <a href="#reconocimientos">Partners</a>
+                      <a href="#reconocimientos">Reconocimientos</a>
                     </li>
                   </ul>
                 </nav>
@@ -2062,7 +2056,11 @@ h2.section-title:not(.tp_text_invert) {
                 <!-- Título sticky centrado verticalmente - 100vh -->
                 <div class="col-lg-5 growth-title-column">
                   <div class="growth-title-wrapper">
-                    <h2 class="section-title">Growth by Design.</h2>
+                    <h2 class="section-title">
+                      <span class="growth-title-word" data-revealed="false">Growth</span>
+                      <span class="growth-title-word" data-revealed="false">by</span><br>
+                      <span class="growth-title-word" data-revealed="false">Design</span>
+                    </h2>
                   </div>
                 </div>
                 
@@ -2223,7 +2221,14 @@ h2.section-title:not(.tp_text_invert) {
               </div>
             </div>
           </div>
-          
+          <div class="row justify-content-center mt-5">
+            <div class="col-auto">
+              <a href="service.html" class="orvio-btn v3 fade-anim" data-direction="top">
+                <span class="text">Conoce más</span>
+                <span class="icon"><i class="fa-solid fa-arrow-right-long"></i></span>
+              </a>
+            </div>
+          </div>
           <!-- ==================== End CUSTOM ==================== -->
           
           
@@ -2336,14 +2341,6 @@ h2.section-title:not(.tp_text_invert) {
                 </div>
               </div>
 
-              <div class="row justify-content-center mt-5">
-                <div class="col-auto">
-                  <a href="service.html" class="orvio-btn v3 fade-anim" data-direction="top">
-                    <span class="text">Conoce más</span>
-                    <span class="icon"><i class="fa-solid fa-arrow-right-long"></i></span>
-                  </a>
-                </div>
-              </div>
             </div>
           </section>
         <!--================= NEW SERVICES SECTION end =================-->
@@ -2832,14 +2829,14 @@ h2.section-title:not(.tp_text_invert) {
                         </defs>
                       </svg>
                     </span>
-                    <span class="btn-content" style="filter: url(#buttonFilter)">
-                      <span class="btn-text">Ver más</span>
-                      <span class="btn-circle">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="13" viewBox="0 0 17 13" fill="none">
-                          <path d="M1.5 5.75C1.08579 5.75 0.75 6.08579 0.75 6.5C0.75 6.91421 1.08579 7.25 1.5 7.25V6.5V5.75ZM16.0303 7.03033C16.3232 6.73744 16.3232 6.26256 16.0303 5.96967L11.2574 1.1967C10.9645 0.903806 10.4896 0.903806 10.1967 1.1967C9.90381 1.48959 9.90381 1.96447 10.1967 2.25736L14.4393 6.5L10.1967 10.7426C9.90381 11.0355 9.90381 11.5104 10.1967 11.8033C10.4896 12.0962 10.9645 12.0962 11.2574 11.8033L16.0303 7.03033ZM1.5 6.5V7.25H15.5V6.5V5.75H1.5V6.5Z" fill="currentColor"></path>
-                        </svg>
-                      </span>
-                    </span>
+                    <div class="row justify-content-center mt-5">
+                      <div class="col-auto">
+                        <a href="service.html" class="orvio-btn v3 fade-anim" data-direction="top">
+                          <span class="text">Ver más</span>
+                          <span class="icon"><i class="fa-solid fa-arrow-right-long"></i></span>
+                        </a>
+                      </div>
+                    </div>
                   </a>
                 </div>
               </div>
@@ -3140,14 +3137,16 @@ h2.section-title:not(.tp_text_invert) {
         const phraseEl = document.getElementById('tech-preloader-phrase');
         if (!preloader || !counterEl || !phraseEl) return;
 
-        const phrases = ['HUMAN', 'CONNECTIONS', 'MEDIA', 'Growth by Design.'];
+        const phrases = ['HUMAN', 'CONNECTIONS', 'MEDIA', 'Growth by Design'];
         const thresholds = [0, 25, 50, 75]; // % donde cambia el texto
-        const durationMs = 5000; // ~5s
+        const fallbackDurationMs = 5000; // fallback
 
         const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
 
         let lastPercent = -1;
         let currentPhraseIndex = -1;
+        let started = false;
+        let finished = false;
 
         const setPhrase = (index) => {
           if (index === currentPhraseIndex) return;
@@ -3165,9 +3164,30 @@ h2.section-title:not(.tp_text_invert) {
         phraseEl.classList.add('is-visible');
         setPhrase(0);
 
-        const start = performance.now();
-        const tick = (now) => {
-          const t = Math.min(1, (now - start) / durationMs);
+        const finish = () => {
+          if (finished) return;
+          finished = true;
+
+          preloader.classList.add('tech-preloader--done');
+          preloader.setAttribute('aria-hidden', 'true');
+
+          const cleanup = () => {
+            preloader.removeEventListener('transitionend', cleanup);
+            preloader.remove();
+          };
+          preloader.addEventListener('transitionend', cleanup, { once: true });
+        };
+
+        // Permite que otros scripts (video) cierren el preloader al terminar
+        window.__finishTechPreloader = finish;
+
+        const startWithDuration = (durationMs) => {
+          if (started) return;
+          started = true;
+
+          const start = performance.now();
+          const tick = (now) => {
+            const t = Math.min(1, (now - start) / durationMs);
           const eased = easeOutCubic(t);
           const percent = Math.round(eased * 100);
 
@@ -3188,37 +3208,76 @@ h2.section-title:not(.tp_text_invert) {
             return;
           }
 
-          // Finish: slide up to reveal the intro video (#popup)
-          preloader.classList.add('tech-preloader--done');
-          preloader.setAttribute('aria-hidden', 'true');
-
-          const cleanup = () => {
-            preloader.removeEventListener('transitionend', cleanup);
-            preloader.remove();
+            finish();
           };
-          preloader.addEventListener('transitionend', cleanup, { once: true });
+
+          requestAnimationFrame(tick);
         };
 
-        requestAnimationFrame(tick);
+        // Sincronizar la duración con el video de intro si está disponible
+        const video = document.getElementById('video-fondo');
+        const startFromVideo = () => {
+          const dur = video && Number.isFinite(video.duration) && video.duration > 0.1
+            ? Math.round(video.duration * 1000)
+            : fallbackDurationMs;
+          startWithDuration(dur);
+        };
+
+        if (video) {
+          if (Number.isFinite(video.duration) && video.duration > 0.1) {
+            startFromVideo();
+          } else {
+            video.addEventListener('loadedmetadata', startFromVideo, { once: true });
+            // fallback por si metadata tarda o falla
+            window.setTimeout(() => startWithDuration(fallbackDurationMs), 800);
+          }
+        } else {
+          startWithDuration(fallbackDurationMs);
+        }
       })();
     </script>
 
     <script>
-    // Espera 8 segundos (7s + 1s de fade out) y luego aplica fade out
-    setTimeout(() => {
+    // Intro video: mostrar solo lo que dura el video (sin timer fijo)
+    (function () {
       const popup = document.getElementById('popup');
-      popup.classList.add('fade-out');
-      
-      // Quita el popup del DOM después de la animación (1000ms = 1s)
-      setTimeout(() => {
-        popup.remove();
-        
-        // ¡CÓDIGO A AJUSTAR/AGREGAR!
-        // Habilita el scroll al quitar la restricción del body
-        document.body.style.overflowY = 'auto'; 
+      const video = document.getElementById('video-fondo');
+      if (!popup || !video) return;
 
-      }, 1000);
-    }, 11000);
+      let done = false;
+      const closeIntro = () => {
+        if (done) return;
+        done = true;
+
+        // Asegura que el preloader cierre junto con el final del video
+        if (typeof window.__finishTechPreloader === 'function') {
+          window.__finishTechPreloader();
+        }
+
+        popup.classList.add('fade-out');
+        window.setTimeout(() => {
+          popup.remove();
+          document.body.style.overflowY = 'auto';
+        }, 1000);
+      };
+
+      // Que no loopee y dispare ended
+      video.loop = false;
+      video.addEventListener('ended', closeIntro, { once: true });
+
+      // Fallback por si 'ended' no dispara (autoplay bloqueado / edge cases)
+      const armTimeout = () => {
+        if (Number.isFinite(video.duration) && video.duration > 0.1) {
+          window.setTimeout(closeIntro, Math.round(video.duration * 1000) + 250);
+        }
+      };
+
+      if (Number.isFinite(video.duration) && video.duration > 0.1) {
+        armTimeout();
+      } else {
+        video.addEventListener('loadedmetadata', armTimeout, { once: true });
+      }
+    })();
   </script>
 
   <script>
@@ -3365,38 +3424,153 @@ h2.section-title:not(.tp_text_invert) {
       const teamSliderEl = document.querySelector('.team-slider');
       if (!teamSliderEl) return;
 
-      const teamSlidesCount = teamSliderEl.querySelectorAll('.swiper-slide').length || 1;
+      const API_URL = 'https://hcm-global.com/hcmadmin/index.php/api/equipo';
+      // Ajusta esta ruta si en tu CMS usan otra carpeta para Equipo
+      const IMG_BASE = 'https://hcm-global.com/hcmadmin/img/equipo/';
 
-      new Swiper(teamSliderEl, {
-        loop: teamSlidesCount > 1,
-        loopedSlides: teamSlidesCount,
-        loopAdditionalSlides: teamSlidesCount,
-        spaceBetween: 24,
-        slidesPerView: 1.05,
-        speed: 650,
-        navigation: {
-          nextEl: '.team-slider-next',
-          prevEl: '.team-slider-prev',
-        },
-        pagination: {
-          el: '.team-slider-pagination',
-          clickable: true,
-        },
-        breakpoints: {
-          576: {
-            slidesPerView: 1.4,
+      const wrapper = teamSliderEl.querySelector('.swiper-wrapper');
+      if (!wrapper) return;
+
+      const initSwiper = () => {
+        const count = teamSliderEl.querySelectorAll('.swiper-slide').length || 1;
+        // eslint-disable-next-line no-new
+        new Swiper(teamSliderEl, {
+          loop: count > 1,
+          loopedSlides: count,
+          loopAdditionalSlides: count,
+          spaceBetween: 24,
+          slidesPerView: 1.05,
+          speed: 650,
+          navigation: {
+            nextEl: '.team-slider-next',
+            prevEl: '.team-slider-prev',
           },
-          768: {
-            slidesPerView: 2,
+          pagination: {
+            el: '.team-slider-pagination',
+            clickable: true,
           },
-          992: {
-            slidesPerView: 3,
+          breakpoints: {
+            576: {
+              slidesPerView: 1.4,
+            },
+            768: {
+              slidesPerView: 2,
+            },
+            992: {
+              slidesPerView: 3,
+            },
+            1200: {
+              slidesPerView: 4,
+            },
           },
-          1200: {
-            slidesPerView: 4,
-          },
-        },
-      });
+        });
+      };
+
+      const safeHref = (value) => {
+        if (!value || typeof value !== 'string') return '#0';
+        const trimmed = value.trim();
+        if (!trimmed) return '#0';
+        if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) return trimmed;
+        return trimmed;
+      };
+
+      const buildSlide = (item, idx) => {
+        const nombre = (item && item.titulo) ? String(item.titulo) : '';
+        const puesto = (item && item.sub_texto) ? String(item.sub_texto) : '';
+        const href = safeHref(item && item.link);
+
+        const imgName = (item && item.imagen) ? String(item.imagen) : '';
+        const imgSrc = imgName ? `${IMG_BASE}${encodeURIComponent(imgName)}` : './assets/images/team/team-thumb-2-1.png';
+
+        const slide = document.createElement('div');
+        slide.className = 'swiper-slide';
+
+        const card = document.createElement('div');
+        card.className = 'team-2__item fade-anim';
+        card.dataset.delay = String((0.3 + (idx * 0.2)).toFixed(2));
+
+        const thumb = document.createElement('div');
+        thumb.className = 'team-thumb';
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        img.alt = nombre || 'team-member';
+        img.className = 'w-100';
+        thumb.appendChild(img);
+
+        const content = document.createElement('div');
+        content.className = 'team-content';
+
+        const designation = document.createElement('span');
+        designation.className = 'designation';
+        designation.textContent = puesto;
+
+        const title = document.createElement('h5');
+        title.className = 'title';
+        const titleLink = document.createElement('a');
+        titleLink.href = href === '#0' ? 'team-details.html' : href;
+        titleLink.textContent = nombre;
+        title.appendChild(titleLink);
+
+        const social = document.createElement('div');
+        social.className = 'social';
+        const ul = document.createElement('ul');
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = href;
+        const icon = document.createElement('i');
+        icon.className = 'fa-brands fa-linkedin';
+        a.appendChild(icon);
+        li.appendChild(a);
+        ul.appendChild(li);
+        social.appendChild(ul);
+
+        content.appendChild(designation);
+        content.appendChild(title);
+        content.appendChild(social);
+
+        card.appendChild(thumb);
+        card.appendChild(content);
+        slide.appendChild(card);
+
+        return slide;
+      };
+
+      const renderFromApi = async () => {
+        const res = await fetch(API_URL, { method: 'GET' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const json = await res.json();
+        const data = (json && Array.isArray(json.data)) ? json.data : [];
+        if (!data.length) return false;
+
+        const getOrder = (x) => {
+          const n = Number(x && x.orden);
+          return Number.isFinite(n) ? n : Number.POSITIVE_INFINITY;
+        };
+        const getTime = (x) => {
+          const d = new Date(x && x.fecha);
+          const t = d.getTime();
+          return Number.isNaN(t) ? 0 : t;
+        };
+
+        data.sort((a, b) => {
+          const ao = getOrder(a);
+          const bo = getOrder(b);
+          if (ao !== bo) return ao - bo;
+          return getTime(b) - getTime(a);
+        });
+
+        const fragment = document.createDocumentFragment();
+        data.slice(0, 10).forEach((item, idx) => fragment.appendChild(buildSlide(item, idx)));
+
+        wrapper.innerHTML = '';
+        wrapper.appendChild(fragment);
+        return true;
+      };
+
+      // Render dinámico (si falla, dejamos el contenido estático existente)
+      renderFromApi()
+        .catch(() => false)
+        .finally(() => initSwiper());
     });
   </script>
 
@@ -3407,38 +3581,364 @@ h2.section-title:not(.tp_text_invert) {
       const novedadesSliderEl = document.querySelector('.novedades-slider');
       if (!novedadesSliderEl) return;
 
-      const novedadesSlidesCount = novedadesSliderEl.querySelectorAll('.swiper-slide').length || 1;
+      const API_URL = 'https://hcm-global.com/hcmadmin/index.php/api/noticias';
+      const IMG_BASE = 'https://hcm-global.com/hcmadmin/img/novedades/';
 
-      new Swiper(novedadesSliderEl, {
-        loop: novedadesSlidesCount > 1,
-        loopedSlides: novedadesSlidesCount,
-        loopAdditionalSlides: novedadesSlidesCount,
-        spaceBetween: 24,
-        slidesPerView: 1.05,
-        speed: 650,
-        navigation: {
-          nextEl: '.novedades-slider-next',
-          prevEl: '.novedades-slider-prev',
-        },
-        pagination: {
-          el: '.novedades-slider-pagination',
-          clickable: true,
-        },
-        breakpoints: {
-          576: {
-            slidesPerView: 1.4,
+      const wrapper = novedadesSliderEl.querySelector('.swiper-wrapper');
+      if (!wrapper) return;
+
+      const initSwiper = () => {
+        const count = novedadesSliderEl.querySelectorAll('.swiper-slide').length || 1;
+        // eslint-disable-next-line no-new
+        new Swiper(novedadesSliderEl, {
+          loop: count > 1,
+          loopedSlides: count,
+          loopAdditionalSlides: count,
+          spaceBetween: 24,
+          slidesPerView: 1.05,
+          speed: 650,
+          navigation: {
+            nextEl: '.novedades-slider-next',
+            prevEl: '.novedades-slider-prev',
           },
-          768: {
-            slidesPerView: 2,
+          pagination: {
+            el: '.novedades-slider-pagination',
+            clickable: true,
           },
-          992: {
-            slidesPerView: 3,
+          breakpoints: {
+            576: {
+              slidesPerView: 1.4,
+            },
+            768: {
+              slidesPerView: 2,
+            },
+            992: {
+              slidesPerView: 3,
+            },
+            1200: {
+              slidesPerView: 4,
+            },
           },
-          1200: {
-            slidesPerView: 4,
-          },
-        },
-      });
+        });
+      };
+
+      const safeHref = (value) => {
+        if (!value || typeof value !== 'string') return '#0';
+        const trimmed = value.trim();
+        if (!trimmed) return '#0';
+        if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) return trimmed;
+        return trimmed; // permite rutas relativas si vienen así
+      };
+
+      const formatDateParts = (isoString) => {
+        const d = new Date(isoString);
+        if (Number.isNaN(d.getTime())) return { day: '', month: '' };
+        const day = String(d.getDate());
+        const month = d
+          .toLocaleString('en-US', { month: 'short' })
+          .toUpperCase()
+          .replace('.', '');
+        return { day, month };
+      };
+
+      const buildSlide = (item) => {
+        const titulo = (item && item.titulo) ? String(item.titulo) : '';
+        const meta = (item && item.sub_texto) ? String(item.sub_texto) : '';
+        const href = safeHref(item && item.link);
+
+        const imgName = (item && item.imagen) ? String(item.imagen) : '';
+        const imgSrc = imgName ? `${IMG_BASE}${encodeURIComponent(imgName)}` : 'assets/imgs/blog/1.png';
+
+        const { day, month } = formatDateParts(item && item.fecha);
+
+        const slide = document.createElement('div');
+        slide.className = 'swiper-slide';
+
+        const card = document.createElement('div');
+        card.className = 'v1-blog-card';
+
+        const media = document.createElement('div');
+        media.className = 'v1-blog-card__media';
+
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        img.alt = titulo || 'Novedad';
+
+        const dateLink = document.createElement('a');
+        dateLink.href = href;
+        dateLink.className = 'v1-blog-card__date';
+
+        const dateInner = document.createElement('div');
+        dateInner.className = 'v1-blog-card__date-inner';
+        const dateSpan = document.createElement('span');
+        const dateI = document.createElement('i');
+        dateI.textContent = day;
+        dateSpan.appendChild(dateI);
+        dateSpan.appendChild(document.createTextNode(` ${month}`));
+        dateInner.appendChild(dateSpan);
+        dateLink.appendChild(dateInner);
+
+        const iconLink = document.createElement('a');
+        iconLink.href = href;
+        iconLink.className = 'v1-blog-card__icon';
+        iconLink.setAttribute('aria-label', 'Abrir artículo');
+
+        const iconSpan = document.createElement('span');
+        iconSpan.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28.5 28.5"><path d="M29.25.75V22.09H26.89V4.77L2.4,29.25.75,27.52,25.16,3.11H7.84V.75Z" transform="translate(-0.75 -0.75)" /></svg>';
+        iconLink.appendChild(iconSpan);
+
+        media.appendChild(img);
+        media.appendChild(dateLink);
+        media.appendChild(iconLink);
+
+        const body = document.createElement('div');
+        body.className = 'v1-blog-card__body';
+
+        const metaEl = document.createElement('div');
+        metaEl.className = 'v1-blog-card__meta';
+        metaEl.textContent = meta;
+
+        const titleEl = document.createElement('h6');
+        titleEl.className = 'v1-blog-card__title';
+        titleEl.textContent = titulo;
+
+        body.appendChild(metaEl);
+        body.appendChild(titleEl);
+
+        card.appendChild(media);
+        card.appendChild(body);
+        slide.appendChild(card);
+
+        return slide;
+      };
+
+      const renderFromApi = async () => {
+        const res = await fetch(API_URL, { method: 'GET' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const json = await res.json();
+        const data = (json && Array.isArray(json.data)) ? json.data : [];
+        if (!data.length) return false;
+
+        const getOrder = (x) => {
+          const n = Number(x && x.orden);
+          return Number.isFinite(n) ? n : Number.POSITIVE_INFINITY;
+        };
+        const getTime = (x) => {
+          const d = new Date(x && x.fecha);
+          const t = d.getTime();
+          return Number.isNaN(t) ? 0 : t;
+        };
+
+        data.sort((a, b) => {
+          const ao = getOrder(a);
+          const bo = getOrder(b);
+          if (ao !== bo) return ao - bo;
+          return getTime(b) - getTime(a);
+        });
+
+        const fragment = document.createDocumentFragment();
+        data.slice(0, 10).forEach((item) => fragment.appendChild(buildSlide(item)));
+
+        wrapper.innerHTML = '';
+        wrapper.appendChild(fragment);
+        return true;
+      };
+
+      // Render dinámico (si falla, dejamos el contenido estático existente)
+      renderFromApi()
+        .catch(() => false)
+        .finally(() => initSwiper());
+    });
+  </script>
+
+  <script>
+    // CLIENTES: contenido dinámico desde API (sin cambiar estructura del marquee)
+    document.addEventListener('DOMContentLoaded', function () {
+      const clientesSection = document.querySelector('#clientes');
+      if (!clientesSection) return;
+
+      const API_URL = 'https://hcm-global.com/hcmadmin/index.php/api/clientes';
+      // Ajusta esta ruta si en tu CMS usan otra carpeta para logos de clientes
+      const IMG_BASE = 'https://hcm-global.com/hcmadmin/img/clientes/';
+
+      const boxes = clientesSection.querySelectorAll('.main-marq .slide-har .box');
+      if (!boxes.length) return;
+
+      const safeHref = (value) => {
+        if (!value || typeof value !== 'string') return '#0';
+        const trimmed = value.trim();
+        if (!trimmed) return '#0';
+        if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) return trimmed;
+        return trimmed;
+      };
+
+      const buildItem = (item) => {
+        const titulo = (item && item.titulo) ? String(item.titulo) : '';
+        const href = safeHref(item && item.link);
+        const imgName = (item && item.imagen) ? String(item.imagen) : '';
+        if (!imgName) return null;
+
+        const imgSrc = `${IMG_BASE}${encodeURIComponent(imgName)}`;
+
+        const wrap = document.createElement('div');
+        wrap.className = 'item-marq';
+
+        const a = document.createElement('a');
+        a.href = href;
+        if (href.startsWith('http')) {
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+        }
+
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        img.alt = titulo;
+
+        a.appendChild(img);
+        wrap.appendChild(a);
+        return wrap;
+      };
+
+      const renderFromApi = async () => {
+        const res = await fetch(API_URL, { method: 'GET' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const json = await res.json();
+        const data = (json && Array.isArray(json.data)) ? json.data : [];
+        if (!data.length) return false;
+
+        const getOrder = (x) => {
+          const n = Number(x && x.orden);
+          return Number.isFinite(n) ? n : Number.POSITIVE_INFINITY;
+        };
+        const getTime = (x) => {
+          const d = new Date(x && x.fecha);
+          const t = d.getTime();
+          return Number.isNaN(t) ? 0 : t;
+        };
+
+        data.sort((a, b) => {
+          const ao = getOrder(a);
+          const bo = getOrder(b);
+          if (ao !== bo) return ao - bo;
+          return getTime(b) - getTime(a);
+        });
+
+        const items = data
+          .slice(0, 10)
+          .map(buildItem)
+          .filter(Boolean);
+
+        if (!items.length) return false;
+
+        boxes.forEach((box) => {
+          const fragment = document.createDocumentFragment();
+          items.forEach((node) => fragment.appendChild(node.cloneNode(true)));
+          box.innerHTML = '';
+          box.appendChild(fragment);
+        });
+
+        return true;
+      };
+
+      // Render dinámico (si falla, dejamos el contenido estático existente)
+      renderFromApi().catch(() => false);
+    });
+  </script>
+
+  <script>
+    // CONNECTIONS TRENDS: contenido dinámico desde API (sin cambiar estructura)
+    document.addEventListener('DOMContentLoaded', function () {
+      const section = document.querySelector('#connections-trends');
+      if (!section) return;
+
+      const API_URL = 'https://hcm-global.com/hcmadmin/index.php/api/trends';
+      // Según la estructura pública del CMS, aquí viven imágenes y PDFs
+      const ASSET_BASE = 'https://www.hcm-global.com/hcmadmin/img/trends/';
+
+      const cards = Array.from(section.querySelectorAll('.work-7__item.sticky-item'));
+      if (!cards.length) return;
+
+      const safeHref = (value) => {
+        if (!value || typeof value !== 'string') return '#0';
+        const trimmed = value.trim();
+        if (!trimmed) return '#0';
+        if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) return trimmed;
+        // Si viene solo nombre de archivo, lo resolvemos contra ASSET_BASE
+        if (!trimmed.includes('/')) return `${ASSET_BASE}${encodeURIComponent(trimmed)}`;
+        return trimmed;
+      };
+
+      const resolveAssetUrl = (filename) => {
+        if (!filename || typeof filename !== 'string') return '';
+        const trimmed = filename.trim();
+        if (!trimmed) return '';
+        if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) return trimmed;
+        return `${ASSET_BASE}${encodeURIComponent(trimmed)}`;
+      };
+
+      const renderFromApi = async () => {
+        const res = await fetch(API_URL, { method: 'GET' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const json = await res.json();
+        const data = (json && Array.isArray(json.data)) ? json.data : [];
+        if (!data.length) return false;
+
+        const getOrder = (x) => {
+          const n = Number(x && x.orden);
+          return Number.isFinite(n) ? n : Number.POSITIVE_INFINITY;
+        };
+        const getTime = (x) => {
+          const d = new Date(x && x.fecha);
+          const t = d.getTime();
+          return Number.isNaN(t) ? 0 : t;
+        };
+
+        data.sort((a, b) => {
+          const ao = getOrder(a);
+          const bo = getOrder(b);
+          if (ao !== bo) return ao - bo;
+          return getTime(b) - getTime(a);
+        });
+
+        const items = data.slice(0, 4);
+        items.forEach((item, idx) => {
+          const card = cards[idx];
+          if (!card) return;
+
+          const titulo = (item && item.titulo) ? String(item.titulo) : '';
+          const imgUrl = resolveAssetUrl(item && item.imagen);
+          const fileUrl = safeHref(item && item.file);
+
+          const img = card.querySelector('.item-thumb img');
+          if (img && imgUrl) {
+            img.src = imgUrl;
+            img.alt = titulo || 'trend';
+          }
+
+          const tagLink = card.querySelector('.tags a');
+          if (tagLink) {
+            tagLink.href = fileUrl;
+            if (fileUrl.startsWith('http')) {
+              tagLink.target = '_blank';
+              tagLink.rel = 'noopener noreferrer';
+            }
+          }
+
+          const titleLink = card.querySelector('.item-title a');
+          if (titleLink) {
+            titleLink.textContent = titulo;
+            titleLink.href = fileUrl;
+            if (fileUrl.startsWith('http')) {
+              titleLink.target = '_blank';
+              titleLink.rel = 'noopener noreferrer';
+            }
+          }
+        });
+
+        return true;
+      };
+
+      renderFromApi().catch(() => false);
     });
   </script>
   </body>
